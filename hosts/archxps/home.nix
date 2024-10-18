@@ -1,4 +1,4 @@
-{ username }: { config, pkgs, ... }:
+{ pkgs, username, dotfiles, ... }:
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -6,10 +6,7 @@
   home.homeDirectory = "/home/${username}";
   targets.genericLinux.enable = true; # Enable for non nixos
 
-  home.stateVersion = "24.05";
-
-  home.packages = [
-    pkgs.hello
+  home.packages = with pkgs; [
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -23,4 +20,6 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.neovim.enable = true;
 }
