@@ -5,6 +5,7 @@
     homeDirectory = "/home/${user}";
 
     packages = with pkgs; [
+      pkgs.hello
     ];
   };
 
@@ -16,4 +17,5 @@
     enable = true;
   };
 
+  programs.neovim.enable = true;
 }

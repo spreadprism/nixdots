@@ -36,26 +36,33 @@
       dotfiles = ./dotfiles;
 
       commonInherits = {
-        inherit pkgs;
+        inherit (nixpkgs) lib;
+        inherit pkgs nixpkgs;
         inherit home-manager nix-darwin;
         inherit user dotfiles;
       };
     in
       {
-      nixosConfigurations = import ./hosts (commonInherits // {
-        isNixOS = true;
-        isMacOS = false;
-      });
+      # nixosConfigurations = import ./hosts (commonInherits // {
+      #   isNixOS = true;
+      #   isMacOS = false;
+      # });
 
-      darwinConfigurations = import ./hosts (commonInherits // {
-        isNixOS = false;
-        isMacOS = true;
-      });
+      # darwinConfigurations = import ./hosts (commonInherits // {
+      #   isNixOS = false;
+      #   isMacOS = true;
+      # });
 
       # INFO: home-manager switch --flake .
-      homeConfigurations = import ./hosts (commonInherits // {
-        isNixOS = false;
-        isMacOS = false;
-      });
+      # homeConfigurations = import ./hosts (commonInherits // {
+      #   isNixOS = false;
+      #   isMacOS = false;
+      # });
+
+      homeConfigurations = {
+        "avalon@archxps" = {
+          pkgs = 
+        };
+      };
     };
 }
