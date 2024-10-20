@@ -1,11 +1,9 @@
 {
-  description = "My Nix(\"OS\" or \"\") configuration";
-
+  description = "Multiplatform nix config";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-22.05";
-    unstable.url = "nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-darwin = {
@@ -13,56 +11,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
-  outputs = inputs @ { self, home-manager, nix-darwin, nixpkgs, unstable, ... }:
+  outputs = { self, nix-darwin, nixpkgs, home-manager, ... }@inputs:
     let
-      # INFO: Define the configuration to be applied to both stable and unstable packages
-      commonConfig = { allowUnfree = true; };
-
-      unstablePkgs = import unstable {
-        config = commonConfig;
-      };
-
-      pkgs = import nixpkgs {
-        config = commonConfig // {
-          packageOverrides = pkgs: {
-            unstable = unstablePkgs;
-          };
-        };
-      };
-
-      user = "avalon";
-      # secrets = import ./secrets; # TODO: add secrets
-      dotfiles = ./dotfiles;
-
-      commonInherits = {
-        inherit (nixpkgs) lib;
-        inherit pkgs nixpkgs;
-        inherit home-manager nix-darwin;
-        inherit user dotfiles;
-      };
+      inherit (self) outputs;
+      # INFO: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+      stateVersion = "24.05";
+      utils = import ./utils { inherit inputs outputs stateVersion; };
+      hosts = import ./hosts { inherit inputs outputs stateVersion utils; username = "avalon"; };
     in
-      {
-      # nixosConfigurations = import ./hosts (commonInherits // {
-      #   isNixOS = true;
-      #   isMacOS = false;
-      # });
-
-      # darwinConfigurations = import ./hosts (commonInherits // {
-      #   isNixOS = false;
-      #   isMacOS = true;
-      # });
-
-      # INFO: home-manager switch --flake .
-      # homeConfigurations = import ./hosts (commonInherits // {
-      #   isNixOS = false;
-      #   isMacOS = false;
-      # });
-
-      homeConfigurations = {
-        "avalon@archxps" = {
-          pkgs = 
-        };
-      };
+    {
+      inherit (hosts)
+        nixosConfigurations
+        darwinConfigurations
+        homeConfigurations;
     };
 }

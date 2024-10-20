@@ -1,16 +1,9 @@
-{ pkgs, dotfiles, ... }:
+{ inputs, outputs, stateVersion, pkgs, ... }:
 {
-  targets.genericLinux.enable = true; # Enable for non nixos
+  targets.genericLinux.enable = true;
+  home = {
+    packages = with pkgs; [
 
-  home.packages = with pkgs; [
-  ];
-
-  home.file = {
+    ];
   };
-
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
-
-  programs.home-manager.enable = true;
 }

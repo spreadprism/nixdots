@@ -1,4 +1,4 @@
 { inputs, outputs, stateVersion, ... }:
 {
-  platform = "x86_64-linux";
+  platform = "aarch64-darwin";
 }
