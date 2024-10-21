@@ -1,9 +1,10 @@
 {
-  description = "Multiplatform nix config";
+  description = "Nix (NixOS, MacOS, Home-manager)";
+
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-darwin = {
@@ -14,13 +15,11 @@
   outputs = { self, nix-darwin, nixpkgs, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
-      # INFO: https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
       stateVersion = "24.05";
-      utils = import ./utils { inherit inputs outputs stateVersion; };
-      hosts = import ./hosts { inherit inputs outputs stateVersion utils; username = "avalon"; };
-    in
+      username = "avalon";
+      in
     {
-      inherit (hosts)
+      inherit (import ./hosts { inherit inputs outputs stateVersion username; })
         nixosConfigurations
         darwinConfigurations
         homeConfigurations;

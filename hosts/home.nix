@@ -3,6 +3,8 @@ let
   inherit (pkgs.stdenv) isDarwin isLinux;
 in
 {
+  # Let home-manager manage itself
+  programs.home-manager.enable = true;
   home = {
     inherit stateVersion;
     inherit username;
@@ -12,24 +14,9 @@ in
       else
         "/home/${username}";
 
-    nixpkgs = {
-      config.allowUnfree = true;
-    };
-
-    nix = {
-      package = pkgs.nixVersions.latest;
-      settings = {
-        experimental-features = "flakes nix-command";
-        trusted-users = [
-          "root"
-          "${username}"
-        ];
-      };
-    };
-
     packages = with pkgs;
     [
-
+        git
     ]
     ++ lib.optionals isLinux [
 
@@ -37,9 +24,5 @@ in
     ++ lib.optionals isDarwin [
 
     ];
-
-    programs = {
-
-    };
   };
 }

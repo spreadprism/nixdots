@@ -1,4 +1,5 @@
 { inputs, outputs, stateVersion, ... }:
 {
-  platform = "aarch64-darwin";
+  system = "aarch64-darwin";
+  user = "eduguay";
 }
