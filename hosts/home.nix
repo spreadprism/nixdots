@@ -1,6 +1,10 @@
 { lib, pkgs, stateVersion, username, ... }:
 let
   inherit (pkgs.stdenv) isDarwin isLinux;
+  homeDirectory = if isDarwin
+    then "/Users/${username}"
+    else "/home/${username}";
+  flakeRoot = "${homeDirectory}/nix";
 in
 {
   # Let home-manager manage itself
@@ -8,11 +12,7 @@ in
   home = {
     inherit stateVersion;
     inherit username;
-    homeDirectory =
-      if isDarwin then
-        "/Users/${username}"
-      else
-        "/home/${username}";
+    inherit homeDirectory;
 
 
     packages = with pkgs;

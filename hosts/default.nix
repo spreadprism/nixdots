@@ -1,4 +1,4 @@
-{ inputs, outputs, stateVersion, username, dotfiles, modules, ... }:
+{ inputs, outputs, stateVersion, username, ... }:
 let
   all_paths = builtins.readDir ./. ;
   all_dirs = builtins.filter (key: all_paths.${key} == "directory") (builtins.attrNames all_paths);
@@ -19,7 +19,7 @@ let
     username = if builtins.hasAttr "username" host_conf
       then host_conf.username
       else default_username;
-    specialArgs = args // { inherit username system hostname dotfiles modules; };
+    specialArgs = args // { inherit username system hostname; };
   in
   {
       name = "${username}@${hostname}";

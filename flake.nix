@@ -15,13 +15,11 @@
   outputs = { self, nix-darwin, nixpkgs, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
-      dotfiles = ./dotfiles;
-      modules = ./modules;
       stateVersion = "24.05";
       username = "avalon"; # INFO: Default username for home-manager configs
       in
     {
-      inherit (import ./hosts { inherit inputs outputs stateVersion username dotfiles modules; })
+      inherit (import ./hosts { inherit inputs outputs stateVersion username; })
         nixosConfigurations
         darwinConfigurations
         homeConfigurations;
