@@ -1,4 +1,4 @@
-{ inputs, lib, outputs, pkgs, stateVersion, username, system, ... }:
+{ lib, pkgs, stateVersion, username, ... }:
 let
   inherit (pkgs.stdenv) isDarwin isLinux;
 in
@@ -14,6 +14,7 @@ in
       else
         "/home/${username}";
 
+
     packages = with pkgs;
     [
         git
@@ -25,4 +26,10 @@ in
 
     ];
   };
+
+  imports = [
+    ../modules/shell
+  ];
+
+  shell.zsh.enable = true;
 }

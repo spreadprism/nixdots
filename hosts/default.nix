@@ -1,4 +1,4 @@
-{ inputs, outputs, stateVersion, username, ... }:
+{ inputs, outputs, stateVersion, username, dotfiles, modules, ... }:
 let
   all_paths = builtins.readDir ./. ;
   all_dirs = builtins.filter (key: all_paths.${key} == "directory") (builtins.attrNames all_paths);
@@ -10,28 +10,22 @@ let
   home_hosts = builtins.filter (host: builtins.pathExists ./${host}/home.nix && !builtins.elem host all_hosts) all_dirs;
 
   default_username = username;
+  args = { inherit inputs outputs stateVersion; };
   mkHome = hostname: default_username:
-    let host_conf = import ../hosts/${hostname} { inherit inputs outputs stateVersion; };
+    let host_conf = import ../hosts/${hostname} args;
     system = if builtins.hasAttr "system" host_conf
       then host_conf.system
       else "x86_64-linux";
     username = if builtins.hasAttr "username" host_conf
       then host_conf.username
       else default_username;
+    specialArgs = args // { inherit username system hostname dotfiles modules; };
   in
   {
       name = "${username}@${hostname}";
       value = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = inputs.nixpkgs.legacyPackages.${system};
-        extraSpecialArgs = {
-          inherit
-          inputs
-          outputs
-          stateVersion
-          username
-          system
-          hostname;
-        };
+        extraSpecialArgs = specialArgs;
         modules = [
           ./home.nix
           ./${hostname}/home.nix
@@ -41,6 +35,8 @@ let
 in
 {
   homeConfigurations = builtins.listToAttrs (map (host_path: mkHome (builtins.baseNameOf host_path) default_username) home_hosts);
+  # TODO: Add nixos_hosts logic
   nixosConfigurations = {};
+  # TODO: Add macos_hosts logic
   darwinConfigurations = {};
 }
