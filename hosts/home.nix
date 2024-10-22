@@ -7,8 +7,13 @@ let
   flakeRoot = "${homeDirectory}/nix";
 in
 {
-  # Let home-manager manage itself
+  # INFO: Let home-manager manage itself
   programs.home-manager.enable = true;
+  # INFO: Enable flakes
+  nix = {
+    package = pkgs.nix;
+    settings.experimental-features = [ "nix-command" "flakes" ];
+  };
   home = {
     inherit stateVersion;
     inherit username;
