@@ -55,9 +55,8 @@ let
     };
 in
 {
+  nixosConfigurations = builtins.listToAttrs (map (host_path: mkNixOS (builtins.baseNameOf host_path) default_username) nixos_hosts);
   homeConfigurations = builtins.listToAttrs (map (host_path: mkHome (builtins.baseNameOf host_path) default_username) home_hosts);
-  # TODO: Add nixos_hosts logic
-  nixosConfigurations = {};
   # TODO: Add macos_hosts logic
   darwinConfigurations = {};
 }
