@@ -5,9 +5,8 @@ let
 
   nixos_hosts = builtins.filter (host: builtins.pathExists ./${host}/configuration.nix) all_dirs;
   macos_hosts = builtins.filter (host: builtins.pathExists ./${host}/darwin.nix) all_dirs;
+  home_hosts = builtins.filter (host: builtins.pathExists ./${host}/home.nix) all_dirs;
 
-  all_hosts = nixos_hosts ++ macos_hosts;
-  home_hosts = builtins.filter (host: builtins.pathExists ./${host}/home.nix && !builtins.elem host all_hosts) all_dirs;
 
   default_username = username;
   args = { inherit inputs outputs stateVersion; };
@@ -32,6 +31,28 @@ let
         ];
       };
   };
+  mkNixOS = hostname: default_username:
+    let
+      host_conf = import ../hosts/${hostname} args;
+      system = if builtins.hasAttr "system" host_conf
+        then host_conf.system
+        else "x86_64-linux";
+      username = if builtins.hasAttr "username" host_conf
+        then host_conf.username
+        else default_username;
+      specialArgs = args // { inherit username system hostname; };
+    in
+    {
+      name = hostname;
+      value = inputs.nixpkgs.nixosSystem {
+        inherit system;
+        extraSpecialArgs = specialArgs;
+        modules = [
+          ./configuration.nix
+          ./${hostname}/configuration.nix
+        ];
+      };
+    };
 in
 {
   homeConfigurations = builtins.listToAttrs (map (host_path: mkHome (builtins.baseNameOf host_path) default_username) home_hosts);
