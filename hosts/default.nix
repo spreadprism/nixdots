@@ -46,7 +46,7 @@ let
       name = hostname;
       value = inputs.nixpkgs.lib.nixosSystem {
         inherit system;
-        extraSpecialArgs = specialArgs;
+        specialArgs = specialArgs;
         modules = [
           ./configuration.nix
           ./${hostname}/configuration.nix
