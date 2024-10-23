@@ -32,6 +32,7 @@ in
 
   imports = [
     (import ../modules/shell { inherit pkgs lib config flakeRoot; })
+    (import ../modules/development { inherit pkgs lib config flakeRoot; })
   ];
 
   shell.zsh.enable = true;
