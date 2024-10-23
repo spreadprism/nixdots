@@ -1,4 +1,4 @@
-{ inputs, outputs, nixpkgs, stateVersion, username, ... }:
+{ inputs, outputs, stateVersion, username, ... }:
 let
   all_paths = builtins.readDir ./. ;
   all_dirs = builtins.filter (key: all_paths.${key} == "directory") (builtins.attrNames all_paths);
@@ -44,7 +44,7 @@ let
     in
     {
       name = hostname;
-      value = nixpkgs.nixosSystem {
+      value = inputs.nixpkgs.nixosSystem {
         inherit system;
         extraSpecialArgs = specialArgs;
         modules = [

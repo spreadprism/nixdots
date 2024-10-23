@@ -19,7 +19,7 @@
       username = "avalon"; # INFO: Default username for home-manager configs
       in
     {
-      inherit (import ./hosts { inherit inputs outputs nixpkgs stateVersion username; })
+      inherit (import ./hosts { inherit inputs outputs stateVersion username; })
         nixosConfigurations
         darwinConfigurations
         homeConfigurations;
