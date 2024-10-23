@@ -44,7 +44,7 @@ let
     in
     {
       name = hostname;
-      value = inputs.nixpkgs.nixosSystem {
+      value = inputs.nixpkgs.lib.nixosSystem {
         inherit system;
         extraSpecialArgs = specialArgs;
         modules = [
