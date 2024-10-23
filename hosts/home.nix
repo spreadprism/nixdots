@@ -1,10 +1,10 @@
-{ lib, pkgs, stateVersion, username, ... }:
+{ lib, pkgs, stateVersion, config, username, ... }:
 let
   inherit (pkgs.stdenv) isDarwin isLinux;
   homeDirectory = if isDarwin
     then "/Users/${username}"
     else "/home/${username}";
-  flakeRoot = "${homeDirectory}/nix";
+  flakeRoot = "${homeDirectory}/nixdots";
 in
 {
   # INFO: Let home-manager manage itself
@@ -19,7 +19,6 @@ in
     inherit username;
     inherit homeDirectory;
 
-
     packages = with pkgs;
     [
         git
@@ -33,7 +32,7 @@ in
   };
 
   imports = [
-    ../modules/shell
+    (import ../modules/shell { inherit pkgs lib config flakeRoot; })
   ];
 
   shell.zsh.enable = true;

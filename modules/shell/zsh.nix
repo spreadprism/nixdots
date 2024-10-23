@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, flakeRoot, ... }:
 let
   cfg = config.shell.zsh;
 in
@@ -27,6 +27,6 @@ in
     };
 
     # TODO: Look into symlinks instead of clones
-    home.file.".zshrc".source = ../../dotfiles/.zshrc;
+    home.file.".zshrc".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.zshrc";
   };
 }

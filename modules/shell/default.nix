@@ -1,7 +1,7 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, flakeRoot, ... }:
 {
   imports = [
-    ./zsh.nix
-    ./bash.nix
+    (import ./zsh.nix { inherit pkgs lib config flakeRoot; })
+    (import ./bash.nix { inherit pkgs lib config flakeRoot; })
   ];
 }
