@@ -20,13 +20,9 @@ in
 
     programs = {
       zsh.enable = true;
-      starship = {
-        enable = true;
-        enableZshIntegration = true;
-      };
+      starship.enableZshIntegration = true;
     };
 
-    # TODO: Look into symlinks instead of clones
     home.file.".zshrc".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.zshrc";
   };
 }

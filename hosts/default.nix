@@ -25,6 +25,7 @@ let
         pkgs = inputs.nixpkgs.legacyPackages.${system};
         extraSpecialArgs = specialArgs;
         modules = [
+          ./home-manager.nix
           ./home.nix
           ./${hostname}/home.nix
         ];
