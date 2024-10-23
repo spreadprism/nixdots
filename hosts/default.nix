@@ -5,8 +5,7 @@ let
 
   nixos_hosts = builtins.filter (host: builtins.pathExists ./${host}/configuration.nix) all_dirs;
   macos_hosts = builtins.filter (host: builtins.pathExists ./${host}/darwin.nix) all_dirs;
-  home_hosts = builtins.filter (host: builtins.pathExists ./${host}/home.nix) all_dirs;
-
+  home_only_hosts = builtins.filter (host: builtins.pathExists ./${host}/home.nix && !builtins.elem host (nixos_hosts ++ macos_hosts)) all_dirs;
 
   default_username = username;
   args = { inherit inputs outputs stateVersion; };
@@ -53,6 +52,14 @@ let
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
+            home-manager.extraSpecialArgs = specialArgs;
+            home-manager.users.${username} = {
+              imports = [
+                ./home.nix
+              ] ++ inputs.nixpkgs.lib.optionals (builtins.pathExists ./${hostname}/home.nix) [
+                  ./${hostname}/home.nix
+                ];
+            };
           }
         ];
       };
@@ -60,7 +67,7 @@ let
 in
 {
   nixosConfigurations = builtins.listToAttrs (map (host_path: mkNixOS (builtins.baseNameOf host_path) default_username) nixos_hosts);
-  homeConfigurations = builtins.listToAttrs (map (host_path: mkHome (builtins.baseNameOf host_path) default_username) home_hosts);
+  homeConfigurations = builtins.listToAttrs (map (host_path: mkHome (builtins.baseNameOf host_path) default_username) home_only_hosts);
   # TODO: Add macos_hosts logic
   darwinConfigurations = {};
 }
