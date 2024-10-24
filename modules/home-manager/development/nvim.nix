@@ -1,11 +1,16 @@
 { pkgs, lib, config, flakeRoot, ... }:
+let
+  dev_enabled = config.development.enable;
+in
 {
-  home.packages = with pkgs;
-  [
-      neovim
-      figlet
-      lolcat
-  ];
+  config = lib.mkIf dev_enabled {
+    home.packages = with pkgs;
+      [
+        neovim
+        figlet
+        lolcat
+      ];
 
-  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/nvim";
+    xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/nvim";
+  };
 }

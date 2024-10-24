@@ -7,4 +7,5 @@
   };
 
   shell.zsh.enable = true;
+  development.enable = true;
 }
