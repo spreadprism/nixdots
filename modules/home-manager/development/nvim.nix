@@ -12,5 +12,7 @@ in
       ];
 
     xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/nvim";
+    xdg.configFile."figlet/ANSI_Shadow.flf".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/figlet/ANSI Shadow.flf";
+
   };
 }

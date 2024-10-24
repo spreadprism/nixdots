@@ -7,7 +7,6 @@ vim.cmd("silent !mkdir " .. vim.fs.joinpath(vim.fn.stdpath("data"), "dashboard")
 local get_dir = function()
 	return vim.fs.joinpath(vim.fn.stdpath("data"), "dashboard")
 end
-
 ---@param id string
 local get_path = function(id)
 	return vim.fs.joinpath(get_dir(), id)
@@ -27,7 +26,12 @@ local refresh_header = function(header_txt, width, id)
 			vim.cmd("silent !mkdir " .. get_dir())
 		end
 		vim.cmd("silent !rm -f " .. path)
-		local header_cmd = "figlet -c -w " .. width .. " -f 'ANSI Shadow' " .. header_txt .. " > " .. path
+		local header_cmd = "figlet -c -w "
+			.. width
+			.. " -f ~/.config/figlet/ANSI_Shadow.flf "
+			.. header_txt
+			.. " > "
+			.. path
 		vim.cmd("silent !" .. header_cmd)
 	else
 		vim.notify("dependencies not available")
