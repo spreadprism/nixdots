@@ -25,6 +25,7 @@ let
         pkgs = inputs.nixpkgs.legacyPackages.${system};
         extraSpecialArgs = specialArgs;
         modules = [
+          ../modules/home-manager
           ./home-manager.nix
           ./home.nix
           ./${hostname}/home.nix
@@ -57,6 +58,7 @@ let
             home-manager.users.${username} = {
               imports = [
                 ./home.nix
+                (import ../modules/home-manager specialArgs)
               ] ++ inputs.nixpkgs.lib.optionals (builtins.pathExists ./${hostname}/home.nix) [
                   ./${hostname}/home.nix
                 ];

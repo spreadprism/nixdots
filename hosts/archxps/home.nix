@@ -6,4 +6,6 @@
 
     ];
   };
+
+  shell.zsh.enable = true;
 }

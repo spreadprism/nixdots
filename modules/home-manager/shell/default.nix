@@ -1,8 +1,11 @@
-{ pkgs, lib, config, flakeRoot, ... }:
+{ pkgs, lib, config, flakeRoot, username, ... }:
+let
+  args = { inherit pkgs lib config flakeRoot username; };
+in
 {
   imports = [
-    (import ./zsh.nix { inherit pkgs lib config flakeRoot; })
-    (import ./bash.nix { inherit pkgs lib config flakeRoot; })
+      (import ./zsh.nix args)
+      (import ./bash.nix args)
   ];
 
   programs.starship.enable = true;

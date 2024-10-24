@@ -5,5 +5,6 @@
 
     ];
   };
+
   shell.zsh.enable = true;
 }
