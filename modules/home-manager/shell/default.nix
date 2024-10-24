@@ -6,6 +6,7 @@ in
   imports = [
       (import ./zsh.nix args)
       (import ./bash.nix args)
+      (import ./tmux.nix args)
   ];
 
   programs.starship.enable = true;
