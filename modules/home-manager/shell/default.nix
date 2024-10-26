@@ -9,6 +9,20 @@ in
       (import ./tmux.nix args)
   ];
 
+  home.packages = with pkgs;
+  [
+      ripgrep
+      fzf
+      jq
+      jqp
+      bat
+      eza
+      zoxide
+      direnv
+  ];
+
   programs.starship.enable = true;
   xdg.configFile."starship.toml".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/starship.toml";
+
+  xdg.configFile."direnv/direnv.toml".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/direnv/direnv.toml";
 }

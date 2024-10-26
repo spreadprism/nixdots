@@ -290,6 +290,7 @@ __tmux_new_session () {
   echo $expected_number
 }
 
+
 if __tmux_available; then
   if __interactive_shell && ! __inside_tmux; then
     if __tmux_running; then

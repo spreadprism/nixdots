@@ -8,14 +8,6 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs;
     [
-        ripgrep
-        fzf
-        jq
-        jqp
-        bat
-        eza
-        zoxide
-        direnv
     ];
 
     programs = {
