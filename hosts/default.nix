@@ -47,7 +47,7 @@ let
       name = hostname;
       value = inputs.nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = specialArgs;
+        inherit specialArgs;
         modules = [
           ./configuration.nix
           ./${hostname}/configuration.nix
@@ -67,10 +67,30 @@ let
         ];
       };
     };
+  mkMacOS = hostname: default_username:
+  let
+    host_conf = import ../hosts/${hostname} args;
+    system = if builtins.hasAttr "system" host_conf
+      then host_conf.system
+      else "x86_64-linux";
+    username = if builtins.hasAttr "username" host_conf
+      then host_conf.username
+      else default_username;
+    specialArgs = args // { inherit username system hostname; };
+  in
+  {
+      name = hostname;
+      value = inputs.nix-darwin.lib.darwinSystem {
+        inherit specialArgs;
+        modules = [
+          ./darwin.nix
+        ];
+      };
+
+  };
 in
 {
-  nixosConfigurations = builtins.listToAttrs (map (host_path: mkNixOS (builtins.baseNameOf host_path) default_username) nixos_hosts);
   homeConfigurations = builtins.listToAttrs (map (host_path: mkHome (builtins.baseNameOf host_path) default_username) home_only_hosts);
-  # TODO: Add macos_hosts logic
-  darwinConfigurations = {};
+  nixosConfigurations = builtins.listToAttrs (map (host_path: mkNixOS (builtins.baseNameOf host_path) default_username) nixos_hosts);
+  darwinConfigurations = builtins.listToAttrs (map (host_path: mkMacOS (builtins.baseNameOf host_path) default_username) macos_hosts);
 }
