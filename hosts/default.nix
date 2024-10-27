@@ -85,7 +85,7 @@ let
         inherit system;
         modules = [
           ./darwin.nix
-          ./${hostname}/configuration.nix
+          ./${hostname}/darwin.nix
         ];
       };
 
