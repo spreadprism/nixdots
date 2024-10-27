@@ -88,9 +88,10 @@ zinit light qoomon/zsh-lazyload # INFO: Cannot be lazyloaded
 zinit ice wait lucid
 zinit snippet OMZP::sudo
 # ------------------------------------------------------------
-if [[ $(cat /etc/*-release | grep -i '^ID=' | cut -d'=' -f2) = 'arch' ]]
-then
-  zinit snippet OMZP::archlinux
+if [[ -f /etc/os-release ]] || [[ -f /etc/lsb-release ]]; then
+  if [[ $(grep -i '^ID=' /etc/*-release | cut -d'=' -f2) = 'arch' ]]; then
+    zinit snippet OMZP::archlinux
+  fi
 fi
 # ------------------------------------------------------------
 zinit ice wait lucid
@@ -136,7 +137,10 @@ fi
 # ------------------------------------------------------------
 autoload -Uz compinit && compinit
 zinit cdreplay -q
-eval "$(dircolors -b)" # Enables LS_COLORS
+if command -v dircolors &> /dev/null
+then
+  eval "$(dircolors -b)" # Enables LS_COLORS
+fi
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
@@ -238,12 +242,14 @@ lazyload conda -- 'init_conda'
 # ------------------------------------------------------------
 # INFO: WSL
 # ------------------------------------------------------------
-if [[ $(grep -i Microsoft /proc/version) ]]; then
-  export IN_WSL="true"
-  export BROWSER=wslview
-  alias wsl='wsl.exe'
-  alias explorer='explorer.exe .'
-  alias pws='powershell.exe'
+if [[ -f /proc/version ]]; then
+  if [[ $(grep -i Microsoft /proc/version) ]]; then
+    export IN_WSL="true"
+    export BROWSER=wslview
+    alias wsl='wsl.exe'
+    alias explorer='explorer.exe .'
+    alias pws='powershell.exe'
+  fi
 fi
 # ------------------------------------------------------------
 # INFO: Initialize
