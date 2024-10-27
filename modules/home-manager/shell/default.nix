@@ -19,6 +19,7 @@ in
       eza
       zoxide
       direnv
+      lazygit
   ];
 
   programs.starship.enable = true;

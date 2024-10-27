@@ -6,7 +6,7 @@
 
   homebrew = {
     brews = [
-
+      "tmux"
     ];
 
     casks = [
