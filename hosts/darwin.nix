@@ -2,7 +2,8 @@
 {
   nixpkgs.config.allowUnfree = true;
   users.users.${username} = {
-    isNormalUser = true;
+    name = username;
+    home = "/Users/${username}";
   };
   environment.systemPackages = with pkgs;
     [
