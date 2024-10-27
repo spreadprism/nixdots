@@ -90,9 +90,14 @@ let
           {
             home-manager.useGlobalPkgs = true;
             home-manager.extraSpecialArgs = specialArgs;
+            home-manager.users.${username} = {
+              imports = [
+                ./home.nix
+                ./${hostname}/home.nix
+                ../modules/home-manager
+              ];
+            };
           }
-          ./home.nix
-          ../modules/home-manager
         ];
       };
 
