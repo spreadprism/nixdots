@@ -86,6 +86,13 @@ let
         modules = [
           ./darwin.nix
           ./${hostname}/darwin.nix
+          inputs.home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.extraSpecialArgs = specialArgs;
+          }
+          ./home.nix
+          ../modules/home-manager
         ];
       };
 
