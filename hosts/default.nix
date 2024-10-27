@@ -58,7 +58,7 @@ let
             home-manager.users.${username} = {
               imports = [
                 ./home.nix
-                (import ../modules/home-manager specialArgs)
+                ../modules/home-manager
               ] ++ inputs.nixpkgs.lib.optionals (builtins.pathExists ./${hostname}/home.nix) [
                   ./${hostname}/home.nix
                 ];
@@ -82,8 +82,10 @@ let
       name = hostname;
       value = inputs.nix-darwin.lib.darwinSystem {
         inherit specialArgs;
+        inherit system;
         modules = [
           ./darwin.nix
+          ./${hostname}/configuration.nix
         ];
       };
 

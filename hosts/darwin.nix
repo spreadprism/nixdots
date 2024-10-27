@@ -5,5 +5,5 @@
     [
       git
     ];
-  system.stateVersion = stateVersion;
+  system.stateVersion = 4;
 }
