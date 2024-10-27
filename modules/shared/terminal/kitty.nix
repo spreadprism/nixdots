@@ -11,6 +11,6 @@ in
         kitty
     ];
 
-    home.file.".zshrc".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.zshrc";
+    xdg.configFile."kitty/kitty.conf" = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/kitty/kitty.conf";
   };
 }

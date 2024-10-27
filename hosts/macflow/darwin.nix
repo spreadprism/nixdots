@@ -17,4 +17,8 @@
 
     };
   };
+
+  fonts.packages = [
+    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+  ];
 }
