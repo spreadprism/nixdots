@@ -86,6 +86,14 @@ let
         modules = [
           ./darwin.nix
           ./${hostname}/darwin.nix
+          inputs.nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew = {
+              enable = true;
+              enableRosetta = system == "aarch64-darwin";
+              user = username;
+            };
+          }
           inputs.home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
