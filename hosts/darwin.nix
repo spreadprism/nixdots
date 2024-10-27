@@ -13,7 +13,8 @@
   system.stateVersion = 4;
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
-
+  # Adds darwin-rebuild
+  programs.zsh.enable = true;
   homebrew = {
     enable = true;
 
