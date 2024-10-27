@@ -6,4 +6,5 @@
       git
     ];
   system.stateVersion = 4;
+  nix.useDaemon = true;
 }
