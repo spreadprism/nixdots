@@ -16,6 +16,8 @@ in
         cargo
         nodejs_22
         pnpm
+        go
+        wget
       ];
   };
 }
