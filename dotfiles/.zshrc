@@ -15,12 +15,17 @@ source "${ZINIT_HOME}/zinit.zsh"
 # ------------------------------------------------------------
 # INFO: Paths
 # ------------------------------------------------------------
-export PATH="$PATH:$HOME/.nix-profile/bin"
+if [ -d "$HOME/.nix-profile/bin" ]; then
+  export PATH="$PATH:$HOME/.nix-profile/bin"
+fi
+# ------------------------------------------------------------
+if [ -d "/opt/homebrew/bin" ]; then
+  export PATH="$PATH:/opt/homebrew/bin"
+fi
 # ------------------------------------------------------------
 if [ -d "/var/lib/flatpak/exports/bin" ]; then
   export PATH="$PATH:/var/lib/flatpak/exports/bin"
 fi
-# ------------------------------------------------------------
 # ------------------------------------------------------------
 if [ -d "/opt/google-cloud-cli/" ]; then
   export CLOUDSDK_ROOT_DIR=/opt/google-cloud-cli
