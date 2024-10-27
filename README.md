@@ -11,6 +11,10 @@ git clone git@github.com:spreadprism/nixdots.git $HOME/nixdots
 ```sh
 sudo nixos-rebuild switch --flake .#$HOST
 ```
+### Darwin
+```sh
+darwin-rebuild switch --flake .
+```
 ### Home-manager
 ```sh
 nix run home-manager/master --extra-experimental-features 'nix-command flakes' -- switch --flake .#$(whoami)@$HOST --experimental-features 'nix-command flakes'
