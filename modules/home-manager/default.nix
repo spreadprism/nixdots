@@ -10,6 +10,7 @@ in
 {
   imports = [
     (import ./shell args)
+    (import ./terminal args)
     (import ./development args)
   ];
 }

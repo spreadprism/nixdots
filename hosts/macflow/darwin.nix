@@ -21,5 +21,4 @@
   fonts.packages = [
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
-  terminal.kitty.enable = true;
 }

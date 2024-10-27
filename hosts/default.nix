@@ -51,7 +51,7 @@ let
         modules = [
           ./configuration.nix
           ./${hostname}/configuration.nix
-          ../modules/shared/terminal
+          ../modules/shared
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -87,7 +87,7 @@ let
         modules = [
           ./darwin.nix
           ./${hostname}/darwin.nix
-          ../modules/shared/terminal
+          ../modules/shared
           inputs.nix-homebrew.darwinModules.nix-homebrew
           {
             nix-homebrew = {
