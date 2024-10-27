@@ -11,6 +11,10 @@ in
         kitty
     ];
 
+<<<<<<< HEAD
     xdg.configFile."kitty/kitty.conf" = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/kitty/kitty.conf";
+=======
+    xdg.configFile."kitty/kitty.conf".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/kitty/kitty.conf";
+>>>>>>> 288a1c8 (added kitty module)
   };
 }
