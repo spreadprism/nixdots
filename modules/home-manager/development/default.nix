@@ -9,4 +9,13 @@ in
   imports = [
     (import ./nvim.nix args)
   ];
+
+  config = lib.mkIf cfg.enable {
+    home.packages = with pkgs;
+      [
+        cargo
+        nodejs_22
+        pnpm
+      ];
+  };
 }
