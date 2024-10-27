@@ -18,6 +18,7 @@ in
         pnpm
         go
         wget
+        jdk22
       ];
   };
 }
