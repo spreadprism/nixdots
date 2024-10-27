@@ -72,7 +72,7 @@ let
     host_conf = import ../hosts/${hostname} args;
     system = if builtins.hasAttr "system" host_conf
       then host_conf.system
-      else "x86_64-linux";
+      else "aarch64-darwin";
     username = if builtins.hasAttr "username" host_conf
       then host_conf.username
       else default_username;
