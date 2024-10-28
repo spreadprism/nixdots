@@ -23,7 +23,7 @@
     ];
 
     casks = [
-
+      "alfred"
     ];
 
     masApps = {
