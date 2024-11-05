@@ -3,8 +3,15 @@ plugin("mfussenegger/nvim-lint"):event("VeryLazy"):config(function()
 	local linters = require("internal.linting").list_linters()
 
 	local tmp = {}
+
 	for _, linter in ipairs(linters) do
-		tmp[linter.lang] = { linter.name }
+		if type(linter.lang) == "table" then
+			for _, lang in ipairs(linter.lang) do
+				tmp[lang] = { linter.name }
+			end
+		else
+			tmp[linter.lang] = { linter.name }
+		end
 	end
 
 	lint.linters_by_ft = tmp

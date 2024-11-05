@@ -1,5 +1,7 @@
 lsp("gopls")
+dap("delve"):initialize(false)
 formatter("go", "gofmt"):install(false)
+linter("go", "golangcilint", "golangci-lint")
 launch_configs("go", {
 	{
 		name = "Launch current file",

@@ -9,16 +9,16 @@ M.insert = function(linter)
 end
 
 M.list_linters_mason = function()
-	return vim.tbl_filter(
+  local l = vim.tbl_filter(
 		---@param linter Linter
 		function(linter)
 			return linter.install_mason
 		end,
-		---@param linter Linter
-		vim.tbl_map(function(linter)
-			return linter.mason_name
-		end, linters)
+    linters
 	)
+  return vim.tbl_map(function(linter)
+    return linter.mason_name
+  end, l)
 end
 
 M.list_linters = function()

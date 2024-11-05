@@ -9,16 +9,18 @@ M.insert = function(formatter)
 end
 
 M.list_formatters_mason = function()
-	return vim.tbl_filter(
+	local f = vim.tbl_filter(
 		---@param formatter Formatter
 		function(formatter)
 			return formatter.install_mason
 		end,
-		---@param formatter Formatter
-		vim.tbl_map(function(formatter)
-			return formatter.mason_name
-		end, formatters)
+		formatters
 	)
+	---@param formatter Formatter
+	local map = vim.tbl_map(function(formatter)
+		return formatter.mason_name
+	end, f)
+	return map
 end
 
 M.list_formatters = function()
