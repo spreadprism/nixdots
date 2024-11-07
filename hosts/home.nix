@@ -19,6 +19,8 @@ in
     packages = with pkgs;
     [
         git
+        gh
+        ripgrep
     ]
     ++ lib.optionals isLinux [
 

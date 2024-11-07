@@ -24,6 +24,7 @@
 
     casks = [
       "alfred"
+      "kitty"
     ];
 
     masApps = {
