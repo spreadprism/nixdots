@@ -51,6 +51,7 @@ local treesitter = plugin("nvim-treesitter/nvim-treesitter")
 			ensure_installed = require("internal.treesitter").ensure_installed(),
 		})
 		vim.treesitter.language.register("bash", "dotenv")
+		vim.treesitter.language.register("python", "bzl")
 	end)
 plugin("windwp/nvim-ts-autotag"):event({ "BufReadPre", "BufNewFile" }):opts({})
 plugin("altermo/ultimate-autopair.nvim"):event({ "InsertEnter", "CmdlineEnter" }):opts({})
