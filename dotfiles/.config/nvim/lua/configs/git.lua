@@ -13,7 +13,11 @@ plugin("NeogitOrg/neogit")
 			diffview = true,
 		},
 		graph_style = "unicode",
-		commit_editor = {
-			-- staged_diff_split_kind = "vsplit_left",
-		},
 	})
+plugin("FabijanZulj/blame.nvim"):event("VeryLazy"):opts({})
+plugin("lewis6991/gitsigns.nvim"):event("VeryLazy"):opts({
+	current_line_blame_opts = {
+		delay = 10,
+	},
+	current_line_blame_formatter = " | <author>, <author_time:%R>",
+})
