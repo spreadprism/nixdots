@@ -200,8 +200,8 @@ alias zz='cd -'
 alias ls='eza'
 alias cat='bat'
 alias lg='lazygit'
-alias activate='conda_activate_current_dir'
-alias deactivate='conda deactivate'
+# alias activate='conda_activate_current_dir'
+# alias deactivate='conda deactivate'
 alias tf='terraform'
 # ------------------------------------------------------------
 # INFO: Keybinds

@@ -1,5 +1,5 @@
 format = '''
-╭\[$directory\](${custom.conda-env-available})$conda$git_branch$git_status(
+╭\[$hostname$directory\](${custom.conda-env-available})$conda$git_branch$git_status(
 ├$python$golang$c$dotnet$rust$elixir$java$ruby$nodejs${custom.docker})
 ╰─$character
 '''
@@ -35,7 +35,8 @@ style = 'bold blue dimmed'
 
 [hostname]
 ssh_only = true
-format = '[$hostname]($style)'
+detect_env_vars = ["SSH_CLIENT", "SSH_TTY"]
+format = '[$hostname:]($style)'
 
 [dotnet]
 format = '\([$symbol( $version)( 🎯 $tfm)]($style)\)'
