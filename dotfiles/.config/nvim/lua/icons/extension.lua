@@ -69,4 +69,9 @@ return {
 		color = "#406DB9",
 		name = "norg",
 	},
+	["proto"] = {
+		icon = "",
+		color = "#30638E",
+		name = "proto",
+	},
 }
