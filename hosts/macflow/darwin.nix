@@ -17,6 +17,8 @@
       "protobuf"
       "terraform"
       "bazelisk"
+      "minikube"
+      "helm"
     ];
 
     # INFO: brew services start ${SERVICE}

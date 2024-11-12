@@ -116,19 +116,17 @@ fi
 # ------------------------------------------------------------
 if command -v docker &> /dev/null
 then
-  zinit ice wait lucid
-  zi ice as"completion"
-  zinit snippet OMZP::docker
-  zinit ice wait lucid
-  zi ice as"completion"
-  zinit snippet OMZP::docker-compose
+  source <(docker completion zsh)
+fi
+# ------------------------------------------------------------
+if command -v helm &> /dev/null
+then
+  source <(helm completion zsh)
 fi
 # ------------------------------------------------------------
 if command -v kubectl &> /dev/null
 then
-  zinit ice wait lucid
-  zi ice as"completion"
-  zinit snippet OMZP::kubectl
+  source <(kubectl completion zsh)
 fi
 # ------------------------------------------------------------
 if command -v gcloud &> /dev/null
