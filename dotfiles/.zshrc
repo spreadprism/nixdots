@@ -305,22 +305,26 @@ __tmux_new_session () {
 }
 
 # TODO: Move everflow code to specific file
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/eduguay/.source/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/eduguay/.source/google-cloud-sdk/path.zsh.inc'; fi
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/eduguay/.source/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/eduguay/.source/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -d '/Users/eduguay' ]; then
+  # The next line updates PATH for the Google Cloud SDK.
+  if [ -f '/Users/eduguay/.source/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/eduguay/.source/google-cloud-sdk/path.zsh.inc'; fi
 
-export EFLOW_CONFIG=~/.eflow.config.json
-export EFLOW_DOMAINS=~/.eflow.domains.json
-export EFPAY_CONFIG=~/.efpay.config.json
-export EF_FRONTEND_REVAMP_ROOT=~/Projects/frontend-revamp
-export EF_WORKSPACE_PATH=~/Projects
-export PATH="$PATH:/Users/eduguay/.dotnet/tools"
-export NODE_OPTIONS="--max_old_space_size=16384 --no-experimental-fetch"
+  # The next line enables shell command completion for gcloud.
+  if [ -f '/Users/eduguay/.source/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/eduguay/.source/google-cloud-sdk/completion.zsh.inc'; fi
 
-# HACK: The brew mysql@8.0 package doesn't link binaries to brew bin
-export PATH="$PATH:/opt/homebrew/Cellar/mysql@8.0/8.0.40_2/bin"
+  export EFLOW_CONFIG=~/.eflow.config.json
+  export EFLOW_DOMAINS=~/.eflow.domains.json
+  export EFPAY_CONFIG=~/.efpay.config.json
+  export EF_FRONTEND_REVAMP_ROOT=~/Projects/frontend-revamp
+  export EF_WORKSPACE_PATH=~/Projects
+  export PATH="$PATH:/Users/eduguay/.dotnet/tools"
+  export NODE_OPTIONS="--max_old_space_size=16384 --no-experimental-fetch"
+
+  # HACK: The brew mysql@8.0 package doesn't link binaries to brew bin
+  export PATH="$PATH:/opt/homebrew/Cellar/mysql@8.0/8.0.40_2/bin"
+  export LANG="en_CA.UTF-8"
+fi
 # ------------------------------
 
 
