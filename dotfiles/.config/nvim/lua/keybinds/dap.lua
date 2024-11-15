@@ -30,7 +30,7 @@ keybind_group("<leader>d", "DAP"):register({
 	keybind("n", "t", function()
 		local filetype = vim.bo[vim.api.nvim_get_current_buf()].filetype
 		if filetype == "go" then
-			require("dap-go").debug_test()
+			require("internal.dap.utils").debug_go_test()
 		else
 			require("neotest").run.run({ strategy = "dap" })
 		end

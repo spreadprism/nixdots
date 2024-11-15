@@ -66,4 +66,42 @@ M.list_adapters_mason = function()
 	end, adapters)
 end
 
+M.debug_go_test = function()
+	local ts = require("dap-go-ts")
+
+	local test = ts.closest_test()
+
+	if test.name == "" or test.name == nil then
+		vim.notify("no test found")
+		return false
+	end
+
+	M.last_testname = test.name
+	M.last_testpath = test.package
+
+	local msg = string.format("starting debug session '%s : %s'...", test.package, test.name)
+	vim.notify(msg)
+
+	local extra_args = {}
+	if M.test_verbose then
+		extra_args = { "-test.v" }
+	end
+
+	local dap = require("dap")
+	local config = {
+		type = "go",
+		name = test.name,
+		request = "launch",
+		mode = "test",
+		program = test.package,
+		args = { "-test.run", "^" .. test.name .. "$" },
+		buildFlags = "",
+		env = {
+			GO_LOG = "debug",
+		},
+	}
+
+	dap.run(config)
+end
+
 return M

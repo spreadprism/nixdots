@@ -22,7 +22,12 @@ local oil = plugin("stevearc/oil.nvim"):lazy(false):dependencies("nvim-tree/nvim
 			signcolumn = "number",
 		},
 	})
-	keybind("n", "-", "<cmd>Oil<cr>", "Open directory"):register()
+	keybind("n", "-", function()
+		if vim.bo.filetype:match("^Neogit") then
+			vim.cmd("q")
+		end
+		vim.cmd("Oil")
+	end, "Open directory"):register()
 	keybind("n", "_", function()
 		vim.cmd("Oil " .. vim.fn.getcwd())
 	end, "Open directory"):register()

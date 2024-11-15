@@ -16,6 +16,9 @@ plugin("leoluz/nvim-dap-go")
 	:dependencies({ "mfussenegger/nvim-dap", "rcarriga/nvim-dap-ui" })
 	:config(function()
 		require("dap-go"):setup({
+			-- delve = {
+			-- 	path = require("mason-registry").get_package("delve"):get_install_path(),
+			-- },
 			experimental = {
 				test_table = true,
 			},

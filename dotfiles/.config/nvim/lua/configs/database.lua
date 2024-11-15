@@ -1,1 +1,1 @@
--- TODO: Install nvim-dbee
+-- TODO: Install vim-dadbod

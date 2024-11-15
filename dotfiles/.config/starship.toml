@@ -1,6 +1,6 @@
 format = '''
 ╭$hostname\[$directory\](${custom.conda-env-available})$conda$git_branch$git_status(
-├$python$golang$c$dotnet$rust$elixir$java$ruby$nodejs${custom.docker})
+├$python$golang$c$dotnet$rust$elixir$java$ruby$nodejs${custom.docker})${custom.osc7}
 ╰─$character
 '''
 add_newline = false
@@ -105,5 +105,5 @@ stashed = '\[${count}󰥥\]'
 staged = '\[${count}󰝒\]'
 
 [custom.osc7]
-command = "echo -ne '\\033]7;file://$(pwd)\\033\\\\'"
+command = "echo -ne '\\033]7:file://$(hostname -s)$(PWD)\\033\\\\'"
 when = "true"

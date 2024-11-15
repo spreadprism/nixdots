@@ -9,13 +9,11 @@
   # TODO: Moves things to general darwin.nix
   homebrew = {
     brews = [
-      "tmux"
       "pipx"
       "nginx" # INFO: Remember to add brew services start nginx
       "redis" # INFO: Remember to add brew services start redis
       "mysql@8.0"
       "protobuf"
-      "terraform"
       "bazelisk"
       "minikube"
       "helm"
