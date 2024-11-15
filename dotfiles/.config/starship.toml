@@ -1,5 +1,5 @@
 format = '''
-╭\[$hostname$directory\](${custom.conda-env-available})$conda$git_branch$git_status(
+╭$hostname\[$directory\](${custom.conda-env-available})$conda$git_branch$git_status(
 ├$python$golang$c$dotnet$rust$elixir$java$ruby$nodejs${custom.docker})${custom.osc7}
 ╰─$character
 '''
