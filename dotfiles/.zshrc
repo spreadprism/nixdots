@@ -3,6 +3,10 @@
 # ------------------------------------------------------------
 zmodload zsh/zprof
 # ------------------------------------------------------------
+# INFO: Term
+# ------------------------------------------------------------
+export TERM=tmux-256color
+# ------------------------------------------------------------
 # INFO: Zinit
 # ------------------------------------------------------------
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -328,21 +332,26 @@ fi
 # ------------------------------
 
 
-if [ -z "$SSH_CLIENT" ] || [ -z "$SSH_TTY" ]; then
-  if __tmux_available; then
-    if __interactive_shell && ! __inside_tmux; then
-      if __tmux_running; then
-        session_number=$(__tmux_session_to_attach)
-        if [[ -n $session_number ]]; then
-          exec tmux attach-session -t $session_number
+ti = tmux_init() {
+  if [ -z "$SSH_CLIENT" ] || [ -z "$SSH_TTY" ]; then
+    if __tmux_available; then
+      if __interactive_shell && ! __inside_tmux; then
+        if __tmux_running; then
+          session_number=$(__tmux_session_to_attach)
+          if [[ -n $session_number ]]; then
+            exec tmux attach-session -t $session_number
+          fi
+          session_number=$(__tmux_new_session)
+          echo $session_number
+          exec tmux new -s $session_number -c "$PWD"
+        else
+          tmux new-session -d -s base
+          exec tmux new -s 0 -c "$PWD"
         fi
-        session_number=$(__tmux_new_session)
-        echo $session_number
-        exec tmux new -s $session_number -c "$PWD"
-      else
-        tmux new-session -d -s base
-        exec tmux new -s 0 -c "$PWD"
       fi
     fi
   fi
-fi
+}
+tinit = function() {
+  ti
+}
