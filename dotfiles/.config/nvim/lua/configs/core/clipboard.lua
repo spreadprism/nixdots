@@ -6,11 +6,17 @@ plugin("ojroques/nvim-osc52")
 		trim = true,
 	})
 	:init(function()
-		local copy = function()
-			if vim.v.event.operator == "y" and vim.v.event.regname == "+" then
-				require("osc52").copy_register("+")
-			end
+		local function copy(lines, _)
+			require("osc52").copy(table.concat(lines, "\n"))
 		end
 
-		vim.api.nvim_create_autocmd("TextYankPost", { callback = copy })
+		local function paste()
+			return { vim.fn.split(vim.fn.getreg(""), "\n"), vim.fn.getregtype("") }
+		end
+
+		vim.g.clipboard = {
+			name = "osc52",
+			copy = { ["+"] = copy, ["*"] = copy },
+			paste = { ["+"] = paste, ["*"] = paste },
+		}
 	end)
