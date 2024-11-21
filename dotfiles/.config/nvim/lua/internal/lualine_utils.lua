@@ -9,6 +9,7 @@ local buffer_blacklist = {
 	"NeogitDiffView",
 	"null",
 	"DiffviewFilePanel",
+	"pods",
 }
 local buffer_extension_blacklist = { "harpoon" }
 local buffer_mode_blacklist = { "t" }

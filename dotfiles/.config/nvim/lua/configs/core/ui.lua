@@ -29,6 +29,9 @@ plugin("brenoprata10/nvim-highlight-colors"):event("VeryLazy"):opts({
 	virtual_symbol_position = "eow",
 	virtual_symbol_prefix = " ",
 	virtual_symbol_suffix = " ",
+	exclude_filetypes = {
+		"lazy",
+	},
 })
 -- PERF: test perf?
 -- HACK: bruh
