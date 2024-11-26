@@ -9,6 +9,11 @@ return {
 		color = "#EF3D7B",
 		name = "gosum",
 	},
+	["go.work"] = {
+		icon = "󰟓",
+		color = "#29BEB0",
+		name = "gosum",
+	},
 	[".env"] = {
 		icon = "",
 		color = "#F5BB33",
