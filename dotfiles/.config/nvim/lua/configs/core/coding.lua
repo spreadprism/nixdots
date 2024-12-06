@@ -1,28 +1,14 @@
+local treesitter_textobject = plugin("nvim-treesitter/nvim-treesitter-textobjects"):event("VeryLazy"):enabled(true) -- TODO: Config textobjects
 local treesitter = plugin("nvim-treesitter/nvim-treesitter")
 	:event("BufRead")
-	:dependencies({
-		plugin("nvim-treesitter/nvim-treesitter-textobjects"):event("VeryLazy"):enabled(false), -- TODO: Config textobjects
-	})
+	:dependencies(treesitter_textobject)
 	:config(function()
 		require("nvim-treesitter.configs").setup({
 			highlight = { enable = true },
 			indent = { enable = true },
 			textobjects = {
 				select = {
-					enable = true,
-					keymaps = {
-						["af"] = "@function.outer",
-						["if"] = "@function.inner",
-
-						["ac"] = "@class.outer",
-						["ic"] = "@class.inner",
-
-						["ap"] = "@parameter.outer",
-						["ip"] = "@parameter.inner",
-
-						["ai"] = "@conditional.outer",
-						["ii"] = "@conditional.inner",
-					},
+					enable = false, -- INFO: taken care of by mini.ai
 				},
 				move = {
 					enable = true,
@@ -72,15 +58,20 @@ plugin("echasnovski/mini.surround"):event("VeryLazy"):opts({
 		suffix_next = "",
 	},
 })
--- TODO: Add treesitter selector
-plugin("echasnovski/mini.ai"):event("VeryLazy"):opts({
-	custom_textobjects = {
-		-- f = spec_treesitter({ a = "@function.outer", i = "@function.inner" }),
-		c = false,
-		p = false,
-		i = false,
-	},
-})
+plugin("echasnovski/mini.ai"):event("VeryLazy"):config(function()
+	local gen_spec = require("mini.ai").gen_spec
+	require("mini.ai").setup({
+		custom_textobjects = {
+			f = gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }),
+			c = gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }),
+			i = gen_spec.treesitter({ a = "@conditional.outer", i = "@conditional.inner" }),
+			g = gen_spec.treesitter({ a = "@comment.outer", i = "@comment.inner" }),
+			l = gen_spec.treesitter({ a = "@loop.outer", i = "@loop.inner" }),
+			p = gen_spec.treesitter({ a = "@parameter.outer", i = "@parameter.inner" }),
+			r = gen_spec.treesitter({ a = "@return.outer", i = "@return.inner" }),
+		},
+	})
+end)
 plugin("echasnovski/mini.move"):event("VeryLazy"):opts({
 	mappings = {
 		up = "<M-k>",

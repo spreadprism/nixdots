@@ -13,8 +13,8 @@ local copilot = plugin("zbirenbaum/copilot.lua")
 		},
 		panel = { enabled = false },
 	})
-
+rock("gptlang/lua-tiktoken")
 plugin("CopilotC-Nvim/CopilotChat.nvim")
-	:dependencies({ copilot, "nvim-lua/plenary.nvim", rock("gptlang/lua-tiktoken") })
+	:dependencies({ copilot, "nvim-lua/plenary.nvim" })
 	:event("VeryLazy")
 	:enabled(copilot.specs.enabled)
