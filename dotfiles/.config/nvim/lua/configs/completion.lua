@@ -121,19 +121,3 @@ plugin("hrsh7th/nvim-cmp")
 			vim.b.copilot_suggestion_hidden = false
 		end)
 	end)
-
-plugin("zbirenbaum/copilot.lua")
-	:event("VeryLazy")
-	:enabled(false) -- INFO: Don't have the subscription anymore
-	:opts({
-		suggestion = {
-			enabled = true,
-			auto_trigger = false,
-			keymap = {
-				accept = "<M-a>",
-				dismiss = "<M-d>",
-				next = "<M-l>",
-			},
-		},
-		panel = { enabled = false },
-	})
