@@ -3,9 +3,6 @@
 # ------------------------------------------------------------
 zmodload zsh/zprof
 # ------------------------------------------------------------
-# INFO: Term
-# ------------------------------------------------------------
-# ------------------------------------------------------------
 # INFO: Zinit
 # ------------------------------------------------------------
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -24,6 +21,11 @@ fi
 if [ -d "/opt/homebrew/bin" ]; then
   export PATH="$PATH:/opt/homebrew/bin"
 fi
+# ------------------------------------------------------------
+if [ -d "$HOME/.local/share/nvim/mason/bin" ]; then
+  export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
+fi
+
 # ------------------------------------------------------------
 if [ -d "/var/lib/flatpak/exports/bin" ]; then
   export PATH="$PATH:/var/lib/flatpak/exports/bin"
@@ -55,7 +57,7 @@ if command -v gem &> /dev/null
 then
   export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin/"
 fi
-# ------------------------------------------------------------
+# # ------------------------------------------------------------
 if command -v go &> /dev/null
 then
   export GOPATH="$HOME/go"
@@ -132,6 +134,7 @@ fi
 # ------------------------------------------------------------
 if command -v kubectl &> /dev/null
 then
+  # BUG: This will cause slowdown when cluster has invalid config
   source <(kubectl completion zsh)
 fi
 # ------------------------------------------------------------
@@ -332,21 +335,19 @@ fi
 
 
 ti = tmux_init() {
-  if [ -z "$SSH_CLIENT" ] || [ -z "$SSH_TTY" ]; then
-    if __tmux_available; then
-      if __interactive_shell && ! __inside_tmux; then
-        if __tmux_running; then
-          session_number=$(__tmux_session_to_attach)
-          if [[ -n $session_number ]]; then
-            exec tmux attach-session -t $session_number
-          fi
-          session_number=$(__tmux_new_session)
-          echo $session_number
-          exec tmux new -s $session_number -c "$PWD"
-        else
-          tmux new-session -d -s base
-          exec tmux new -s 0 -c "$PWD"
+  if __tmux_available; then
+    if __interactive_shell && ! __inside_tmux; then
+      if __tmux_running; then
+        session_number=$(__tmux_session_to_attach)
+        if [[ -n $session_number ]]; then
+          exec tmux attach-session -t $session_number
         fi
+        session_number=$(__tmux_new_session)
+        echo $session_number
+        exec tmux new -s $session_number -c "$PWD"
+      else
+        tmux new-session -d -s base
+        exec tmux new -s 0 -c "$PWD"
       fi
     fi
   fi
