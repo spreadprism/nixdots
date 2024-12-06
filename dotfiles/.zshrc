@@ -199,6 +199,7 @@ zle -N next_dir
 # INFO: Aliases
 # ------------------------------------------------------------
 alias v='nvim'
+alias kssh='kitten ssh'
 alias vd='NVIM_APPNAME=nvim-dev nvim'
 alias nvim-rocks='NVIM_APPNAME=nvim-rocks nvim'
 alias vlr='NVIM_APPNAME=lazyrocks nvim'
