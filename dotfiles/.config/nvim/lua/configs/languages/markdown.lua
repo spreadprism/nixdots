@@ -4,7 +4,7 @@ plugin("MeanderingProgrammer/markdown.nvim")
 		"nvim-treesitter/nvim-treesitter",
 		"nvim-tree/nvim-web-devicons",
 	})
-	:ft("markdown")
+	:ft({ "markdown", "codecompanion" })
 	:config(function()
 		require("render-markdown").setup({})
 	end)

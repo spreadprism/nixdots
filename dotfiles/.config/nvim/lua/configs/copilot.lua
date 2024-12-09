@@ -1,3 +1,4 @@
+-- TODO: I need to add indicator to lualine
 local copilot = plugin("zbirenbaum/copilot.lua")
 	:event("VeryLazy")
 	:enabled(true) -- INFO: Don't have the subscription anymore
@@ -13,8 +14,12 @@ local copilot = plugin("zbirenbaum/copilot.lua")
 		},
 		panel = { enabled = false },
 	})
-rock("gptlang/lua-tiktoken")
-plugin("CopilotC-Nvim/CopilotChat.nvim")
-	:dependencies({ copilot, "nvim-lua/plenary.nvim" })
+plugin("echasnovski/mini.diff"):event("VeryLazy")
+plugin("olimorris/codecompanion.nvim")
+	:dependencies({
+		copilot,
+		"nvim-lua/plenary.nvim",
+		"nvim-treesitter/nvim-treesitter",
+	})
 	:event("VeryLazy")
-	:enabled(copilot.specs.enabled)
+	:opts({})
