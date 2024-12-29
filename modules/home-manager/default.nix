@@ -11,6 +11,7 @@ in
   imports = [
     (import ./shell args)
     (import ./terminal args)
+    (import ./desktop args)
     (import ./development args)
   ];
 }

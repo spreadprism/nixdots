@@ -9,6 +9,7 @@
 
   shell.zsh.enable = true;
   development.enable = true;
+  desktop.enable = true;
   terminal.kitty = {
     enable = true;
     install = false;
