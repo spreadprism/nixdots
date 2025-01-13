@@ -12,5 +12,8 @@
     "launch_configs",
     "linter",
     "state"
-  ]
+  ],
+    "diagnostics.disable": [
+        "different-requires"
+    ]
 }

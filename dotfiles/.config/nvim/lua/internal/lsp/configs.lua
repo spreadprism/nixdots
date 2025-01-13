@@ -3,7 +3,7 @@ local lsp_utils = require("internal.lsp.utils")
 ---@field lsp_name string
 ---@field mason_name string
 ---@field setup_cond boolean | function
----@field display_var string | function TODO: Add code to cover if dispaly var is string
+---@field display_var nil | string | fun(): string TODO: Add code to cover if dispaly var is string
 ---@field auto_install_cond boolean | function
 ---@field opts table
 ---@field register_func function
@@ -50,7 +50,7 @@ function Lsp:capabilities(capabilities)
 end
 
 function Lsp:on_attach(on_attach)
-	local temp = self.opts.on_attach or default_on_attach
+	local temp = self.opts.on_attach or lsp_utils.default_on_attach
 	self.opts.on_attach = function(client, bufnr)
 		temp(client, bufnr)
 		on_attach(client, bufnr)

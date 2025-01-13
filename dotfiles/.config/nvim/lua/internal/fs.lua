@@ -74,6 +74,14 @@ M.file_name = function(path, with_ext)
 end
 
 M.exists = function(path)
-	return vim.fn.exists(path)
+	-- check if path exists
+	local ok, err, code = os.rename(path, path)
+	if not ok then
+		if code == 13 then
+			-- Permission denied, but it exists
+			return true
+		end
+	end
+	return ok
 end
 return M

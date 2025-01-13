@@ -1,3 +1,4 @@
+---@diagnostic disable: unbalanced-assignments, deprecated, cast-local-type, need-check-nil
 -----------------------------------------------------------------------------
 -- JSON4Lua: JSON encoding / decoding / traversing support for the Lua language.
 -- json Module.

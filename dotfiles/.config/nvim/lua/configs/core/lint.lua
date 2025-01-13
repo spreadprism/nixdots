@@ -6,6 +6,7 @@ plugin("mfussenegger/nvim-lint"):event("VeryLazy"):config(function()
 
 	for _, linter in ipairs(linters) do
 		if type(linter.lang) == "table" then
+			---@diagnostic disable-next-line: param-type-mismatch BUG: I mean, I make sure its a table first
 			for _, lang in ipairs(linter.lang) do
 				tmp[lang] = { linter.name }
 			end
