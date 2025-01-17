@@ -127,6 +127,12 @@ then
   source <(docker completion zsh)
 fi
 # ------------------------------------------------------------
+if command -v podman &> /dev/null
+then
+  source <(podman completion zsh)
+  export PODMAN_COMPOSE_PROVIDER=$(which podman-compose)
+fi
+# ------------------------------------------------------------
 if command -v helm &> /dev/null
 then
   source <(helm completion zsh)

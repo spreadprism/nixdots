@@ -3,24 +3,33 @@
   environment.systemPackages = with pkgs;
   [
       nodejs_22
-      dotnet-sdk_8
   ];
 
   # TODO: Moves things to general darwin.nix
   homebrew = {
     brews = [
       "pipx"
-      "nginx" # INFO: Remember to add brew services start nginx
-      "redis" # INFO: Remember to add brew services start redis
-      "mysql@8.0"
+      "nginx"
+      "podman"
+      "podman-compose"
+      {
+        name = "redis";
+        start_service = true;
+      }
+      {
+        name = "mysql@8.0";
+        start_service = true;
+        link = true;
+      }
+      {
+        name = "dotnet@8";
+        link = true;
+      }
       "protobuf"
       "bazelisk"
       "minikube"
       "helm"
     ];
-
-    # INFO: brew services start ${SERVICE}
-
 
     casks = [
       "slack"
@@ -29,6 +38,7 @@
       "1password"
       "yt-music"
       "microsoft-outlook"
+      "podman-desktop"
     ];
 
 

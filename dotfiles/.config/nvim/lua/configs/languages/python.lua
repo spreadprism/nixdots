@@ -1,4 +1,4 @@
-lsp("ruff-lsp"):display(nil)
+lsp("ruff_lsp", "ruff-lsp"):display(nil)
 dap("debugpy"):initialize(false) --INFO: nvim-dap-python will take care of configuring
 formatter("python", "ruff")
 launch_configs("python", {

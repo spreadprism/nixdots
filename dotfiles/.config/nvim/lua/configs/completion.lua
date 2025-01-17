@@ -6,6 +6,8 @@ plugin("hrsh7th/nvim-cmp")
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/cmp-nvim-lua",
 		"petertriho/cmp-git",
+		-- "MattiasMTS/cmp-dbee",
+		plugin("kristijanhusak/vim-dadbod-completion"):dependencies("tpope/vim-dadbod"),
 		plugin("hrsh7th/cmp-nvim-lsp"):dependencies("neovim/nvim-lspconfig"),
 	})
 	:config(function()
@@ -43,6 +45,8 @@ plugin("hrsh7th/nvim-cmp")
 		cmp.setup({
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
+				-- { name = "cmp-dbee" },
+				{ name = "vim-dadbod-completion" },
 				{ name = "nvim_lua" },
 				{ name = "git" },
 				{ name = "path" },
