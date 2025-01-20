@@ -1,1 +1,1 @@
--- TODO: Add http requests client
+plugin("rest-nvim/rest.nvim"):lazy(false)
