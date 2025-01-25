@@ -11,6 +11,11 @@ local buffer_blacklist = {
 	"DiffviewFilePanel",
 	"pods",
 }
+
+local buffer_blacklist_contains = {
+	"%[CodeCompanion%]",
+}
+
 local buffer_extension_blacklist = { "harpoon" }
 local buffer_mode_blacklist = { "t" }
 
@@ -43,6 +48,13 @@ M.display_file = function()
 	-- INFO: Check if current buffer name is in the blacklist
 	for _, buffer_name in ipairs(buffer_blacklist) do
 		if current_buffer_name == buffer_name then
+			return false
+		end
+	end
+
+	-- INFO: Check if current buffer name contains a blacklist
+	for _, buffer_name in ipairs(buffer_blacklist_contains) do
+		if string.find(current_buffer_name, buffer_name) then
 			return false
 		end
 	end

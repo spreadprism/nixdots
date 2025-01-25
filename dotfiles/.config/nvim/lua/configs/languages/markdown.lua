@@ -5,6 +5,9 @@ plugin("MeanderingProgrammer/markdown.nvim")
 		"nvim-tree/nvim-web-devicons",
 	})
 	:ft({ "markdown", "codecompanion" })
-	:config(function()
-		require("render-markdown").setup({})
-	end)
+	:opts({
+		file_types = {
+			"markdown",
+			"codecompanion",
+		},
+	})

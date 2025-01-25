@@ -9,9 +9,14 @@
   homebrew = {
     brews = [
       "pipx"
-      "nginx"
+      "docker"
       "podman"
       "podman-compose"
+      "podman-tui"
+      {
+        name = "nginx";
+        start_service = true;
+      }
       {
         name = "redis";
         start_service = true;

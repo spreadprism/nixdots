@@ -9,6 +9,7 @@ in
         neovim
         figlet
         lolcat
+        lua51Packages.luarocks
       ];
 
     xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/nvim";

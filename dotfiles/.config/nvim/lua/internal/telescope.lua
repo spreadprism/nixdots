@@ -24,13 +24,19 @@ M.fuzzy_live_grep = function(buffer_only)
 end
 
 ---@param buffer_only boolean
-M.live_grep = function(buffer_only)
+M.live_grep = function(buffer_only, initial)
+	if initial == nil then
+		initial = ""
+	end
+
 	if buffer_only then
 		return function()
-			require("telescope.builtin").live_grep({ search_dirs = { vim.fn.expand("%:p") } })
+			require("telescope.builtin").live_grep({ search_dirs = { vim.fn.expand("%:p") }, default_text = initial })
 		end
 	else
-		return require("telescope.builtin").live_grep
+		return function()
+			return require("telescope.builtin").live_grep({ default_text = initial })
+		end
 	end
 end
 

@@ -26,6 +26,7 @@ local dap = plugin("mfussenegger/nvim-dap"):event("VeryLazy"):config(function()
 	vim.cmd("highlight DapStoppedSign guifg=#87D285")
 	vim.fn.sign_define("DapStopped", { text = "", texthl = "DapStoppedSign", linehl = "DapStoppedSign", numhl = "" })
 end)
+-- TODO: replace with https://github.com/igorlfs/nvim-dap-view/tree/main
 plugin("rcarriga/nvim-dap-ui"):event("VeryLazy"):dependencies(dap):config(function()
 	local prefered_output = {
 		go = 1,
@@ -71,12 +72,20 @@ plugin("rcarriga/nvim-dap-ui"):event("VeryLazy"):dependencies(dap):config(functi
 	})
 end)
 plugin("theHamsta/nvim-dap-virtual-text"):event("VeryLazy"):dependencies(dap):opts({
-	-- TODO: Add clause to restrict size I don't need to see infinite virtual text
 	display_callback = function(variable, buf, stackframe, node, options)
+		local value = variable.value
+		if #value > 10 then
+			value = "*"
+		end
 		if options.virt_text_pos == "inline" then
-			return "(" .. variable.value .. ")"
+			return "(" .. value .. ")"
 		else
-			return variable.name .. " = " .. variable.value
+			local name = variable.name
+			if #name > 7 then
+				-- grab the 7 first chars
+				name = string.sub(variable.name, 1, 7) .. "..."
+			end
+			return name .. " = " .. value
 		end
 	end,
 

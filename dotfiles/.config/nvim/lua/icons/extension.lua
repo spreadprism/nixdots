@@ -74,4 +74,9 @@ return {
 		color = "#30638E",
 		name = "proto",
 	},
+	["copilot"] = {
+		icon = "",
+		color = "#4B3EC6",
+		name = "copilot",
+	},
 }

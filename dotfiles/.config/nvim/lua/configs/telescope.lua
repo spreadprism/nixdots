@@ -53,6 +53,15 @@ local telescope = plugin("nvim-telescope/telescope.nvim")
 
 		-- Extensions
 		telescope.load_extension("fzf")
+		local selected_text = function()
+			local mode = vim.api.nvim_get_mode().mode
+			local opts = {}
+			-- \22 is an escaped version of <c-v>
+			if mode == "v" or mode == "V" or mode == "\22" then
+				opts.type = mode
+			end
+			return vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos("."), opts)
+		end
 
 		---@diagnostic disable-next-line: different-requires
 		local finders = require("internal.telescope")

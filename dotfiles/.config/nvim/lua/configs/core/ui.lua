@@ -156,6 +156,7 @@ plugin("nvim-lualine/lualine.nvim")
 				},
 				lualine_c = {},
 				lualine_x = {
+					-- TODO: add copilot status
 					{
 						"overseer",
 						unique = true,
