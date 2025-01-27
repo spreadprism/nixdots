@@ -9,7 +9,7 @@ local s, i, t, f, r, fmt =
 	require("luasnip.extras.fmt").fmt
 
 return {
-	s("cb", fmt("```{}\n{}\n```", { i(1), i(0) })),
+	s("blk", fmt("```{}\n{}\n```", { i(1), i(0) })),
 	s("h1", fmt("# {}", { i(0) })),
 	s("h2", fmt("## {}", { i(0) })),
 	s("h3", fmt("### {}", { i(0) })),
