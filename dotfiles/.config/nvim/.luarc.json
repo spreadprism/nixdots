@@ -11,7 +11,9 @@
     "formatter",
     "launch_configs",
     "linter",
-    "state"
+    "state",
+        "s",
+        "t"
   ],
     "diagnostics.disable": [
         "different-requires"

@@ -45,6 +45,14 @@ plugin("RRethy/nvim-treesitter-endwise"):dependencies(treesitter):event("VeryLaz
 plugin("kylechui/nvim-surround"):event("VeryLazy"):opts({})
 plugin("abecodes/tabout.nvim"):dependencies({ "hrsh7th/nvim-cmp", treesitter }):event("InsertCharPre"):opts({
 	act_as_shift_tab = true,
+	tabouts = {
+		{ open = "'", close = "'" },
+		{ open = '"', close = '"' },
+		{ open = "`", close = "`" },
+		{ open = "(", close = ")" },
+		{ open = "[", close = "]" },
+		{ open = "{", close = "}" },
+	},
 }) -- TODO: Fix the plugin, its flaky
 plugin("echasnovski/mini.surround"):event("VeryLazy"):opts({
 	mappings = {

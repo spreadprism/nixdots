@@ -10,6 +10,7 @@ PLUGINS_PATH = vim.fs.joinpath(LUA_DIRECTORY_PATH, "plugins")
 CONFIGS_PATH = vim.fs.joinpath(LUA_DIRECTORY_PATH, "configs")
 KEYBINDS_PATH = vim.fs.joinpath(LUA_DIRECTORY_PATH, "keybinds")
 TEMPLATES_PATH = vim.fs.joinpath(LUA_DIRECTORY_PATH, "templates")
+SNIPPETS_PATH = vim.fs.joinpath(LUA_DIRECTORY_PATH, "snippets")
 
 vim.g.format_ft = {}
 
