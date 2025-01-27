@@ -9,7 +9,7 @@ local copilot = plugin("zbirenbaum/copilot.lua")
 			keymap = {
 				accept = "<M-a>",
 				dismiss = "<M-d>",
-				next = "<M-l>",
+				next = false,
 			},
 		},
 		panel = { enabled = false },

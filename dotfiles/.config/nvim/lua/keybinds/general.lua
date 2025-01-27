@@ -1,4 +1,4 @@
-keybind({ "i", "v" }, ";;", "<Esc>", "Escape iv"):register()
+keybind({ "i", "v", "s" }, ";;", "<Esc>", "Escape iv"):register()
 keybind("t", ";;", "<C-\\><C-n>", "Escape term"):register()
 keybind("n", "<C-s>", "<cmd>w<CR>", "Save"):register()
 keybind("n", "<C-q>", "<cmd>q<CR>", "Quit"):register()

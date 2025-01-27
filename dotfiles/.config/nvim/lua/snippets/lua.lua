@@ -1,16 +1,14 @@
 local ls = require("luasnip")
 
--- snippet creator
-local s = ls.s
-local i = ls.insert_node
-local t = ls.text_node
-local f = ls.function_node
--- repeats a node
-local rep = require("luasnip.extras").rep
+local s, i, t, f, r, fmt =
+	ls.s,
+	ls.insert_node,
+	ls.text_node,
+	ls.function_node,
+	require("luasnip.extras").rep,
+	require("luasnip.extras.fmt").fmt
 
-local fmt = require("luasnip.extras.fmt").fmt
 return {
-	-- s("req", fmt('local {} = require("{}")', { i(1, "default"), rep(1) })),
 	s(
 		"req",
 		fmt([[local {} = require("{}")]], {
