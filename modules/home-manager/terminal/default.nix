@@ -5,5 +5,6 @@ in
 {
   imports = [
       (import ./kitty.nix args)
+      (import ./ghostty.nix args)
   ];
 }

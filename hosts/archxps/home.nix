@@ -10,7 +10,7 @@
   shell.zsh.enable = true;
   development.enable = true;
   desktop.enable = true;
-  terminal.kitty = {
+  terminal.ghostty = {
     enable = true;
     install = false;
   };
