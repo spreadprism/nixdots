@@ -1,5 +1,5 @@
 plugin("williamboman/mason.nvim")
-	:event("VeryLazy")
+	:lazy(false) -- INFO: This must not be lazy loaded
 	:dependencies({
 		"williamboman/mason-lspconfig.nvim",
 		"jay-babu/mason-nvim-dap.nvim",

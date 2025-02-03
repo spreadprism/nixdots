@@ -4,6 +4,8 @@ local utils = require("internal.formatting.utils")
 ---@field name string
 ---@field mason_name string
 ---@field install_mason boolean
+---@field custom_opts boolean
+---@field internal_format_opts function
 ---@field formatter_lang_source string | nil
 local Formatter = {}
 Formatter.__index = Formatter
@@ -18,6 +20,8 @@ function Formatter.new(lang, name, mason_name, formatter_lang_source)
 	self.name = name
 	self.mason_name = mason_name or name
 	self.install_mason = true
+	self.custom_opts = false
+	self.internal_format_opts = nil
 	self.formatter_lang_source = formatter_lang_source
 	utils.insert(self)
 	return self
@@ -27,6 +31,13 @@ end
 function Formatter:install(install)
 	self.install_mason = install
 	return self
+end
+
+---@param opts function
+---@param self Formatter
+function Formatter:format_opts(opts)
+	self.custom_opts = true
+	self.internal_format_opts = opts
 end
 
 return Formatter.new

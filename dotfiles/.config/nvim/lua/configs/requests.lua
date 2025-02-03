@@ -1,1 +1,2 @@
-plugin("rest-nvim/rest.nvim"):lazy(false)
+-- TODO: Add kulala-ls
+plugin("mistweaverco/kulala.nvim"):opts({}):event("VeryLazy")

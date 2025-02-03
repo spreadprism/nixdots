@@ -19,17 +19,21 @@ plugin("mhartington/formatter.nvim"):event("VeryLazy"):config(function()
 	}
 
 	for _, formatter in ipairs(formatters) do
-		if type(formatter.lang) == "table" then
-			---@diagnostic disable-next-line: param-type-mismatch
-			for _, lang in ipairs(formatter.lang) do
-				local lang_source = lang or formatter.lang
-				local require_path = "formatter.filetypes." .. lang_source
-				filetype[lang] = { require(require_path)[formatter.name] }
-			end
+		if formatter.custom_opts then
+			filetype[formatter.lang] = formatter.internal_format_opts
 		else
-			local lang_source = formatter.formatter_lang_source or formatter.lang
-			local require_path = "formatter.filetypes." .. lang_source
-			filetype[formatter.lang] = { require(require_path)[formatter.name] }
+			if type(formatter.lang) == "table" then
+				---@diagnostic disable-next-line: param-type-mismatch
+				for _, lang in ipairs(formatter.lang) do
+					local lang_source = lang or formatter.lang
+					local require_path = "formatter.filetypes." .. lang_source
+					filetype[lang] = { require(require_path)[formatter.name] }
+				end
+			else
+				local lang_source = formatter.formatter_lang_source or formatter.lang
+				local require_path = "formatter.filetypes." .. lang_source
+				filetype[formatter.lang] = { require(require_path)[formatter.name] }
+			end
 		end
 	end
 
