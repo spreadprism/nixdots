@@ -122,6 +122,12 @@ then
   zinit snippet OMZP::poetry
 fi
 # ------------------------------------------------------------
+if command -v pnpm &> /dev/null
+then
+  zinit ice atload"zpcdreplay" atclone"./zplug.zsh" atpull"%atclone"
+  zinit light g-plane/pnpm-shell-completion
+fi
+# ------------------------------------------------------------
 if command -v docker &> /dev/null
 then
   source <(docker completion zsh)

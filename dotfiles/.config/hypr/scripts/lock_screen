@@ -1,4 +1,4 @@
 #! /bin/sh
 
-1password --lock
+1password --lock || true
 hyprlock
