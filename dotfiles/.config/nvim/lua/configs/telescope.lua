@@ -1,7 +1,7 @@
 local telescope = plugin("nvim-telescope/telescope.nvim")
 	:tag("0.1.6")
 	:event("VeryLazy")
-	:dependencies("nvim-lua/plenary.nvim")
+	:dependencies({ "nvim-lua/plenary.nvim", "nvim-telescope/telescope-dap.nvim" })
 	:config(function()
 		local telescope = require("telescope")
 		telescope.setup({
@@ -52,6 +52,7 @@ local telescope = plugin("nvim-telescope/telescope.nvim")
 		})
 
 		-- Extensions
+		telescope.load_extension("dap")
 		telescope.load_extension("fzf")
 		local selected_text = function()
 			local mode = vim.api.nvim_get_mode().mode
@@ -68,6 +69,7 @@ local telescope = plugin("nvim-telescope/telescope.nvim")
 		local builtin = require("telescope.builtin")
 		keybind_group("<leader>s", "Search"):register({
 			keybind("n", "f", finders.find_files(), "Search files"),
+			keybind("n", "b", builtin.buffers, "Search buffers"),
 			keybind("n", "l", finders.resume(), "Reopen last search"),
 			keybind("n", "g", finders.live_grep(true), "Grep current buffer"),
 			keybind("n", "G", finders.live_grep(false), "Grep search cwd"),
@@ -76,6 +78,7 @@ local telescope = plugin("nvim-telescope/telescope.nvim")
 			keybind("n", "r", "<cmd>SearchReplaceSingleBufferOpen<cr>", "Replace"),
 			keybind("v", "r", "<cmd>SearchReplaceSingleBufferVisualSelection<cr>", "Replace visual selection"),
 			keybind_group("d", "diagnostics", {
+				keybind("n", "b", require("telescope").extensions.dap.list_breakpoints, "breakpoint"),
 				keybind("n", "a", function()
 					builtin.diagnostics({ bufnr = 0 })
 				end, "all (current buffer)"),

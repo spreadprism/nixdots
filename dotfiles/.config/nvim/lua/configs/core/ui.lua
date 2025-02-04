@@ -251,6 +251,7 @@ plugin("echasnovski/mini.indentscope")
 				"notify",
 				"toggleterm",
 				"lazyterm",
+				"neotest-summary",
 			},
 			callback = function()
 				vim.b.miniindentscope_disable = true

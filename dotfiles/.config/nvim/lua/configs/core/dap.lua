@@ -71,17 +71,18 @@ plugin("rcarriga/nvim-dap-ui"):event("VeryLazy"):dependencies(dap):config(functi
 		},
 	})
 end)
+local virtual_max_char = 15
 plugin("theHamsta/nvim-dap-virtual-text"):event("VeryLazy"):dependencies(dap):opts({
 	display_callback = function(variable, buf, stackframe, node, options)
 		local value = variable.value
-		if #value > 10 then
+		if #value > virtual_max_char then
 			value = "*"
 		end
 		if options.virt_text_pos == "inline" then
 			return "(" .. value .. ")"
 		else
 			local name = variable.name
-			if #name > 7 then
+			if #name > virtual_max_char - 3 then
 				-- grab the 7 first chars
 				name = string.sub(variable.name, 1, 7) .. "..."
 			end
