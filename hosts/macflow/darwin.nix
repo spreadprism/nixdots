@@ -3,6 +3,8 @@
   environment.systemPackages = with pkgs;
   [
       nodejs_22
+      podman
+      podman-compose
   ];
 
   # TODO: Moves things to general darwin.nix
@@ -10,9 +12,6 @@
     brews = [
       "pipx"
       "docker"
-      "podman"
-      "podman-compose"
-      "podman-tui"
       {
         name = "nginx";
         start_service = true;

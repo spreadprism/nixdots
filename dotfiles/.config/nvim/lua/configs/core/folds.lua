@@ -30,19 +30,6 @@ plugin("kevinhwang91/nvim-ufo"):dependencies("kevinhwang91/promise-async"):lazy(
 	vim.o.foldenable = true
 	vim.o.foldcolumn = "0"
 	vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	capabilities.textDocument.foldingRange = {
-		dynamicRegistration = false,
-		lineFoldingOnly = true,
-	}
-	local language_servers = vim.lsp.get_clients() -- or list servers manually like {'gopls', 'clangd'}
-	for _, ls in ipairs(language_servers) do
-		require("lspconfig")[ls].setup({
-			capabilities = capabilities,
-			-- you can add other fields for setting up lsp server in this table
-		})
-	end
-
 	require("ufo").setup({
 		open_fold_hl_timeout = 150,
 		fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)

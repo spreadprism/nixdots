@@ -63,7 +63,7 @@ plugin("utilyre/barbecue.nvim")
 		require("barbecue").setup({
 			create_autocmd = false, -- prevent barbecue from updating itself automatically
 			attach_navic = false,
-			exclude_filetypes = { "netrw", "toggleterm", "NeogitStatus" },
+			exclude_filetypes = { "netrw", "toggleterm", "NeogitStatus", "dap-view" },
 		})
 		vim.api.nvim_create_autocmd({
 			"WinScrolled", -- or WinResized on NVIM-v0.9 and higher
