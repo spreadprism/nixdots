@@ -2,6 +2,7 @@
 
 local ft = {
 	"go",
+	"sql",
 }
 vim.api.nvim_create_augroup("remember_folds", { clear = true })
 vim.api.nvim_create_autocmd("BufWinLeave", {
