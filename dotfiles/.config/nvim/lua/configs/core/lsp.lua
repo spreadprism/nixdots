@@ -47,7 +47,6 @@ plugin("neovim/nvim-lspconfig"):event("VeryLazy"):dependencies({ neoconf, "lewis
 	vim.cmd([[highlight DiagnosticDeprecated guifg=#e0af68]])
 	vim.cmd([[highlight DiagnosticUnderlineInfo guifg=#0db9d7]])
 	vim.cmd([[highlight DiagnosticInfo guifg=#0db9d7]])
-	vim.cmd([[highlight DiagnosticUnderlineInfo guifg=#1abc9c]])
 
 	require("lspconfig.ui.windows").default_options.border = "rounded"
 

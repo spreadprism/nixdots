@@ -1,3 +1,5 @@
 keybind_group("<leader>t", "task"):register({
-	keybind("n", "t", "<cmd>OverseerToggle right<cr>", "Toggle UI"),
+	keybind("n", "t", "<cmd>OverseerToggle<cr>", "Open UI"),
+	keybind("n", "b", "<cmd>OverseerBuild<cr>", "Build"),
+	keybind("n", "r", "<cmd>OverseerRun<cr>", "Run a task"),
 })
