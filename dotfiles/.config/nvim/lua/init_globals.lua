@@ -1,6 +1,7 @@
 print = vim.print
 
-LUA_DIRECTORY_PATH = vim.fn.stdpath("config") .. "/lua"
+BASE_CONFIG_PATH = vim.fn.stdpath("config")
+LUA_DIRECTORY_PATH = vim.fs.joinpath(BASE_CONFIG_PATH, "lua")
 NVIM_SHARE_DIRECTORY = vim.fn.stdpath("data")
 
 MASON_DIR = vim.fs.joinpath(NVIM_SHARE_DIRECTORY, "mason")
