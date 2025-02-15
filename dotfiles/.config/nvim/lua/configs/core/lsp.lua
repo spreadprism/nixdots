@@ -54,3 +54,15 @@ plugin("neovim/nvim-lspconfig"):event("VeryLazy"):dependencies({ neoconf, "lewis
 	require("lspconfig").jdtls.setup({})
 	require("internal.lsp").configure_all_lsp()
 end)
+
+vim.api.nvim_create_autocmd({ "LspAttach" }, {
+	pattern = { "*/nvim/lua/templates/*" },
+	callback = function(args)
+		local bufnr = args.buf
+		local client_id = args.data.client_id
+		-- Detach
+		vim.defer_fn(function()
+			vim.lsp.buf_detach_client(bufnr, client_id)
+		end, 100)
+	end,
+})

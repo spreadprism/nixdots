@@ -1,6 +1,6 @@
 plugin("stevearc/overseer.nvim"):event("VeryLazy"):config(function()
 	require("overseer").setup({
-		templates = { "cargo", "vscode" },
+		templates = { "cargo", "vscode", "make", "npm" },
 		task_list = {
 			bindings = {
 				["?"] = "ShowHelp",
@@ -13,7 +13,7 @@ plugin("stevearc/overseer.nvim"):event("VeryLazy"):config(function()
 				["<C-s>"] = false,
 				["<C-f>"] = false,
 				["<C-q>"] = false,
-				["p"] = false,
+				["p"] = "TogglePreview",
 				["<C-l>"] = false,
 				["<C-h>"] = false,
 				["L"] = false,

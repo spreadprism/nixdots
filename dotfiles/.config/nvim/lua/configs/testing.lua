@@ -1,3 +1,15 @@
+local function get_nearest_function_name()
+	local ts_utils = require("nvim-treesitter.ts_utils")
+	local node = ts_utils.get_node_at_cursor()
+
+	while node do
+		if node:type() == "function_declaration" then
+			return ts_utils.get_node_text(node:child(1))[1]
+		end
+		node = node:parent()
+	end
+end
+
 plugin("nvim-neotest/neotest")
 	:event("VeryLazy")
 	:dependencies({
@@ -41,6 +53,20 @@ plugin("nvim-neotest/neotest")
 		keybind_group("<leader>u", "Unit testing"):register({
 			keybind("n", "e", "<cmd>Neotest summary<cr>", "Tests explorer"),
 			keybind("n", "c", "<CMD>lua require('neotest').run.run()<CR>", "Test current function"),
+			keybind("n", "c", function()
+				local ft = vim.bo.filetype
+				if ft == "go" then
+					local name = get_nearest_function_name()
+					if not name then
+						return
+					end
+					require("neotest").run.run({
+						extra_args = { "-run", name },
+					})
+				else
+					require("neotest").run.run()
+				end
+			end, "Test current function"),
 			keybind("n", "f", "<CMD>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", "Test current file"),
 			keybind("n", "p", "<CMD>lua require('neotest').run.run(vim.fn.getcwd())<CR>", "Test current project"),
 		})

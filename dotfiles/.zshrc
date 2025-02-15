@@ -346,6 +346,7 @@ if [ -d '/Users/eduguay' ]; then
   # HACK: The brew mysql@8.0 package doesn't link binaries to brew bin
   export PATH="$PATH:/opt/homebrew/Cellar/mysql@8.0/8.0.40_2/bin"
   export LANG="en_CA.UTF-8"
+  source <(devstack completion zsh)
 fi
 # ------------------------------
 

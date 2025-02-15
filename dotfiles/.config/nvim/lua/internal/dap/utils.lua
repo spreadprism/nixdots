@@ -93,6 +93,7 @@ M.debug_go_test = function()
 		name = test.name,
 		request = "launch",
 		mode = "test",
+		console = "internalConsole",
 		program = test.package,
 		args = { "-test.run", "^" .. test.name .. "$" },
 		buildFlags = "",
