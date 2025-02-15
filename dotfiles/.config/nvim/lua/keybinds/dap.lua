@@ -29,10 +29,10 @@ keybind_group("<leader>d", "DAP"):register({
 	end, "DAP stop"),
 	keybind("n", "t", function()
 		local filetype = vim.bo[vim.api.nvim_get_current_buf()].filetype
-		if filetype == "go" then
-			require("internal.dap.utils").debug_go_test()
-		else
-			require("neotest").run.run({ strategy = "dap" })
-		end
+		-- if filetype == "go" then
+		-- 	require("internal.dap.utils").debug_go_test()
+		-- else
+		require("neotest").run.run({ strategy = "dap" })
+		-- end
 	end, "Debug current test"),
 })

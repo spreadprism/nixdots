@@ -19,7 +19,7 @@ plugin("nvim-neotest/neotest")
 		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
 		-- INFO: Adapters
-		"nvim-neotest/neotest-go",
+		"fredrikaverpil/neotest-golang",
 		"nvim-neotest/neotest-python",
 		"rouge8/neotest-rust",
 		"marilari88/neotest-vitest",
@@ -32,9 +32,7 @@ plugin("nvim-neotest/neotest")
 						return require("venv-selector").python()
 					end,
 				}),
-				require("neotest-go")({
-					recursive_run = true,
-				}),
+				require("neotest-golang")({}),
 				require("neotest-rust"),
 				require("neotest-vitest")({
 					-- Filter directories when searching for test files. Useful in large projects (see Filter directories notes).
