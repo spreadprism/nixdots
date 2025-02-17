@@ -1,4 +1,6 @@
 print = vim.print
+cwd = vim.fn.getcwd
+joinpath = vim.fs.joinpath
 
 BASE_CONFIG_PATH = vim.fn.stdpath("config")
 LUA_DIRECTORY_PATH = vim.fs.joinpath(BASE_CONFIG_PATH, "lua")

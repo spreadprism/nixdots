@@ -13,7 +13,9 @@
     "linter",
     "state",
         "s",
-        "t"
+        "t",
+        "cwd",
+        "joinpath"
   ],
     "diagnostics.disable": [
         "different-requires"

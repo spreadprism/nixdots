@@ -9,5 +9,6 @@ in
       ];
 
     xdg.configFile."hypr".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/hypr";
+    xdg.configFile."hyprpanel".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/hyprpanel";
   };
 }

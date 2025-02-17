@@ -13,6 +13,11 @@ function LaunchConfigs.new(lang, configs)
 	local self = setmetatable({}, LaunchConfigs)
 	self.lang = lang
 	self.configs = configs
+	for i, config in ipairs(configs) do
+		if not config.type then
+			self.configs[i].type = lang
+		end
+	end
 	utils.insert_launch_configs(self)
 end
 
