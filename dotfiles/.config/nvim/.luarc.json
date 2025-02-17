@@ -15,7 +15,8 @@
         "s",
         "t",
         "cwd",
-        "joinpath"
+        "joinpath",
+        "exec"
   ],
     "diagnostics.disable": [
         "different-requires"

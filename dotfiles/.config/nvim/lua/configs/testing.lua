@@ -54,14 +54,14 @@ plugin("nvim-neotest/neotest")
 			keybind("n", "c", function()
 				local ft = vim.bo.filetype
 				if ft == "go" then
-					local name = get_nearest_function_name()
-					if not name then
-						return
-					end
-					require("neotest").run.run({
-						extra_args = { "-run", name },
-					})
-				else
+					-- local name = get_nearest_function_name()
+					-- if not name then
+					-- 	return
+					-- end
+					-- 	require("neotest").run.run({
+					-- 		extra_args = { "-run", name },
+					-- 	})
+					-- else
 					require("neotest").run.run()
 				end
 			end, "Test current function"),

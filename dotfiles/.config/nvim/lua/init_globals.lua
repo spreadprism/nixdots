@@ -1,6 +1,14 @@
 print = vim.print
 cwd = vim.fn.getcwd
 joinpath = vim.fs.joinpath
+---@param cmd string
+---@return string
+exec = function(cmd)
+	local handle = io.popen(cmd)
+	local result = handle:read("*a")
+	handle:close()
+	return result
+end
 
 BASE_CONFIG_PATH = vim.fn.stdpath("config")
 LUA_DIRECTORY_PATH = vim.fs.joinpath(BASE_CONFIG_PATH, "lua")

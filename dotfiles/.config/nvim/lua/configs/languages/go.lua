@@ -11,7 +11,8 @@ launch_configs("go", {
 	},
 })
 
-plugin("leoluz/nvim-dap-go")
+-- plugin("leoluz/nvim-dap-go") -- BUG: Test debug don't output to console
+plugin("CruelAddict/nvim-dap-go")
 	:ft("go")
 	:dependencies({ "mfussenegger/nvim-dap", "rcarriga/nvim-dap-ui" })
 	:config(function()
