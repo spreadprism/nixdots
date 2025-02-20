@@ -19,7 +19,7 @@ plugin("nvim-neotest/neotest")
 		"antoinemadec/FixCursorHold.nvim",
 		"nvim-treesitter/nvim-treesitter",
 		-- INFO: Adapters
-		"fredrikaverpil/neotest-golang",
+		"spreadprism/neotest-golang",
 		"nvim-neotest/neotest-python",
 		"rouge8/neotest-rust",
 		"marilari88/neotest-vitest",
@@ -51,21 +51,8 @@ plugin("nvim-neotest/neotest")
 		keybind_group("<leader>u", "Unit testing"):register({
 			keybind("n", "e", "<cmd>Neotest summary<cr>", "Tests explorer"),
 			keybind("n", "c", "<CMD>lua require('neotest').run.run()<CR>", "Test current function"),
-			keybind("n", "c", function()
-				local ft = vim.bo.filetype
-				if ft == "go" then
-					-- local name = get_nearest_function_name()
-					-- if not name then
-					-- 	return
-					-- end
-					-- 	require("neotest").run.run({
-					-- 		extra_args = { "-run", name },
-					-- 	})
-					-- else
-					require("neotest").run.run()
-				end
-			end, "Test current function"),
 			keybind("n", "f", "<CMD>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", "Test current file"),
 			keybind("n", "p", "<CMD>lua require('neotest').run.run(vim.fn.getcwd())<CR>", "Test current project"),
+			keybind("n", "x", "<CMD>lua require('neotest').run.stop()<CR>", "Test current project"),
 		})
 	end)

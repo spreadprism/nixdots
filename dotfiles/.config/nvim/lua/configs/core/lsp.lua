@@ -21,6 +21,7 @@ plugin("neovim/nvim-lspconfig"):event("VeryLazy"):dependencies({ neoconf, "lewis
 				keybind({ "n", "v" }, "a", vim.lsp.buf.code_action, "Show code actions", opts),
 			})
 			keybind({ "n", "v" }, "gd", require("telescope.builtin").lsp_definitions, "Go to definition"):register()
+			keybind({ "n", "v" }, "gt", require("telescope.builtin").lsp_type_definitions, "Go to type"):register()
 			keybind({ "n", "v" }, "gr", require("telescope.builtin").lsp_references, "Go to reference"):register()
 		end,
 	})

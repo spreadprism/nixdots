@@ -75,8 +75,10 @@ local telescope = plugin("nvim-telescope/telescope.nvim")
 			keybind("n", "G", finders.live_grep(false), "Grep search cwd"),
 			keybind("n", "z", finders.fuzzy_live_grep(true), "Fuzzy find current buffer"),
 			keybind("n", "Z", finders.fuzzy_live_grep(false), "Fuzzy find cwd"),
+			keybind("n", "c", "<cmd>Themery<cr>", "Colorscheme"),
 			keybind("n", "r", "<cmd>SearchReplaceSingleBufferOpen<cr>", "Replace"),
 			keybind("v", "r", "<cmd>SearchReplaceSingleBufferVisualSelection<cr>", "Replace visual selection"),
+			keybind("n", "s", builtin.lsp_document_symbols, "Search symbols"),
 			keybind_group("d", "diagnostics", {
 				keybind("n", "b", require("telescope").extensions.dap.list_breakpoints, "breakpoint"),
 				keybind("n", "a", function()

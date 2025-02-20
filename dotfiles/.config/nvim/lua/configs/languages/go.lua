@@ -11,8 +11,7 @@ launch_configs("go", {
 	},
 })
 
--- plugin("leoluz/nvim-dap-go") -- BUG: Test debug don't output to console
-plugin("CruelAddict/nvim-dap-go")
+plugin("leoluz/nvim-dap-go")
 	:ft("go")
 	:dependencies({ "mfussenegger/nvim-dap", "rcarriga/nvim-dap-ui" })
 	:config(function()
@@ -20,9 +19,9 @@ plugin("CruelAddict/nvim-dap-go")
 			-- delve = {
 			-- 	path = require("mason-registry").get_package("delve"):get_install_path(),
 			-- },
-			experimental = {
-				test_table = true,
-			},
+			-- experimental = {
+			-- 	test_table = true,
+			-- },
 		})
 		require("internal.dap").refresh_configurations("go") -- INFO: Removes the default configs
 	end)
