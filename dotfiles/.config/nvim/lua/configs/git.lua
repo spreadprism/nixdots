@@ -21,3 +21,4 @@ plugin("lewis6991/gitsigns.nvim"):event("VeryLazy"):opts({
 	},
 	current_line_blame_formatter = " | <author>, <author_time:%R>",
 })
+plugin("echasnovski/mini.diff"):event("VeryLazy")

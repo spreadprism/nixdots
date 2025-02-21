@@ -1,7 +1,11 @@
 -- TODO: I need to add indicator to lualine
+-- TODO: Add multi agent supports
+-- TODO: Use https://github.com/milanglacier/minuet-ai.nvim for inline completion
+
+local use_copilot = true
 local copilot = plugin("zbirenbaum/copilot.lua")
 	:event("VeryLazy")
-	:enabled(true) -- INFO: Don't have the subscription anymore
+	:enabled(use_copilot) -- INFO: Don't have the subscription anymore
 	:opts({
 		suggestion = {
 			enabled = true,
@@ -14,7 +18,6 @@ local copilot = plugin("zbirenbaum/copilot.lua")
 		},
 		panel = { enabled = false },
 	})
-plugin("echasnovski/mini.diff"):event("VeryLazy")
 plugin("olimorris/codecompanion.nvim")
 	:dependencies({
 		copilot,
@@ -22,4 +25,13 @@ plugin("olimorris/codecompanion.nvim")
 		"nvim-treesitter/nvim-treesitter",
 	})
 	:event("VeryLazy")
-	:opts({})
+	:opts({
+		strategies = {
+			chat = {
+				adapter = "copilot",
+			},
+			inline = {
+				adapter = "copilot",
+			},
+		},
+	})
