@@ -19,13 +19,6 @@ local transparent = plugin("xiyaowong/transparent.nvim")
 		transparent.clear_prefix("NormalFloat")
 	end)
 
-local aura = plugin("baliestri/aura-theme"):config(function(plugin)
-	vim.opt.rtp:append(plugin.dir .. "/packages/neovim")
-end)
-local tokyo = plugin("folke/tokyonight.nvim"):config(function()
-	require("tokyonight").setup({ style = "storm" })
-end)
-
 plugin("zaldih/themery.nvim")
 	:lazy(false)
 	:priority(1000)
