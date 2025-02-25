@@ -1,3 +1,43 @@
+-- plugin("saghen/blink.cmp")
+-- 	:event({ "InsertEnter", "CmdlineEnter" })
+-- 	:dependencies({
+-- 		"hrsh7th/cmp-path",
+-- 		"hrsh7th/cmp-buffer",
+-- 		"hrsh7th/cmp-cmdline",
+-- 		"hrsh7th/cmp-nvim-lua",
+-- 		"petertriho/cmp-git",
+-- 		"saadparwaiz1/cmp_luasnip",
+-- 	})
+-- 	:opts({
+-- 		appearance = {
+-- 			use_nvim_cmp_as_default = true,
+-- 		},
+-- 		snippets = { "luasnip" },
+-- 		keymap = {
+-- 			preset = "none",
+-- 			["<M-a>"] = { "select_and_accept", "fallback" },
+-- 			["<M-j>"] = { "select_next", "fallback" },
+-- 			["<M-k>"] = { "select_prev" },
+-- 			["<M-x>"] = { "cancel" },
+-- 			["<M-l>"] = {
+-- 				function(cmp)
+-- 					if cmp.visible() then
+-- 						cmp.close()
+-- 					end
+-- 					require("copilot.suggestion").next()
+-- 				end,
+-- 			},
+-- 			["<M-h>"] = {
+-- 				function(cmp)
+-- 					if cmp.is_visible() then
+-- 						cmp.hide()
+-- 					else
+-- 						cmp.show()
+-- 					end
+-- 				end,
+-- 			},
+-- 		},
+-- 	})
 plugin("hrsh7th/nvim-cmp")
 	:event("VeryLazy")
 	:dependencies({

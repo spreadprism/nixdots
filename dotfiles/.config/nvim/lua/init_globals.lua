@@ -32,6 +32,7 @@ keybind_group = require("internal.keybinds").keybind_group
 lsp = require("internal.lsp").lsp
 dap = require("internal.dap").adapter
 launch_configs = require("internal.dap").launch_configs
+refresh_configurations = require("internal.dap").refresh_configurations
 formatter = require("internal.formatting").formatter
 linter = require("internal.linting").linter
 

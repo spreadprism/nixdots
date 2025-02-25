@@ -16,7 +16,8 @@
         "t",
         "cwd",
         "joinpath",
-        "exec"
+        "exec",
+        "refresh_configurations"
   ],
     "diagnostics.disable": [
         "different-requires"

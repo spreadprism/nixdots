@@ -458,5 +458,6 @@
   "theme.bar.buttons.modules.cpuTemp.text": "#fab387",
   "theme.bar.buttons.modules.cpuTemp.border": "#fab387",
   "theme.osd.border.color": "#8ff0a4",
-  "notifications.timeout": 5000
+  "notifications.timeout": 5000,
+  "bar.volume.rightClick": "pavucontrol"
 }

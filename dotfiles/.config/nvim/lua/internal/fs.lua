@@ -84,4 +84,7 @@ M.exists = function(path)
 	end
 	return ok
 end
+M.basename = function(path)
+	return path:match("([^/]+)$")
+end
 return M

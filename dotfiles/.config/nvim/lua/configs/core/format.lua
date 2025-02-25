@@ -12,6 +12,7 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	end,
 })
 
+-- TODO: Replace with conform.nvim
 plugin("mhartington/formatter.nvim"):event("VeryLazy"):config(function()
 	local formatters = require("internal.formatting").list_formatters()
 	local filetype = {
