@@ -40,6 +40,7 @@
       "zoom"
       "obsidian"
       "1password"
+      "1password-cli"
       "yt-music"
       "microsoft-outlook"
       "podman-desktop"

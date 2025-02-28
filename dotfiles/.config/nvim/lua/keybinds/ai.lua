@@ -1,7 +1,14 @@
 keybind_group("<leader>a", "AI-assistant", {
-	keybind({ "n", "v" }, "p", "<cmd>CodeCompanion<cr>", "Prompt"),
-	keybind("n", "c", "<cmd>CodeCompanionChat Toggle<cr>", "Open Chat"),
-	keybind("n", "a", "<cmd>CodeCompanionActions<cr>", "Actions"),
+	keybind("n", "p", "<cmd>CodeCompanion<cr>", "Prompt"),
+	keybind("v", "p", function()
+		vim.ui.input({ prompt = "Prompt" }, function(input)
+			vim.cmd("'<,'>CodeCompanion " .. input)
+		end)
+	end, "Prompt"),
+	keybind("v", "e", "<cmd>CodeCompanion /explain<cr>", "Explain"),
+	keybind("v", "f", "<cmd>CodeCompanion @editor /fix<cr>", "Fix"),
+	keybind("v", "t", "<cmd>CodeCompanion @editor /tests<cr>", "Generate tests"),
+	keybind("n", "c", "<cmd>CodeCompanionChat Toggle<cr>", "Toggle chat"),
 }):register()
 
 keybind("i", "<M-l>", function()

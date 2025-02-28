@@ -1,4 +1,4 @@
--- print = vim.print
+print = vim.print
 cwd = vim.fn.getcwd
 joinpath = vim.fs.joinpath
 ---@param cmd string

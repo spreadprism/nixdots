@@ -115,6 +115,10 @@ zinit snippet OMZP::command-not-found
 zinit ice wait lucid
 zinit snippet OMZP::dirhistory
 # ------------------------------------------------------------
+if command -v op &> /dev/null
+then
+  source <(op completion zsh)
+fi
 if command -v poetry &> /dev/null
 then
   zinit ice wait lucid
@@ -213,18 +217,13 @@ zle -N next_dir
 # ------------------------------------------------------------
 # INFO: Aliases
 # ------------------------------------------------------------
-alias v='nvim'
-alias kssh='kitten ssh'
-alias vd='NVIM_APPNAME=nvim-dev nvim'
-alias nvim-rocks='NVIM_APPNAME=nvim-rocks nvim'
-alias vlr='NVIM_APPNAME=lazyrocks nvim'
-alias zz='cd -'
-alias ls='eza'
-alias cat='bat'
-alias lg='lazygit'
-# alias activate='conda_activate_current_dir'
-# alias deactivate='conda deactivate'
-alias tf='terraform'
+source ~/.alias.zsh
+# ------------------------------------------------------------
+# INFO: Load local configs
+# ------------------------------------------------------------
+if [ -f ~/.local.zsh ]; then
+  source ~/.local.zsh
+fi
 # ------------------------------------------------------------
 # INFO: Keybinds
 # ------------------------------------------------------------

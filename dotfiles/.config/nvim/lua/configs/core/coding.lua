@@ -172,3 +172,4 @@ plugin("echasnovski/mini.move"):event("VeryLazy"):opts({
 })
 plugin("numToStr/Comment.nvim"):event("VeryLazy"):opts({})
 plugin("roobert/search-replace.nvim"):event("VeryLazy"):opts({})
+plugin("echasnovski/mini.diff"):event("VeryLazy"):opts({})

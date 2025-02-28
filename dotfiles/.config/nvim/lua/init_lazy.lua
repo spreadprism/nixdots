@@ -27,3 +27,4 @@ require("lazy").setup(lazy_specs.get_specs(), {
 		hererocks = true,
 	},
 })
+

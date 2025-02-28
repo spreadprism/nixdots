@@ -18,6 +18,14 @@ local copilot = plugin("zbirenbaum/copilot.lua")
 		},
 		panel = { enabled = false },
 	})
+
+local GetChatAdapter = function()
+	if os.getenv("GEMINI_API_KEY") ~= nil then
+		return "gemini"
+	else
+		return "copilot"
+	end
+end
 plugin("olimorris/codecompanion.nvim")
 	:dependencies({
 		copilot,
@@ -26,12 +34,30 @@ plugin("olimorris/codecompanion.nvim")
 	})
 	:event("VeryLazy")
 	:opts({
+		diff = {
+			provider = "mini_diff",
+		},
+		display = {
+			chat = {
+				window = {
+					layout = "float",
+					border = "rounded",
+					height = 0.8,
+					width = 0.8,
+				},
+			},
+		},
 		strategies = {
 			chat = {
-				adapter = "copilot",
+				adapter = GetChatAdapter(),
+				keymaps = {
+					close = {
+						modes = { i = "<C-q>" },
+					},
+				},
 			},
 			inline = {
-				adapter = "copilot",
+				adapter = GetChatAdapter(),
 			},
 		},
 	})
