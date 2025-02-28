@@ -8,6 +8,7 @@ in
 
   imports = [
     (import ./nvim.nix args)
+    (import ./git.nix args)
   ];
 
   config = lib.mkIf cfg.enable {

@@ -1,5 +1,5 @@
-dap("coreclr", {
-	type = "executable",
-	command = "netcoredbg",
-	args = { "--interpreter=vscode" },
-}):mason("netcoredbg")
+-- dap("coreclr", {
+-- 	type = "executable",
+-- 	command = "netcoredbg",
+-- 	args = { "--interpreter=vscode" },
+-- }):mason("netcoredbg")

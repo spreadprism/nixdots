@@ -1,6 +1,7 @@
 format = '''
 ╭$hostname\[$directory\](${custom.conda-env-available})$conda$git_branch$git_status(
-├$python$golang$c$dotnet$rust$elixir$java$ruby$nodejs${custom.docker})${custom.osc7}
+├$python$golang$c$dotnet$rust$elixir$java$ruby$nodejs)(
+├$gcloud$kubernetes)
 ╰─$character
 '''
 add_newline = false
@@ -23,6 +24,15 @@ read_only_style = 'yellow'
 
 [directory.substitutions]
 '/run/media/avalon/Vault' = '~/Vault'
+
+[kubernetes]
+symbol = " "
+format = '(\([$symbol$context]($style)\))'
+disabled = false
+
+[gcloud]
+symbol = "󱇶 "
+format = '(\([$symbol$project]($style)\))'
 
 [conda]
 format = '\([$environment]($style)\)'
@@ -103,7 +113,3 @@ untracked = '\[${count}󰷊\]'
 deleted = '\[${count}\]'
 stashed = '\[${count}󰥥\]'
 staged = '\[${count}󰝒\]'
-
-[custom.osc7]
-command = "echo -ne '\\033]7:file://$(hostname -s)$(PWD)\\033\\\\'"
-when = "true"

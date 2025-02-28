@@ -12,10 +12,10 @@
     brews = [
       "pipx"
       "docker"
-      {
-        name = "nginx";
-        start_service = true;
-      }
+      # { # BUG: This always fails to start
+      #   name = "nginx";
+      #   start_service = true;
+      # }
       {
         name = "redis";
         start_service = true;

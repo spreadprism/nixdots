@@ -5,7 +5,9 @@ joinpath = vim.fs.joinpath
 ---@return string
 exec = function(cmd)
 	local handle = io.popen(cmd)
+	---@diagnostic disable-next-line: need-check-nil
 	local result = handle:read("*a")
+	---@diagnostic disable-next-line: need-check-nil
 	handle:close()
 	return result
 end
