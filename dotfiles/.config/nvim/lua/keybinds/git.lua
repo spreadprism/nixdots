@@ -7,4 +7,5 @@ keybind_group("<leader>g", "git"):register({
 	keybind("n", "c", "<cmd>Telescope git_commits<cr>", "search commits"),
 	-- keybind("n", "b", "<cmd>Gitsigns toggle_current_line_blame<cr>", "Toggle blame current line"),
 	keybind("n", "B", "<cmd>BlameToggle<cr>", "Toggle Git blame window"),
+	keybind("n", "d", "<cmd>DiffviewOpen<cr>", "Toggle Git blame window"),
 })
