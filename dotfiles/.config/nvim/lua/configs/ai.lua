@@ -34,9 +34,6 @@ plugin("olimorris/codecompanion.nvim")
 	})
 	:event("VeryLazy")
 	:opts({
-		diff = {
-			provider = "mini_diff",
-		},
 		display = {
 			chat = {
 				window = {
