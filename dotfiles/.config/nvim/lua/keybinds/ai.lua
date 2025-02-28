@@ -9,6 +9,7 @@ keybind_group("<leader>a", "AI-assistant", {
 	keybind("v", "f", "<cmd>CodeCompanion @editor /fix<cr>", "Fix"),
 	keybind("v", "t", "<cmd>CodeCompanion @editor /tests<cr>", "Generate tests"),
 	keybind("n", "c", "<cmd>CodeCompanionChat Toggle<cr>", "Toggle chat"),
+	keybind("n", "a", "<cmd>CodeCompanionActions<cr>", "Actions"),
 }):register()
 
 keybind("i", "<M-l>", function()
