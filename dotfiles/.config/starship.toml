@@ -34,6 +34,10 @@ disabled = false
 symbol = "󱇶 "
 format = '(\([$symbol$project]($style)\))'
 
+[aws]
+symbol = " "
+format = '(\([$symbol$profile]($style)\))'
+
 [conda]
 format = '\([$environment]($style)\)'
 # style = 'white'
