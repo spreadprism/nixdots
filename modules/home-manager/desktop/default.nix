@@ -17,7 +17,7 @@ in
         cargo
         nodejs_22
         pnpm
-        go
+        go_1_24
         wget
         php
         jdk17

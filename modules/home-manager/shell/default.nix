@@ -14,6 +14,7 @@ in
       ripgrep
       fzf
       jq
+      fd
       jqp
       bat
       eza

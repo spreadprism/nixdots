@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs;
     [
-      conda
+      python312Packages.conda
     ];
 
     home.file.".condarc".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.condarc";
