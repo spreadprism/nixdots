@@ -31,5 +31,6 @@ plugin("zaldih/themery.nvim")
 			vim.opt.rtp:append(plugin.dir .. "/packages/neovim")
 		end),
 		plugin("EdenEast/nightfox.nvim"),
+		plugin("tiagovla/tokyodark.nvim"),
 	})
-	:opts({ themes = { "tokyonight-storm", "aura-dark", "duskfox" } })
+	:opts({ themes = { "tokyonight-storm", "aura-dark", "duskfox", "tokyodark" } })

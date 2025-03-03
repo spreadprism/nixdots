@@ -4,13 +4,18 @@ local telescope = plugin("nvim-telescope/telescope.nvim")
 	:dependencies({ "nvim-lua/plenary.nvim", "nvim-telescope/telescope-dap.nvim" })
 	:config(function()
 		local telescope = require("telescope")
+		local actions = require("telescope.actions")
 		telescope.setup({
 			defaults = {
 				mappings = {
 					i = {
-						["<Tab>"] = require("telescope.actions").move_selection_next,
-						["<S-Tab>"] = require("telescope.actions").move_selection_previous,
-						["<C-q>"] = require("telescope.actions").close,
+						["<Tab>"] = actions.move_selection_next,
+						["<S-Tab>"] = actions.move_selection_previous,
+						["<M-m>"] = actions.toggle_selection,
+						["<C-q>"] = actions.close,
+					},
+					n = {
+						["<Tab>"] = actions.toggle_selection,
 					},
 				},
 			},
