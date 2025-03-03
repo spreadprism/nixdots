@@ -10,6 +10,17 @@ plugin("cvigilv/esqueleto.nvim"):event("VeryLazy"):opts({
 			["dirname"] = function()
 				return vim.fn.fnamemodify(vim.fn.expand("%:p:h"), ":t")
 			end,
+			["cwd"] = function()
+				return cwd()
+			end,
+			["cwd-basename"] = function()
+				return vim.fn.fnamemodify(cwd(), ":t")
+			end,
+			["gh-description"] = function()
+				return exec('gh repo view --json description -t "{{ .description }}"')
+			end,
 		},
 	},
 })
+
+-- TODO: Add completion source for esqueleto in oil buffers
