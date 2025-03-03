@@ -17,9 +17,12 @@ alias tfd='tf down'
 # ------------------------------------------------------------
 # INFO: kubernetes
 # ------------------------------------------------------------
-alias k='kubectl'
 alias kc='kubectx'
 alias kcu='kc -u'
+alias kn='kubens'
+alias knu='k config set-context --current --namespace='
+alias k='kubectl'
+alias ku='kcu && knu'
 # ------------------------------------------------------------
 # INFO: other
 # ------------------------------------------------------------

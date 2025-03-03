@@ -1,5 +1,5 @@
 format = '''
-╭$hostname\[$directory\](${custom.conda-env-available})$conda$git_branch$git_status(
+╭$hostname\[$directory\]$direnv$conda$git_branch$git_status(
 ├$python$golang$c$dotnet$rust$elixir$java$ruby$nodejs)(
 ├$gcloud$kubernetes)
 ╰─$character
@@ -27,7 +27,7 @@ read_only_style = 'yellow'
 
 [kubernetes]
 symbol = " "
-format = '(\([$symbol$context]($style)\))'
+format = '(\([$symbol$context(<[$namespace](green)>)]($style)\))'
 disabled = false
 
 [gcloud]
@@ -41,6 +41,17 @@ format = '(\([$symbol$profile]($style)\))'
 [conda]
 format = '\([$environment]($style)\)'
 # style = 'white'
+
+[direnv]
+# format = '\([$loaded](bold orange)\)'
+format = '\([($loaded )$allowed]($style)\)'
+disabled = false
+allowed_msg = ""
+not_allowed_msg = "󱧴"
+denied_msg = ""
+loaded_msg = '󰉍'
+unloaded_msg = ""
+symbol = ""
 
 [container]
 format = '[\($symbol \[$name\]]($style)\)'
