@@ -21,6 +21,8 @@ in
         pnpm
         go
         wget
+        curl
+        grpcurl
         php
         jdk17
       ];
