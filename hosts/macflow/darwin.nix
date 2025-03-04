@@ -10,6 +10,7 @@
   # TODO: Moves things to general darwin.nix
   homebrew = {
     brews = [
+      "go"
       "pipx"
       "docker"
       # { # BUG: This always fails to start

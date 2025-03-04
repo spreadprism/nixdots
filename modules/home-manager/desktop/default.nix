@@ -13,11 +13,10 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs;
       [
-        # TODO: Remove version to computer specific
         cargo
         nodejs_22
         pnpm
-        go_1_24
+        go
         wget
         php
         jdk17
