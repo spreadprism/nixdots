@@ -182,4 +182,6 @@ plugin("lewis6991/gitsigns.nvim"):event("VeryLazy"):opts({
 	},
 	current_line_blame_formatter = " | <author>, <author_time:%R>",
 })
-plugin("akinsho/git-conflict.nvim"):event("VeryLazy"):config(true)
+plugin("akinsho/git-conflict.nvim"):event("VeryLazy"):opts({
+	disable_diagnostics = true,
+})
