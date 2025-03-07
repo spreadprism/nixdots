@@ -32,5 +32,6 @@ plugin("zaldih/themery.nvim")
 		end),
 		plugin("EdenEast/nightfox.nvim"),
 		plugin("tiagovla/tokyodark.nvim"),
+		plugin("Mofiqul/dracula.nvim"),
 	})
-	:opts({ themes = { "tokyonight-storm", "aura-dark", "duskfox", "tokyodark" } })
+	:opts({ themes = { "tokyonight-storm", "aura-dark", "duskfox", "tokyodark", "dracula" } })

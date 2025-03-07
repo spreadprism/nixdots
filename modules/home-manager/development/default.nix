@@ -15,11 +15,10 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs;
       [
-        # TODO: Remove version to computer specific
         cargo
         nodejs_22
         pnpm
-        go
+        go_1_24
         wget
         curl
         grpcurl

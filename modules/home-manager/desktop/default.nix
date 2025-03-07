@@ -13,13 +13,7 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs;
       [
-        cargo
-        nodejs_22
-        pnpm
-        go
         wget
-        php
-        jdk17
       ];
   };
 }

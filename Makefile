@@ -12,5 +12,8 @@ else ifeq ($(UNAME),Darwin)
 endif
 
 
-switch:
+switch: update
 	@$(NIXCMD) switch --flake .
+
+update:
+	@nix flake update
