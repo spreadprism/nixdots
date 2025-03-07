@@ -1,5 +1,6 @@
 { lib, pkgs, stateVersion, username, hostname, ... }:
 {
+  ids.gids.nixbld = 350;
   environment.systemPackages = with pkgs;
   [
       nodejs_22
@@ -52,8 +53,4 @@
 
     };
   };
-
-  fonts.packages = [
-    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-  ];
 }

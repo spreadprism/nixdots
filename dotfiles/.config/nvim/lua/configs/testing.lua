@@ -49,10 +49,10 @@ plugin("nvim-neotest/neotest")
 			},
 		})
 		keybind_group("<leader>u", "Unit testing"):register({
-			keybind("n", "e", "<cmd>Neotest summary<cr>", "Tests explorer"),
-			keybind("n", "c", "<CMD>lua require('neotest').run.run()<CR>", "Test current function"),
-			keybind("n", "f", "<CMD>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", "Test current file"),
-			keybind("n", "p", "<CMD>lua require('neotest').run.run(vim.fn.getcwd())<CR>", "Test current project"),
-			keybind("n", "x", "<CMD>lua require('neotest').run.stop()<CR>", "Test current project"),
+			keybind("n", "e", "<cmd>Neotest summary<cr>", "tests explorer"),
+			keybind("n", "c", "<CMD>lua require('neotest').run.run()<CR>", "test current function"),
+			keybind("n", "f", "<CMD>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", "test current file"),
+			keybind("n", "p", "<CMD>lua require('neotest').run.run(vim.fn.getcwd())<CR>", "test current project"),
+			keybind("n", "x", "<CMD>lua require('neotest').run.stop()<CR>", "stop current test"),
 		})
 	end)
