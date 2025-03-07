@@ -21,6 +21,7 @@ in
         git
         gh
         ripgrep
+        nh
     ]
     ++ lib.optionals isLinux [
 
