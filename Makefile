@@ -1,4 +1,5 @@
 UNAME := $(shell uname -s)
+
 ifeq ($(UNAME),Linux)
 	DISTRO := $(cat /etc/os-release | grep ^ID | awk -F= '{print $2}')
 	ifeq ($(DISTRO),nixos)
@@ -12,8 +13,8 @@ else ifeq ($(UNAME),Darwin)
 endif
 
 
-switch: update
-	@$(NIXCMD) switch --flake .
+switch:
+	@$(NIXCMD) switch --flake . --experimental-features 'nix-command flakes'
 
-update:
+update: switch
 	@nix flake update
