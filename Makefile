@@ -11,7 +11,6 @@ ifeq ($(UNAME),Linux)
 		else
 			NIXCMD = nh os
 			FLAKEARG = .
-			SWITCH_FLAGS =
 		endif
 	else
 		ifeq ($(shell command -v nh 2> /dev/null),)
@@ -20,7 +19,6 @@ ifeq ($(UNAME),Linux)
 		else
 			NIXCMD = nh home
 			FLAKEARG = .
-			SWITCH_FLAGS =
 		endif
 		NIXINIT = nix run home-manager/master --experimental-features 'nix-command flakes' -- switch --flake .
 	endif
@@ -32,7 +30,7 @@ endif
 
 
 switch:
-	@$(NIXCMD) switch $(FLAKEARG) $(SWITCH_FLAGS)
+	@$(NIXCMD) switch $(FLAKEARG)
 
 update: switch
 	@nix flake update
