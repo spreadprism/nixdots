@@ -9,5 +9,5 @@
 
   shell.zsh.enable = true;
   development.enable = true;
-  terminal.kitty.enable = true;
+  terminal.kitty.enable = false;
 }
