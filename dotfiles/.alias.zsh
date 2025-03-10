@@ -22,7 +22,7 @@ alias kcu='kc -u'
 alias kn='kubens'
 alias knu='k config set-context --current --namespace='
 alias k='kubectl'
-alias ku='kcu && knu'
+alias ku='knu && kcu'
 # ------------------------------------------------------------
 # INFO: other
 # ------------------------------------------------------------
