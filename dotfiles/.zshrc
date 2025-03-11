@@ -237,7 +237,7 @@ fi
 eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 export DIRENV_LOG_FORMAT=
-eval "$(direnv hook zsh)"
+# eval "$(direnv hook zsh)"
 # ------------------------------------------------------------
 # INFO: Tmux
 # ------------------------------------------------------------

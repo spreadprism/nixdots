@@ -19,7 +19,6 @@ in
       bat
       eza
       zoxide
-      direnv
       lazygit
       kubectx
       wget
@@ -27,6 +26,11 @@ in
   ];
 
   programs.starship.enable = true;
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
   xdg.configFile."starship.toml".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/starship.toml";
   xdg.configFile."direnv/direnv.toml".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/direnv/direnv.toml";
 }
