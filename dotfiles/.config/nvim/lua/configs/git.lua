@@ -175,13 +175,16 @@ plugin("NeogitOrg/neogit")
 		},
 		graph_style = "unicode",
 	})
+-- TODO: Should be removed once gitsigns has better keybinds
 plugin("FabijanZulj/blame.nvim"):event("VeryLazy"):opts({})
+-- TODO: Add keybinds for better interaction with blame
 plugin("lewis6991/gitsigns.nvim"):event("VeryLazy"):opts({
 	current_line_blame_opts = {
 		delay = 10,
 	},
 	current_line_blame_formatter = " | <author>, <author_time:%R>",
 })
+-- TODO: add keybinds to solve conflicts
 plugin("akinsho/git-conflict.nvim"):event("VeryLazy"):opts({
 	disable_diagnostics = true,
 })

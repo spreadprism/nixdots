@@ -8,6 +8,9 @@
   };
 
   shell.zsh.enable = true;
+
   development.enable = true;
+  development.go.enable = true;
+
   terminal.kitty.enable = false;
 }
