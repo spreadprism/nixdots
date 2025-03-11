@@ -4,7 +4,7 @@ let
   args = { inherit pkgs lib config flakeRoot username; enabled = cfg.enable; };
 in
 {
-  options.development.enable = lib.mkEnableOption "Use development tools";
+  options.development.enable = lib.mkEnableOption "Install development tools";
 
   imports = [
     (import ./nvim.nix args)

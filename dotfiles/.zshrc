@@ -167,6 +167,15 @@ next_dir () {
   zle .accept-line
 }
 # ------------------------------------------------------------
+# INFO: Nix
+# ------------------------------------------------------------
+# loop over every file inside a directory
+for file in $HOME/.nix/shell/*; do
+  if [ -f "$file" ]; then
+    source "$file"
+  fi
+done
+# ------------------------------------------------------------
 # INFO: alias
 # ------------------------------------------------------------
 if [[ -f ~/.alias.zsh ]]; then
@@ -178,15 +187,6 @@ fi
 if [[ -f ~/.local.zsh ]]; then
   source ~/.local.zsh
 fi
-# ------------------------------------------------------------
-# INFO: Nix
-# ------------------------------------------------------------
-# loop over every file inside a directory
-for file in $HOME/.nix/shell/*; do
-  if [ -f "$file" ]; then
-    source "$file"
-  fi
-done
 # ------------------------------------------------------------
 # INFO: Widgets
 # ------------------------------------------------------------
