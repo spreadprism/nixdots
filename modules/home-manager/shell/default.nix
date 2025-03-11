@@ -22,6 +22,8 @@ in
       direnv
       lazygit
       kubectx
+      wget
+      curl
   ];
 
   programs.starship.enable = true;

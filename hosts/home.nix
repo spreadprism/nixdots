@@ -30,4 +30,7 @@ in
 
     ];
   };
+  home.file.".nix/shell/nix.sh".text = ''export PATH="$PATH:$HOME/.nix-profile/bin"'';
+  home.file.".nix/shell/darwin.sh".text = if isDarwin then
+  '' export PATH="$PATH:/opt/homebrew/bin" '' else '''';
 }

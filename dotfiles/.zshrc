@@ -14,23 +14,6 @@ source "${ZINIT_HOME}/zinit.zsh"
 # ------------------------------------------------------------
 # INFO: Paths
 # ------------------------------------------------------------
-if [ -d "$HOME/.nix-profile/bin" ]; then
-  export PATH="$PATH:$HOME/.nix-profile/bin"
-fi
-# ------------------------------------------------------------
-if [ -d "/opt/homebrew/bin" ]; then
-  export PATH="$PATH:/opt/homebrew/bin"
-fi
-# ------------------------------------------------------------
-if [ -d "$HOME/.local/share/nvim/mason/bin" ]; then
-  export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
-fi
-
-# ------------------------------------------------------------
-if [ -d "/var/lib/flatpak/exports/bin" ]; then
-  export PATH="$PATH:/var/lib/flatpak/exports/bin"
-fi
-# ------------------------------------------------------------
 if [ -d "/opt/google-cloud-cli/" ]; then
   export CLOUDSDK_ROOT_DIR=/opt/google-cloud-cli
   export CLOUDSDK_PYTHON=$(which python)
@@ -48,11 +31,6 @@ then
   esac
 fi
 # ------------------------------------------------------------
-if command -v pipx &> /dev/null
-then
-  export PATH="$PATH:$HOME/.local/bin"
-fi
-# ------------------------------------------------------------
 if command -v gem &> /dev/null
 then
   export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin/"
@@ -60,7 +38,7 @@ fi
 # # ------------------------------------------------------------
 if command -v go &> /dev/null
 then
-  export GOPATH="$HOME/go"
+  export GOPATH="$HOME/.go"
   export GOBIN="$GOPATH/bin"
   export PATH="$PATH:$GOBIN"
 fi
@@ -68,11 +46,6 @@ fi
 if command -v cargo &> /dev/null
 then
   export PATH="$HOME/.cargo/bin:$PATH"
-fi
-# ------------------------------------------------------------
-if command -v nvim &> /dev/null
-then
-  export NVIM_LISTEN_ADDRESS='/tmp/nvim.socket'
 fi
 # ------------------------------------------------------------
 # INFO: Enable completion init
@@ -192,15 +165,6 @@ setopt hist_find_no_dups
 # ------------------------------------------------------------
 # INFO: Utility functions
 # ------------------------------------------------------------
-conda_activate_current_dir () {
-  env_dir=$HOME/miniconda3/envs/
-  current_directory_name="${PWD##*/}"
-  if [ -d "$env_dir/$current_directory_name"_env ]; then
-    source ~/miniconda3/bin/activate "$current_directory_name"_env
-  elif [ -d "$env_dir/$current_directory_name" ]; then
-    source ~/miniconda3/bin/activate "$current_directory_name"
-  fi
-}
 previous_dir () {
   dirhistory_back
   zle .accept-line
@@ -210,20 +174,31 @@ next_dir () {
   zle .accept-line
 }
 # ------------------------------------------------------------
-# INFO: Widgets
+# INFO: alias
 # ------------------------------------------------------------
-zle -N previous_dir
-zle -N next_dir
-# ------------------------------------------------------------
-# INFO: Aliases
-# ------------------------------------------------------------
-source ~/.alias.zsh
+if [[ -f ~/.alias.zsh ]]; then
+  source ~/.alias.zsh
+fi
 # ------------------------------------------------------------
 # INFO: Load local configs
 # ------------------------------------------------------------
 if [[ -f ~/.local.zsh ]]; then
   source ~/.local.zsh
 fi
+# ------------------------------------------------------------
+# INFO: Nix
+# ------------------------------------------------------------
+# loop over every file inside a directory
+for file in $HOME/.nix/shell/*; do
+  if [ -f "$file" ]; then
+    source "$file"
+  fi
+done
+# ------------------------------------------------------------
+# INFO: Widgets
+# ------------------------------------------------------------
+zle -N previous_dir
+zle -N next_dir
 # ------------------------------------------------------------
 # INFO: Keybinds
 # ------------------------------------------------------------
@@ -267,7 +242,7 @@ init_nvm() {
 # ------------------------------------------------------------
 lazyload nvm -- 'init_nvm'
 lazyload nvim -- 'init_nvm'
-lazyload conda -- 'init_conda'
+# lazyload conda -- 'init_conda'
 # ------------------------------------------------------------
 # INFO: WSL
 # ------------------------------------------------------------
@@ -287,7 +262,6 @@ eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 export DIRENV_LOG_FORMAT=
 eval "$(direnv hook zsh)"
-conda_activate_current_dir
 # ------------------------------------------------------------
 # INFO: Tmux
 # ------------------------------------------------------------

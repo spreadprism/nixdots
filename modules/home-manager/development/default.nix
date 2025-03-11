@@ -9,7 +9,7 @@ in
   imports = [
     (import ./nvim.nix args)
     (import ./git.nix args)
-    (import ./conda.nix args)
+    (import ./languages args)
   ];
 
   config = lib.mkIf cfg.enable {
@@ -18,9 +18,6 @@ in
         cargo
         nodejs_22
         pnpm
-        go_1_24
-        wget
-        curl
         grpcurl
         php
         jdk17
