@@ -35,13 +35,6 @@ if command -v gem &> /dev/null
 then
   export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin/"
 fi
-# # ------------------------------------------------------------
-if command -v go &> /dev/null
-then
-  export GOPATH="$HOME/.go"
-  export GOBIN="$GOPATH/bin"
-  export PATH="$PATH:$GOBIN"
-fi
 # ------------------------------------------------------------
 if command -v cargo &> /dev/null
 then
@@ -216,22 +209,6 @@ function zvm_after_init() {
 # ------------------------------------------------------------
 # INFO: Lazy loading
 # ------------------------------------------------------------
-init_conda() {
-  # >>> conda initialize >>>
-  # !! Contents within this block are managed by 'conda init' !!
-  __conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-  if [ $? -eq 0 ]; then
-      eval "$__conda_setup"
-  else
-      if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "$HOME/miniconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
-      else
-        export PATH="$HOME/miniconda3/bin:$PATH"  # commented out by conda initialize
-      fi
-  fi
-  unset __conda_setup
-  # <<< conda initialize <<<
-}
 init_nvm() {
   if [ -d "~/.nvm" ]; then
     export NVM_DIR="$HOME/.nvm"
@@ -242,7 +219,6 @@ init_nvm() {
 # ------------------------------------------------------------
 lazyload nvm -- 'init_nvm'
 lazyload nvim -- 'init_nvm'
-# lazyload conda -- 'init_conda'
 # ------------------------------------------------------------
 # INFO: WSL
 # ------------------------------------------------------------
@@ -299,31 +275,6 @@ __tmux_new_session () {
   done
   echo $expected_number
 }
-
-# TODO: Move everflow code to specific file
-
-if [ -d '/Users/eduguay' ]; then
-  # The next line updates PATH for the Google Cloud SDK.
-  if [ -f '/Users/eduguay/.source/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/eduguay/.source/google-cloud-sdk/path.zsh.inc'; fi
-
-  # The next line enables shell command completion for gcloud.
-  if [ -f '/Users/eduguay/.source/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/eduguay/.source/google-cloud-sdk/completion.zsh.inc'; fi
-
-  export EFLOW_CONFIG=~/.eflow.config.json
-  export EFLOW_DOMAINS=~/.eflow.domains.json
-  export EFPAY_CONFIG=~/.efpay.config.json
-  export EF_FRONTEND_REVAMP_ROOT=~/Projects/frontend-revamp
-  export EF_WORKSPACE_PATH=~/Projects
-  export PATH="$PATH:/Users/eduguay/.dotnet/tools"
-  export NODE_OPTIONS="--max_old_space_size=16384 --no-experimental-fetch"
-
-  # HACK: The brew mysql@8.0 package doesn't link binaries to brew bin
-  export PATH="$PATH:/opt/homebrew/Cellar/mysql@8.0/8.0.40_2/bin"
-  export LANG="en_CA.UTF-8"
-  source <(devstack completion zsh)
-fi
-# ------------------------------
-
 
 ti = tmux_init() {
   if __tmux_available; then
