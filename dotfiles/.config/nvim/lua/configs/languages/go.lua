@@ -1,4 +1,8 @@
-lsp("gopls")
+lsp("gopls"):settings({
+	directoryFilters = {
+		"-/nix/**",
+	},
+})
 dap("delve"):initialize(false)
 formatter("go", "gofmt"):install(false)
 linter("go", "golangcilint", "golangci-lint")
