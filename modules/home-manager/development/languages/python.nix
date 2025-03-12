@@ -11,6 +11,11 @@ in
         micromamba
         pipx
         poetry
+      ] ++ lib.optionals config.development.enable [
+        python312Packages.debugpy
+        ruff
+        ruff-lsp
+        pyright
       ];
 
     home.file.".mambarc".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.mambarc";
@@ -19,7 +24,7 @@ in
     # INFO: micromamba
     ''
     export MAMBA_ROOT_PREFIX=~/.micromamba
-    alias conda=micromamba
+    alias mamba=micromamba
     eval "$(micromamba shell hook --shell zsh)"
     ''
     + # INFO: pipx

@@ -12,11 +12,11 @@
   development.enable = true;
   development.python.enable = true;
   development.go.enable = true;
+  development.rust.enable = true;
 
   desktop.enable = true;
   terminal.ghostty = {
     enable = true;
     install = false;
   };
-
 }

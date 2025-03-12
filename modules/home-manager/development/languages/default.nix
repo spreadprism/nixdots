@@ -6,5 +6,6 @@ in
   imports = [
     (import ./python.nix args)
     (import ./go.nix args)
+    (import ./rust.nix args)
   ];
 }
