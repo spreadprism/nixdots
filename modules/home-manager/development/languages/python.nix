@@ -1,4 +1,4 @@
-{ pkgs, lib, config, flakeRoot, username, ... }:
+{ pkgs, lib, config, flakeRoot, ... }:
 let
   cfg = config.development.python;
   devEnabled = config.development.enable;

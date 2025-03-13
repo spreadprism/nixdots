@@ -64,4 +64,9 @@ return {
 		color = "#E94D32",
 		name = "gitkeep",
 	},
+	["sqlc.yml"] = {
+		icon = "",
+		color = "#17DAE0",
+		name = "sqlc",
+	},
 }
