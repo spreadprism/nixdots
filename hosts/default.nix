@@ -25,6 +25,7 @@ let
         pkgs = inputs.nixpkgs.legacyPackages.${system};
         extraSpecialArgs = specialArgs;
         modules = [
+          inputs.sops-nix.homeManagerModule
           ../modules/home-manager
           ./home-manager.nix
           ./home.nix
@@ -49,6 +50,7 @@ let
         inherit system;
         inherit specialArgs;
         modules = [
+          inputs.sops-nix.nixosModules.sops
           ./configuration.nix
           ./${hostname}/configuration.nix
           ../modules/shared
@@ -88,6 +90,7 @@ let
           ./darwin.nix
           ./${hostname}/darwin.nix
           ../modules/shared
+          inputs.sops-nix.darwinModules.sops
           inputs.nix-homebrew.darwinModules.nix-homebrew
           {
             nix-homebrew = {

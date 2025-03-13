@@ -25,7 +25,6 @@
       #   link = true;
       # }
     ];
-
     casks = [
       "slack"
       "zoom"
@@ -34,7 +33,6 @@
       "1password-cli"
       "yt-music"
     ];
-
     masApps = {
 
     };
