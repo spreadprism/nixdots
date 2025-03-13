@@ -19,8 +19,6 @@ in
       bat
       eza
       zoxide
-      lazygit
-      kubectx
       wget
       curl
   ];

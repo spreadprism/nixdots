@@ -9,6 +9,7 @@ in
   imports = [
     (import ./nvim.nix args)
     (import ./git.nix args)
+    (import ./kubernetes.nix args)
     (import ./languages args)
   ];
 

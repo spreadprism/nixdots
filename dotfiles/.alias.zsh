@@ -15,15 +15,6 @@ alias tfp='tf plan'
 alias tfu='tf up'
 alias tfd='tf down'
 # ------------------------------------------------------------
-# INFO: kubernetes
-# ------------------------------------------------------------
-alias kc='kubectx'
-alias kcu='kc -u'
-alias kn='kubens'
-alias knu='k config set-context --current --namespace='
-alias k='kubectl'
-alias ku='knu && kcu'
-# ------------------------------------------------------------
 # INFO: other
 # ------------------------------------------------------------
 alias lg='lazygit'
