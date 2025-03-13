@@ -22,7 +22,7 @@
       inherit (self) outputs;
       stateVersion = "24.05";
       username = "avalon"; # INFO: Default username for most hosts
-      in
+    in
     {
       inherit (import ./hosts { inherit inputs outputs stateVersion username; })
         nixosConfigurations
