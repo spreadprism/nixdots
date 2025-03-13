@@ -4,36 +4,26 @@
   environment.systemPackages = with pkgs;
   [
       nodejs_22
-      podman
-      podman-compose
+      protobuf
   ];
 
   # TODO: Moves things to general darwin.nix
   homebrew = {
     brews = [
-      "pipx"
       "docker"
-      # { # BUG: This always fails to start
-      #   name = "nginx";
+      # {
+      #   name = "redis";
       #   start_service = true;
       # }
-      {
-        name = "redis";
-        start_service = true;
-      }
-      {
-        name = "mysql@8.0";
-        start_service = true;
-        link = true;
-      }
-      {
-        name = "dotnet@8";
-        link = true;
-      }
-      "protobuf"
-      "bazelisk"
-      "minikube"
-      "helm"
+      # {
+      #   name = "mysql@8.0";
+      #   start_service = true;
+      #   link = true;
+      # }
+      # {
+      #   name = "dotnet@8";
+      #   link = true;
+      # }
     ];
 
     casks = [
@@ -43,10 +33,7 @@
       "1password"
       "1password-cli"
       "yt-music"
-      "microsoft-outlook"
-      "podman-desktop"
     ];
-
 
     masApps = {
 

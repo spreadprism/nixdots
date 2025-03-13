@@ -7,10 +7,11 @@ in
   options.development.enable = lib.mkEnableOption "Install development tools";
 
   imports = [
-    (import ./nvim.nix args)
     (import ./git.nix args)
+    (import ./nvim.nix args)
     (import ./kubernetes.nix args)
     (import ./languages args)
+    (import ./podman.nix args)
   ];
 
   config = lib.mkIf cfg.enable {

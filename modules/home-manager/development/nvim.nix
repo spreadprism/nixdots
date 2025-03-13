@@ -1,9 +1,9 @@
 { pkgs, lib, config, flakeRoot, ... }:
 let
-  dev_enabled = config.development.enable;
+  devEnabled = config.development.enable;
 in
 {
-  config = lib.mkIf dev_enabled {
+  config = lib.mkIf devEnabled {
     home.packages = with pkgs;
       [
         neovim

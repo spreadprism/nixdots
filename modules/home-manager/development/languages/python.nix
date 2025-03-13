@@ -1,6 +1,7 @@
 { pkgs, lib, config, flakeRoot, username, ... }:
 let
   cfg = config.development.python;
+  devEnabled = config.development.enable;
 in
 {
   options.development.python.enable = lib.mkEnableOption "Add python development support";
@@ -11,7 +12,7 @@ in
         micromamba
         pipx
         poetry
-      ] ++ lib.optionals config.development.enable [
+      ] ++ lib.optionals devEnabled [
         python312Packages.debugpy
         ruff
         ruff-lsp
