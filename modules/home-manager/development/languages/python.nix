@@ -16,7 +16,7 @@ in
         python312Packages.debugpy
         ruff
         ruff-lsp
-        pyright
+        basedpyright
       ];
 
     home.file.".mambarc".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.mambarc";
