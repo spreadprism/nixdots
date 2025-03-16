@@ -4,6 +4,7 @@ let
   homeDirectory = if isDarwin
     then "/Users/${username}"
     else "/home/${username}";
+  flakeRoot = "${homeDirectory}/nixdots";
 in
 {
   # INFO: Let home-manager manage itself
@@ -30,7 +31,11 @@ in
 
     ];
   };
-  home.file.".nix/shell/nix.sh".text = ''export PATH="$PATH:$HOME/.nix-profile/bin"'';
+  home.file.".nix/shell/nix.sh".text = ''
+  export PATH="$HOME/.nix-profile/bin:$PATH:"
+  export PATH="$PATH:$HOME/.nix/bin"
+  '';
   home.file.".nix/shell/darwin.sh".text = if isDarwin then
   '' export PATH="$PATH:/opt/homebrew/bin" '' else '''';
+  home.file.".nix/bin/nixdots".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/nixdots";
 }
