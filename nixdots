@@ -14,37 +14,40 @@ function main
   case $CMD in
     switch) switch;;
     init) init;;
+    search) search;;
+    clean) clean;;
     *) usage;;
   esac
 }
 
 function switch
 {
+  pushd $FLAKE_ROOT
   if [ "$UPATE_LOCKFILE" = true ]; then
     nix flake update
   fi
   case "$PLATFORM-$DISTRO-$NH_AVAILABLE" in
     linux-nixos-true)
-      nh os switch $FLAKE_ROOT
+      nh os switch .
       ;;
     linux-nixos-false)
-      sudo nixos-rebuild switch --flake $FLAKE_ROOT
+      sudo nixos-rebuild switch --flake .
       ;;
     linux-*-true)
-      nh home switch $FLAKE_ROOT
+      nh home switch .
       ;;
     linux-*-false)
       if [ $(command -v home-manager)]; then
-        home-manager switch --flake $FLAKE_ROOT
+        home-manager switch --flake .
       else
-        nix run home-manager switch -- --flake $FLAKE_ROOT
+        nix run home-manager switch -- --flake .
       fi
       ;;
     darwin-*)
       if [ $(command -v nix-darwin) ]; then
-        darwin-rebuild switch --flake $FLAKE_ROOT
+        darwin-rebuild switch --flake .
       else
-        nix run nix-darwin#darwin-rebuild -- switch --flake $FLAKE_ROOT
+        nix run nix-darwin#darwin-rebuild -- switch --flake .
       fi
       ;;
     *)
@@ -52,11 +55,28 @@ function switch
       exit 1
       ;;
   esac
+  popd
+}
 
+function search
+{
+  if [ "$NH_AVAILABLE" = true ]; then
+    nh search "${ARGS[1]}" | bat --pager="less -RF +G"
+  else
+    # TODO: implement
+    echo "not implemented"
+  fi
+}
+
+function clean
+{
+  # TODO: implement
+  return
 }
 
 function init
 {
+  # TODO: implement
   ensure_nix_available
   echo "init"
 }
@@ -79,14 +99,15 @@ function ensure_nix_available
 
 function usage
 {
+  # TODO: Add help msg
   return
 }
 
-
+ARGS=()
 function parse_args
 {
   # positional args
-  args=()
+  ARGS=()
   # named args
   while [ "$1" != "" ]; do
     case "$1" in
@@ -104,16 +125,16 @@ function parse_args
         exit
         ;;
       *)
-        args+=("$1")
+        ARGS+=("$1")
     esac
     shift # move to next kv pair
   done
 
   # restore positional args
-  set -- "${args[@]}"
+  set -- "${ARGS[@]}"
 
   # positional args
-  CMD="${args[0]}"
+  CMD="${ARGS[0]}"
 
   # set default
   if [[ -z "$CMD" ]]; then
