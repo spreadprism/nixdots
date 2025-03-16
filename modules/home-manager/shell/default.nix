@@ -21,6 +21,7 @@ in
       zoxide
       wget
       curl
+      watch
   ];
 
   programs.starship.enable = true;
