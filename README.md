@@ -1,4 +1,5 @@
 # nixdots
+## helper script *nixdots*
 ## hosts
 - [archxps](./hosts/archxps): Primary laptop
 - [macflow](./hosts/macflow): Work computer
