@@ -1,8 +1,7 @@
-{ pkgs, lib, config, flakeRoot, ... }:
+{ pkgs, lib, config, flakeRoot, username, ... }:
 let
   cfg = config.shell.zsh;
-  separator = ''# ------------------------------------------------------------
-  '';
+  args = { inherit pkgs lib config flakeRoot username; };
 in
 {
   options.shell.zsh.enable = lib.mkEnableOption "Use zsh";
@@ -23,20 +22,9 @@ in
     home.file.".zshrc".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.zshrc";
     home.file.".alias.zsh".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.alias.zsh";
 
-    # # aliases
     # home.file.".nix/shell/alias.zsh".source = ./alias.zsh;
-    # # plugins
-    # home.file.".nix/shell/plugins.zsh".text = with pkgs;
-    # ''
-    # export FZF\_DEFAULT\_OPTS='--bind=shift-tab:up,tab:down'
-    # source ${zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-    # ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion)
-    # '' + separator + ''
-    # fpath=(${zsh-completions}/share/zsh/site-functions $fpath)
-    # '' + separator +
-    # builtins.readFile ./plugins/sudo.zsh
-    # + separator + ''
-    # source ${zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    # '';
   };
+  # imports = [
+  #   (import ./plugins args)
+  # ];
 }
