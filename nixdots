@@ -20,6 +20,9 @@ function main
 
 function switch
 {
+  if [ "$UPATE_LOCKFILE" = true ]; then
+    nix flake update
+  fi
   case "$PLATFORM-$DISTRO-$NH_AVAILABLE" in
     linux-nixos-true)
       nh os switch $FLAKE_ROOT
@@ -86,21 +89,24 @@ function parse_args
   args=()
   # named args
   while [ "$1" != "" ]; do
-      case "$1" in
-          --daemon)
-            USE_DAEMON=true
-          ;;
-          --no-daemon)
-            USE_DAEMON=false
-          ;;
-          -h | --help )
-            usage;
-            exit
-          ;;
-          *)
-            args+=("$1")
-      esac
-      shift # move to next kv pair
+    case "$1" in
+      --daemon)
+        USE_DAEMON=true
+        ;;
+      --no-daemon)
+        USE_DAEMON=false
+        ;;
+      -u | --update)
+        UPATE_LOCKFILE=true
+        ;;
+      -h | --help )
+        usage;
+        exit
+        ;;
+      *)
+        args+=("$1")
+    esac
+    shift # move to next kv pair
   done
 
   # restore positional args
@@ -111,10 +117,13 @@ function parse_args
 
   # set default
   if [[ -z "$CMD" ]]; then
-      CMD=switch;
+    CMD=switch;
   fi
   if [[ -z "$USE_DAEMON" ]]; then
-      USE_DAEMON=true;
+    USE_DAEMON=true;
+  fi
+  if [[ -z "$UPATE_LOCKFILE" ]]; then
+    UPATE_LOCKFILE=false;
   fi
 }
 
