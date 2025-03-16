@@ -152,9 +152,16 @@ next_dir () {
   zle .accept-line
 }
 # ------------------------------------------------------------
-# INFO: Nix
+# INFO: tools/langs shell configs
 # ------------------------------------------------------------
-# loop over every file inside a directory
+for file in $HOME/.nix/shell/*; do
+  if [ -f "$file" ]; then
+    source "$file"
+  fi
+done
+# ------------------------------------------------------------
+# INFO: tools/langs completion
+# ------------------------------------------------------------
 for file in $HOME/.nix/shell/*; do
   if [ -f "$file" ]; then
     source "$file"

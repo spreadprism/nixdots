@@ -4,7 +4,7 @@ let
 in
 {
   imports = [
-      (import ./zsh.nix args)
+      (import ./zsh args)
       (import ./bash.nix args)
       (import ./tmux.nix args)
   ];

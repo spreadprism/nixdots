@@ -1,0 +1,1 @@
+USER_NIX_ROOT=$HOME/.nix
