@@ -31,14 +31,14 @@ function switch
       nh home switch $FLAKE_ROOT
       ;;
     linux-*-false)
-      if [ command -v home-manager]; then
+      if [ $(command -v home-manager)]; then
         home-manager switch --flake $FLAKE_ROOT
       else
         nix run home-manager switch -- --flake $FLAKE_ROOT
       fi
       ;;
     darwin-*)
-      if [ command -v nix-darwin ]; then
+      if [ $(command -v nix-darwin) ]; then
         darwin-rebuild switch --flake $FLAKE_ROOT
       else
         nix run nix-darwin#darwin-rebuild -- switch --flake $FLAKE_ROOT
@@ -65,12 +65,12 @@ function ensure_nix_available
   fi
   if [ "$PLATFORM" = "linux" ]; then
     if [ "$USE_DAEMON" ]; then
-      sh <(curl -L https://nixos.org/nix/install) --daemon
+      curl -L https://nixos.org/nix/install | sh -- --daemon
     else
-      sh <(curl -L https://nixos.org/nix/install) --no-daemon
+      curl -L https://nixos.org/nix/install | sh -- --no-daemon
     fi
   else
-    sh <(curl -L https://nixos.org/nix/install)
+    curl -L https://nixos.org/nix/install | sh
   fi
 }
 
