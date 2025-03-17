@@ -1,30 +1,53 @@
 {
   pkgs,
   lib,
-  config,
   flakeRoot,
-  username,
   ...
 }: let
-  args = {inherit pkgs lib config flakeRoot username;};
+  inherit (lib) mkOption types;
 in {
   imports = [
-    (import ./zsh.nix args)
-    (import ./bash.nix args)
-    (import ./tmux/tmux.nix args)
+    ./zsh/zsh.nix
+    ./bash.nix
+    ./tools/direnv.nix
+    ./tools/dircolor.nix
+    ./tools/tmux.nix
+    ./tools/starship.nix
+    ./tools/zoxide.nix
   ];
 
-  home = {
-    sessionPath = [
-      flakeRoot
-      "$HOME/.nix-profile/bin"
-    ];
-    shellAliases = {
-      ls = "eza";
-      cat = "bat";
-      w = "watch -n 1";
+  options.shell = {
+    supported = mkOption {
+      type = types.listOf (types.enum ["zsh" "bash"]);
+      default = ["zsh"];
     };
-    packages = with pkgs; [
+    paths = mkOption {
+      type = with types; listOf str;
+      default = [];
+    };
+    aliases = mkOption {
+      type = with types; attrsOf str;
+      default = {};
+    };
+    extra = mkOption {
+      type = with types; listOf str;
+      default = [];
+    };
+  };
+
+  config = {
+    shell = {
+      aliases = {
+        ls = "eza";
+        cat = "bat";
+        w = "watch -n 1";
+      };
+      paths = [
+        flakeRoot
+        "$HOME/.nix-profile/bin"
+      ];
+    };
+    home.packages = with pkgs; [
       ripgrep
       fzf
       jq
@@ -38,15 +61,4 @@ in {
       watch
     ];
   };
-
-  programs = {
-    starship.enable = true;
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
-  };
-
-  xdg.configFile."starship.toml".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/starship.toml";
-  xdg.configFile."direnv/direnv.toml".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/direnv/direnv.toml";
 }

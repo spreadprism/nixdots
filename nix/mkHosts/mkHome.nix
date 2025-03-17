@@ -1,35 +1,46 @@
 {
-  nixpkgs,
   inputs,
-  hostname,
-  defaultSystem,
+  outputs,
   extraArgs,
-  extraModules,
   ...
 }: let
-  hostCfg =
-    if builtins.pathExists ../../hosts/${hostname}
-    then import ../../hosts/${hostname} {}
-    else {};
-  getOrDefault = key: default:
-    if builtins.hasAttr key hostCfg
-    then builtins.getAttr key hostCfg
-    else default;
-  system = getOrDefault "system" "x86_64-linux";
-  username = getOrDefault "username" "avalon";
-
-  modules = [../defaults/home.nix ../../hosts/${hostname}/home.nix] // extraModules;
-  extraSpecialArgs =
-    {
-      home-manager = true;
-      inherit username system hostname;
-    }
-    // extraArgs;
+  nixpkgs = inputs.nixpkgs;
 in {
-  name = "${username}@${hostname}";
-  value = inputs.home-manager.lib.homeManagerConfiguration {
-    inherit modules;
-    inherit extraSpecialArgs;
+  mkHome = hostname: let
+    hostCfg =
+      if builtins.pathExists ../../hosts/${hostname}
+      then import ../../hosts/${hostname} {}
+      else {};
+    getOrDefault = key: default:
+      if builtins.hasAttr key hostCfg
+      then builtins.getAttr key hostCfg
+      else default;
+
+    system = getOrDefault "system" "x86_64-linux";
+    username = getOrDefault "username" "avalon";
+
+    modules = [
+      ../defaults/home.nix
+      ../../hosts/${hostname}/home.nix
+    ];
     pkgs = nixpkgs.legacyPackages.${system};
+    inherit (pkgs.stdenv) isDarwin;
+    homeDirectory =
+      if isDarwin
+      then "/Users/${username}"
+      else "/home/${username}";
+    flakeRoot = "${homeDirectory}/nixdots";
+    extraSpecialArgs =
+      {
+        inherit username system hostname flakeRoot;
+      }
+      // extraArgs;
+  in {
+    name = "${username}@${hostname}";
+    value = inputs.home-manager.lib.homeManagerConfiguration {
+      inherit modules;
+      inherit extraSpecialArgs;
+      inherit pkgs;
+    };
   };
 }

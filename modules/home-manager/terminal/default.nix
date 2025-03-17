@@ -1,15 +1,13 @@
-{
-  pkgs,
-  lib,
-  config,
-  flakeRoot,
-  username,
-  ...
-}: let
-  args = {inherit pkgs lib config flakeRoot username;};
+{lib, ...}: let
+  inherit (lib) mkOption types;
 in {
   imports = [
-    (import ./kitty.nix args)
-    (import ./ghostty.nix args)
+    ./ghostty.nix
   ];
+  options = {
+    terminal = mkOption {
+      type = types.listOf (types.enum ["" "ghostty"]);
+      default = "";
+    };
+  };
 }

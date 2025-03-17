@@ -4,20 +4,17 @@
   config,
   flakeRoot,
   ...
-}: let
-  cfg = config.development.python;
-  devEnabled = config.development.enable;
-in {
-  options.development.python.enable = lib.mkEnableOption "Add python development support";
+}: {
+  options.python = lib.mkEnableOption "Add python support";
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf config.python {
     home.packages = with pkgs;
       [
         micromamba
         pipx
         poetry
       ]
-      ++ lib.optionals devEnabled [
+      ++ lib.optionals config.development.enable [
         python312Packages.debugpy
         ruff
         ruff-lsp
@@ -25,17 +22,25 @@ in {
       ];
 
     home.file.".mambarc".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.mambarc";
+    shell = {
+      aliases = {
+        mamba = "micromamba";
+      };
+      paths = [
+        "$HOME/.local/bin"
+      ];
+    };
 
-    home.file.".nix/shell/python.sh".text =
-      # INFO: micromamba
-      ''
-        export MAMBA_ROOT_PREFIX=~/.micromamba
-        alias mamba=micromamba
-        eval "$(micromamba shell hook --shell zsh)"
-      ''
-      + # INFO: pipx
-      ''
-        export PATH="$PATH:$HOME/.local/bin"
-      '';
+    # home.file.".nix/shell/python.sh".text =
+    #   # INFO: micromamba
+    #   ''
+    #     export MAMBA_ROOT_PREFIX=~/.micromamba
+    #     alias mamba=micromamba
+    #     eval "$(micromamba shell hook --shell zsh)"
+    #   ''
+    #   + # INFO: pipx
+    #   ''
+    #     export PATH="$PATH:$HOME/.local/bin"
+    #   '';
   };
 }

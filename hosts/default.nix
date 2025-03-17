@@ -9,35 +9,43 @@
 
   nixos_hosts = builtins.filter (host: builtins.pathExists ./${host}/configuration.nix) all_dirs;
   macos_hosts = builtins.filter (host: builtins.pathExists ./${host}/darwin.nix) all_dirs;
-  home_only_hosts = builtins.filter (host: builtins.pathExists ./${host}/home.nix && !builtins.elem host (nixos_hosts ++ macos_hosts)) all_dirs;
+  home_hosts = builtins.filter (host: builtins.pathExists ./${host}/home.nix && !builtins.elem host (nixos_hosts ++ macos_hosts)) all_dirs;
 
   default_username = "avalon";
   args = {inherit inputs outputs stateVersion;};
-  mkHome = hostname: default_username: let
-    host_conf = import ../hosts/${hostname} args;
-    system =
-      if builtins.hasAttr "system" host_conf
-      then host_conf.system
-      else "x86_64-linux";
-    username =
-      if builtins.hasAttr "username" host_conf
-      then host_conf.username
-      else default_username;
-    specialArgs = args // {inherit username system hostname;};
-  in {
-    name = "${username}@${hostname}";
-    value = inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = inputs.nixpkgs.legacyPackages.${system};
-      extraSpecialArgs = specialArgs;
-      modules = [
-        inputs.sops-nix.homeManagerModule
-        ../modules/home-manager
-        ./home-manager.nix
-        ./home.nix
-        ./${hostname}/home.nix
-      ];
-    };
-  };
+  inherit
+    (import ../nix/mkHosts/mkHome.nix {
+      inherit inputs;
+      inherit outputs;
+      extraArgs = args;
+    })
+    mkHome
+    ;
+  # mkHome = hostname: default_username: let
+  #   host_conf = import ../hosts/${hostname} args;
+  #   system =
+  #     if builtins.hasAttr "system" host_conf
+  #     then host_conf.system
+  #     else "x86_64-linux";
+  #   username =
+  #     if builtins.hasAttr "username" host_conf
+  #     then host_conf.username
+  #     else default_username;
+  #   specialArgs = args // {inherit username system hostname;};
+  # in {
+  #   name = "${username}@${hostname}";
+  #   value = inputs.home-manager.lib.homeManagerConfiguration {
+  #     pkgs = inputs.nixpkgs.legacyPackages.${system};
+  #     extraSpecialArgs = specialArgs;
+  #     modules = [
+  #       inputs.sops-nix.homeManagerModule
+  #       ../modules/home-manager
+  #       ./home-manager.nix
+  #       ./home.nix
+  #       ./${hostname}/home.nix
+  #     ];
+  #   };
+  # };
   mkNixOS = hostname: default_username: let
     host_conf = import ../hosts/${hostname} args;
     system =
@@ -122,7 +130,7 @@
     };
   };
 in {
-  homeConfigurations = builtins.listToAttrs (map (host_path: mkHome (builtins.baseNameOf host_path) default_username) home_only_hosts);
+  homeConfigurations = builtins.listToAttrs (map (host_path: mkHome (builtins.baseNameOf host_path)) home_hosts);
   nixosConfigurations = builtins.listToAttrs (map (host_path: mkNixOS (builtins.baseNameOf host_path) default_username) nixos_hosts);
   darwinConfigurations = builtins.listToAttrs (map (host_path: mkMacOS (builtins.baseNameOf host_path) default_username) macos_hosts);
 }

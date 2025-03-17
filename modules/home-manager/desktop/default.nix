@@ -1,26 +1,11 @@
-{
-  pkgs,
-  lib,
-  config,
-  flakeRoot,
-  username,
-  ...
-}: let
-  cfg = config.development;
-  args = {
-    inherit pkgs lib config flakeRoot username;
-    enabled = cfg.enable;
-  };
+{lib, ...}: let
+  inherit (lib) mkOption types;
 in {
-  options.desktop.enable = lib.mkEnableOption "Configure desktop";
-
   imports = [
-    (import ./hyprland.nix args)
+    ./hyprland.nix
   ];
-
-  config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      wget
-    ];
+  options.desktop = mkOption {
+    type = types.enum ["none" "hyprland"];
+    default = ["none"];
   };
 }

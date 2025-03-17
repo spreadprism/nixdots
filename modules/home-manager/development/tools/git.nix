@@ -12,7 +12,6 @@ in {
       git
     ]
     ++ lib.optionals devEnabled [
-      lazygit
       gitleaks
     ];
 

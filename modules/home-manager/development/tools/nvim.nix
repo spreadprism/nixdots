@@ -18,8 +18,13 @@ in {
 
     xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/nvim";
     xdg.configFile."figlet/ANSI_Shadow.flf".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/figlet/ANSI Shadow.flf";
-
-    home.file.".nix/shell/mason.sh".text = ''export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"'';
-    home.file.".nix/shell/nvim.sh".text = ''export NVIM_LISTEN_ADDRESS=/tmp/nvim.socket'';
+    shell = {
+      paths = [
+        "$HOME/.local/share/nvim/mason/bin"
+      ];
+      extra = [
+        "export NVIM_LISTEN_ADDRESS=/tmp/nvim.socket"
+      ];
+    };
   };
 }

@@ -35,6 +35,10 @@
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
     overlays = import ./overlays {inherit inputs;};
+    nixosModules = import ./modules/nixos;
+    homeManagerModules = import ./modules/home-manager;
+    flakeRoot = builtins.toString ./.;
+    dotfiles = ./dotfiles;
     inherit
       (import ./hosts {inherit inputs outputs stateVersion;})
       nixosConfigurations

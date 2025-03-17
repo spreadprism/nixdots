@@ -5,18 +5,24 @@
     ];
   };
 
-  # INFO: shell
-  shell.zsh.enable = true;
-  # INFO: enable development features (Lsp, dap, linters)
+  shell.supported = ["zsh"];
+  desktop = "hyprland";
+  terminal = ["ghostty"];
   development.enable = true;
-  # INFO: Languages
-  development.python.enable = true;
-  development.go.enable = true;
-  development.rust.enable = true;
-  # INFO: Desktop configs
-  desktop.enable = true;
-  terminal.ghostty = {
-    enable = true;
-    install = false;
-  };
+
+  python = true;
+  go = true;
+  rust = true;
+
+  # # INFO: enable development features (Lsp, dap, linters)
+  # development.enable = true;
+  # # INFO: Languages
+  # development.python.enable = true;
+  # development.go.enable = true;
+  # development.rust.enable = true;
+  # # INFO: Desktop configs
+  # terminal.ghostty = {
+  #   enable = true;
+  #   install = false;
+  # };
 }
