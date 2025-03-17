@@ -18,7 +18,5 @@ in {
         gke-gcloud-auth-plugin
       ]))
     ];
-    home.file.".nix/shell/gcloud.sh".text = ''
-    '';
   };
 }

@@ -11,5 +11,9 @@ in {
       podman
       podman-compose
     ];
+    shell.aliases = {
+      pm = "podman";
+      pmc = "podman compose";
+    };
   };
 }

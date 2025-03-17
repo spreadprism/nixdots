@@ -3,23 +3,21 @@
   config,
   lib,
   ...
-}: let
-  devEnabled = config.development.enable;
-in {
-  config = lib.mkIf devEnabled {
+}: {
+  config = lib.mkIf config.development.enable {
     home.packages = with pkgs; [
       kubectl
       kubectx
       kubernetes-helm
       minikube
     ];
-    home.file.".nix/shell/kubernetes.sh".text = ''
-      alias kc='kubectx'
-      alias kcu='kc -u'
-      alias kn='kubens'
-      alias knu='k config set-context --current --namespace='
-      alias k='kubectl'
-      alias ku='knu && kcu'
-    '';
+    shell.aliases = {
+      kc = "kubectx";
+      kcu = "kc -u";
+      kn = "kubens";
+      knu = "k config set-context --current --namespace=";
+      k = "kubectl";
+      ku = "knu && kcu";
+    };
   };
 }

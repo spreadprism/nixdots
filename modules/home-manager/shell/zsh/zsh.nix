@@ -53,7 +53,6 @@ in {
           (builtins.readFile ./keybinds.zsh)
         ];
         envExtra = lib.concatStringsSep "\n" (builtins.concatLists [env aliases config.shell.extra]);
-
       };
     };
   };
