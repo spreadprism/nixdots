@@ -4,12 +4,19 @@
   config,
   ...
 }: {
-  options.go = lib.mkEnableOption "enable go";
+  options.go = rec {
+    enable = lib.mkEnableOption "enable go";
+    pkg = lib.mkOption {
+      type = lib.types.package;
+      default = pkgs.go;
+    };
+    defaults = enable;
+  };
 
-  config = lib.mkIf config.go {
+  config = lib.mkIf config.go.enable {
     home.packages = with pkgs;
       [
-        go_1_24
+        config.go.pkg
       ]
       ++ lib.optionals config.development.enable [
         gopls

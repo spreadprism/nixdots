@@ -4,8 +4,8 @@
   config,
   ...
 }:{
-  options.rust = lib.mkEnableOption "add rust support";
-  config = lib.mkIf config.rust {
+  options.rust.enable = lib.mkEnableOption "add rust support";
+  config = lib.mkIf config.rust.enable {
     home.packages = with pkgs;
       [
         cargo

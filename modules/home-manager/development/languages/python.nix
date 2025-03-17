@@ -5,9 +5,9 @@
   flakeRoot,
   ...
 }: {
-  options.python = lib.mkEnableOption "Add python support";
+  options.python.enable = lib.mkEnableOption "Add python support";
 
-  config = lib.mkIf config.python {
+  config = lib.mkIf config.python.enable {
     home.packages = with pkgs;
       [
         micromamba
