@@ -1,10 +1,15 @@
-{ lib, pkgs, stateVersion, username, hostname, ... }:
 {
+  lib,
+  pkgs,
+  stateVersion,
+  username,
+  hostname,
+  ...
+}: {
   ids.gids.nixbld = 350;
-  environment.systemPackages = with pkgs;
-  [
-      nodejs_22
-      protobuf
+  environment.systemPackages = with pkgs; [
+    nodejs_22
+    protobuf
   ];
 
   # TODO: Moves things to general darwin.nix
@@ -34,7 +39,6 @@
       "yt-music"
     ];
     masApps = {
-
     };
   };
 }

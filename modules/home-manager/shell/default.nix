@@ -1,12 +1,17 @@
-{ pkgs, lib, config, flakeRoot, username, ... }:
-let
-  args = { inherit pkgs lib config flakeRoot username; };
-in
 {
+  pkgs,
+  lib,
+  config,
+  flakeRoot,
+  username,
+  ...
+}: let
+  args = {inherit pkgs lib config flakeRoot username;};
+in {
   imports = [
-      (import ./zsh.nix args)
-      (import ./bash.nix args)
-      (import ./tmux/tmux.nix args)
+    (import ./zsh.nix args)
+    (import ./bash.nix args)
+    (import ./tmux/tmux.nix args)
   ];
 
   home = {

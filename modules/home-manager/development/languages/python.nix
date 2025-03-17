@@ -1,9 +1,13 @@
-{ pkgs, lib, config, flakeRoot, ... }:
-let
+{
+  pkgs,
+  lib,
+  config,
+  flakeRoot,
+  ...
+}: let
   cfg = config.development.python;
   devEnabled = config.development.enable;
-in
-{
+in {
   options.development.python.enable = lib.mkEnableOption "Add python development support";
 
   config = lib.mkIf cfg.enable {
@@ -12,7 +16,8 @@ in
         micromamba
         pipx
         poetry
-      ] ++ lib.optionals devEnabled [
+      ]
+      ++ lib.optionals devEnabled [
         python312Packages.debugpy
         ruff
         ruff-lsp
@@ -22,15 +27,15 @@ in
     home.file.".mambarc".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.mambarc";
 
     home.file.".nix/shell/python.sh".text =
-    # INFO: micromamba
-    ''
-    export MAMBA_ROOT_PREFIX=~/.micromamba
-    alias mamba=micromamba
-    eval "$(micromamba shell hook --shell zsh)"
-    ''
-    + # INFO: pipx
-    ''
-    export PATH="$PATH:$HOME/.local/bin"
-    '';
+      # INFO: micromamba
+      ''
+        export MAMBA_ROOT_PREFIX=~/.micromamba
+        alias mamba=micromamba
+        eval "$(micromamba shell hook --shell zsh)"
+      ''
+      + # INFO: pipx
+      ''
+        export PATH="$PATH:$HOME/.local/bin"
+      '';
   };
 }

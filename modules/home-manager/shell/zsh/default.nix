@@ -1,17 +1,21 @@
-{ pkgs, lib, config, flakeRoot, username, ... }:
-let
-  cfg = config.shell.zsh;
-  args = { inherit pkgs lib config flakeRoot username; };
-in
 {
+  pkgs,
+  lib,
+  config,
+  flakeRoot,
+  username,
+  ...
+}: let
+  cfg = config.shell.zsh;
+  args = {inherit pkgs lib config flakeRoot username;};
+in {
   options.shell.zsh.enable = lib.mkEnableOption "Use zsh";
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs;
-    [
-        # zsh-syntax-highlighting
-        # zsh-completions
-        # zsh-autosuggestions
+    home.packages = with pkgs; [
+      # zsh-syntax-highlighting
+      # zsh-completions
+      # zsh-autosuggestions
     ];
 
     programs = {

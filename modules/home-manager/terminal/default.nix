@@ -1,10 +1,15 @@
-{ pkgs, lib, config, flakeRoot, username, ... }:
-let
-  args = { inherit pkgs lib config flakeRoot username; };
-in
 {
+  pkgs,
+  lib,
+  config,
+  flakeRoot,
+  username,
+  ...
+}: let
+  args = {inherit pkgs lib config flakeRoot username;};
+in {
   imports = [
-      (import ./kitty.nix args)
-      (import ./ghostty.nix args)
+    (import ./kitty.nix args)
+    (import ./ghostty.nix args)
   ];
 }

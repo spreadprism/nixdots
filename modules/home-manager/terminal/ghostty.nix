@@ -1,8 +1,12 @@
-{ pkgs, lib, config, flakeRoot, ... }:
-let
-  cfg = config.terminal.ghostty;
-in
 {
+  pkgs,
+  lib,
+  config,
+  flakeRoot,
+  ...
+}: let
+  cfg = config.terminal.ghostty;
+in {
   options.terminal.ghostty = {
     enable = lib.mkEnableOption "use ghostty terminal";
     install = lib.mkOption {
@@ -13,9 +17,11 @@ in
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs;
-    if cfg.install then [
+      if cfg.install
+      then [
         ghostty
-    ] else [];
+      ]
+      else [];
     xdg.configFile."ghostty/config".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/ghostty/config";
   };
 }

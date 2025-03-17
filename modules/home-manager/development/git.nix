@@ -1,12 +1,17 @@
-{ pkgs, config, lib, flakeRoot, ... }:
-let
-  devEnabled = config.development.enable;
-in
 {
+  pkgs,
+  config,
+  lib,
+  flakeRoot,
+  ...
+}: let
+  devEnabled = config.development.enable;
+in {
   home.packages = with pkgs;
     [
       git
-    ] ++ lib.optionals devEnabled [
+    ]
+    ++ lib.optionals devEnabled [
       lazygit
       gitleaks
     ];

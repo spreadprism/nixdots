@@ -1,4 +1,8 @@
-{ inputs, outputs, stateVersion, ... }:
 {
+  inputs,
+  outputs,
+  stateVersion,
+  ...
+}: {
   system = "x86_64-linux";
 }

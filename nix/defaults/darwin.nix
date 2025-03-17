@@ -27,7 +27,6 @@
     ];
 
     casks = [
-      "alfred"
       "kitty"
     ];
 

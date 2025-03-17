@@ -1,5 +1,10 @@
-{ inputs, outputs, stateVersion, pkgs, ... }:
 {
+  inputs,
+  outputs,
+  stateVersion,
+  pkgs,
+  ...
+}: {
   home = {
     packages = with pkgs; [
       terraform
@@ -16,5 +21,4 @@
   development.gcp.enable = true;
   # INFO: Languages
   development.go.enable = true;
-
 }
