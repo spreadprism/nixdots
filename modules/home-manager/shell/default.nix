@@ -4,13 +4,22 @@ let
 in
 {
   imports = [
-      (import ./zsh args)
+      (import ./zsh.nix args)
       (import ./bash.nix args)
-      (import ./tmux.nix args)
+      (import ./tmux/tmux.nix args)
   ];
 
-  home.packages = with pkgs;
-  [
+  home = {
+    sessionPath = [
+      flakeRoot
+      "$HOME/.nix-profile/bin"
+    ];
+    shellAliases = {
+      ls = "eza";
+      cat = "bat";
+      w = "watch -n 1";
+    };
+    packages = with pkgs; [
       ripgrep
       fzf
       jq
@@ -22,14 +31,17 @@ in
       wget
       curl
       watch
-  ];
-
-  programs.starship.enable = true;
-  programs.direnv = {
-    enable = true;
-    enableZshIntegration = true;
-    nix-direnv.enable = true;
+    ];
   };
+
+  programs = {
+    starship.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+  };
+
   xdg.configFile."starship.toml".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/starship.toml";
   xdg.configFile."direnv/direnv.toml".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/direnv/direnv.toml";
 }

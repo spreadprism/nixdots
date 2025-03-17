@@ -15,16 +15,18 @@ in
     ];
 
     programs = {
-      zsh.enable = true;
+      zsh = {
+        enable = true;
+        shellAliases = {
+          # cli
+          ls = "eza";
+          cat = "bat";
+          w = "watch -n 1";
+          # terraform
+          v = "nvim";
+        };
+      };
       starship.enableZshIntegration = true;
     };
-
-    home.file.".zshrc".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.zshrc";
-    home.file.".alias.zsh".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.alias.zsh";
-
-    # home.file.".nix/shell/alias.zsh".source = ./alias.zsh;
   };
-  # imports = [
-  #   (import ./plugins args)
-  # ];
 }

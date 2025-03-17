@@ -4,6 +4,7 @@ let
 in
 {
   config = lib.mkIf devEnabled {
+    home.shellAliases.v = "nvim";
     home.packages = with pkgs;
       [
         neovim
