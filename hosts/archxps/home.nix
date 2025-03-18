@@ -7,7 +7,7 @@
 
   shell.supported = ["zsh"];
   desktop = "hyprland";
-  terminal = ["ghostty"];
+  terminal = "ghostty";
 
   development.enable = true;
   python.enable = true;
