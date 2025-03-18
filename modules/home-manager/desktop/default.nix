@@ -5,7 +5,7 @@ in {
     ./hyprland.nix
   ];
   options.desktop = mkOption {
-    type = types.enum ["none" "hyprland"];
-    default = ["none"];
+    type = types.enum [false "hyprland"];
+    default = false;
   };
 }

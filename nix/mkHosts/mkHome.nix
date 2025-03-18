@@ -4,11 +4,11 @@
   extraArgs,
   ...
 }: let
-  nixpkgs = inputs.nixpkgs;
+  inherit (inputs) nixpkgs;
 in {
   mkHome = hostname: let
     hostCfg =
-      if builtins.pathExists ../../hosts/${hostname}
+      if builtins.pathExists ../../hosts/${hostname}/default.nix
       then import ../../hosts/${hostname} {}
       else {};
     getOrDefault = key: default:

@@ -1,9 +1,5 @@
 {
-  lib,
   pkgs,
-  stateVersion,
-  username,
-  hostname,
   ...
 }: {
   ids.gids.nixbld = 350;
@@ -16,19 +12,6 @@
   homebrew = {
     brews = [
       "docker"
-      # {
-      #   name = "redis";
-      #   start_service = true;
-      # }
-      # {
-      #   name = "mysql@8.0";
-      #   start_service = true;
-      #   link = true;
-      # }
-      # {
-      #   name = "dotnet@8";
-      #   link = true;
-      # }
     ];
     casks = [
       "slack"

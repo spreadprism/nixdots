@@ -1,7 +1,4 @@
 {
-  inputs,
-  outputs,
-  stateVersion,
   pkgs,
   ...
 }: {
@@ -12,13 +9,14 @@
     ];
   };
 
-  # INFO: shell
-  shell.zsh.enable = true;
-  terminal.kitty.enable = false;
-  # INFO: enable development features
-  development.enable = true;
-  # INFO: Cloud platform
-  development.gcp.enable = true;
-  # INFO: Languages
-  development.go.enable = true;
+  shell.supported = ["zsh"];
+  terminal = false;
+  development = {
+    enable = true;
+    gcp.enable = true;
+  };
+  go = {
+    enable = true;
+    pkg = pkgs.go_1_24;
+  };
 }

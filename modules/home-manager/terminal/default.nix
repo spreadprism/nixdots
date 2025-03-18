@@ -6,8 +6,8 @@ in {
   ];
   options = {
     terminal = mkOption {
-      type = types.listOf (types.enum ["" "ghostty"]);
-      default = "";
+      type = types.enum [false "ghostty"];
+      default = false;
     };
   };
 }
