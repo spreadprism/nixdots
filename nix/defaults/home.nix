@@ -16,9 +16,12 @@ in {
     outputs.homeManagerModules
   ];
   config = {
-    nixpkgs.overlays = [
-      outputs.overlays.stable-packages
-    ];
+    nixpkgs = {
+      config.allowUnfree = true;
+      overlays = [
+        outputs.overlays.stable-packages
+      ];
+    };
     nix = {
       settings.experimental-features = ["nix-command" "flakes"];
     };

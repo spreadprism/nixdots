@@ -1,11 +1,9 @@
 {
-  lib,
   pkgs,
-  stateVersion,
   username,
-  hostname,
   ...
-}: {
+}:
+{
   nixpkgs.config.allowUnfree = true;
   users.users.${username} = {
     name = username;
