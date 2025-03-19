@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home = {
     packages = with pkgs; [
       terraform
@@ -10,7 +7,7 @@
   };
 
   shell.supported = ["zsh"];
-  terminal = false;
+  terminal = "kitty";
   development = {
     enable = true;
     gcp.enable = true;

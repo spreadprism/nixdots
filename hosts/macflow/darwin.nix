@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   ids.gids.nixbld = 350;
   environment.systemPackages = with pkgs; [
     nodejs_22

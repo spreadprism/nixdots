@@ -1,5 +1,5 @@
 {lib, ...}: let
-  readAll = directory: (map(path: "${directory}/${path}") (builtins.filter (name: name != "default.nix") (builtins.attrNames (builtins.readDir directory))));
+  readAll = directory: (map (path: "${directory}/${path}") (builtins.filter (name: name != "default.nix") (builtins.attrNames (builtins.readDir directory))));
   languages = readAll ./languages;
   tools = readAll ./tools;
 in {
@@ -7,7 +7,8 @@ in {
     builtins.concatLists [
       languages
       tools
-    ] ++ [
+    ]
+    ++ [
       ./lsp/codelldb.nix
     ];
   options = {

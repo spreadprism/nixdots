@@ -17,7 +17,7 @@ in {
 
     system = getOrDefault "system" "x86_64-darwin";
     username = getOrDefault "username" "avalon";
-    homeDirectory ="/Users/${username}";
+    homeDirectory = "/Users/${username}";
     flakeRoot = "${homeDirectory}/nixdots";
     specialArgs =
       {

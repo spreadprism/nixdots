@@ -2,8 +2,7 @@
   pkgs,
   username,
   ...
-}:
-{
+}: {
   nixpkgs.config.allowUnfree = true;
   users.users.${username} = {
     name = username;
