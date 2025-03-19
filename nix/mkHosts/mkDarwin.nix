@@ -47,6 +47,7 @@ in {
             extraSpecialArgs = specialArgs;
             users.${username} = {
               imports = [
+                sops-nix.homeManagerModule
                 ../defaults/home.nix
                 ../../hosts/${hostname}/home.nix
                 ../../modules/home-manager

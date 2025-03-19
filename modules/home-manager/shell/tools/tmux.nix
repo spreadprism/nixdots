@@ -3,7 +3,8 @@
   config,
   flakeRoot,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     tmux
   ];

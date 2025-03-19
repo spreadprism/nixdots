@@ -25,6 +25,10 @@ in {
       type = with types; listOf str;
       default = [];
     };
+    envs = mkOption {
+      type = with types; attrsOf str;
+      default = {};
+    };
     aliases = mkOption {
       type = with types; attrsOf str;
       default = {};

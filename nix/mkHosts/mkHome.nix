@@ -4,7 +4,7 @@
   extraArgs,
   ...
 }: let
-  inherit (inputs) nixpkgs;
+  inherit (inputs) nixpkgs sops-nix;
 in {
   mkHome = hostname: let
     hostCfg =
@@ -20,6 +20,7 @@ in {
     username = getOrDefault "username" "avalon";
 
     modules = [
+      sops-nix
       ../defaults/home.nix
       ../../hosts/${hostname}/home.nix
     ];

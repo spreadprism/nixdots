@@ -33,6 +33,7 @@ in {
       packages = with pkgs;
         [
           nh
+          sops
         ]
         ++ lib.optionals isLinux [
         ]

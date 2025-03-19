@@ -18,5 +18,8 @@ in {
         gke-gcloud-auth-plugin
       ]))
     ];
+    shell.aliases = {
+      gc = "gcloud";
+    };
   };
 }
