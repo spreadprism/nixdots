@@ -10,6 +10,7 @@ in {
   home.packages = with pkgs;
     [
       git
+      gh
     ]
     ++ lib.optionals devEnabled [
       gitleaks

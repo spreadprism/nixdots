@@ -44,7 +44,7 @@ in {
       aliases = {
         ls = "eza";
         cat = "bat";
-        w = "watch -n 1";
+        w = "watch -n 1 ";
       };
       paths = [
         flakeRoot

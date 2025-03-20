@@ -3,6 +3,7 @@
     packages = with pkgs; [
       terraform
       act
+      ansible
     ];
   };
 
