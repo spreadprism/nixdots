@@ -47,8 +47,17 @@ plugin("hrsh7th/nvim-cmp")
 		"hrsh7th/cmp-nvim-lua",
 		"petertriho/cmp-git",
 		"saadparwaiz1/cmp_luasnip",
-		-- plugin("kristijanhusak/vim-dadbod-completion"):dependencies("tpope/vim-dadbod"),
-		plugin("MattiasMTS/cmp-dbee"):dependencies("kndndrj/nvim-dbee"):ft("sql"),
+		plugin("kristijanhusak/vim-dadbod-completion")
+			:dependencies("tpope/vim-dadbod")
+			:init(function()
+				vim.g.db_ui_use_nerd_fonts = 1
+			end)
+			:ft({
+				"sql",
+				"mysql",
+				"plsql",
+			}),
+		plugin("MattiasMTS/cmp-dbee"):branch("ms/v2"):dependencies("kndndrj/nvim-dbee"):ft("sql"),
 		plugin("hrsh7th/cmp-nvim-lsp"):dependencies("neovim/nvim-lspconfig"),
 	})
 	:config(function()

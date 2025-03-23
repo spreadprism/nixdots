@@ -1,5 +1,5 @@
 plugin("ojroques/nvim-osc52")
-	:cond(os.getenv("SSH_CLIENT") ~= nil or os.getenv("SSH_TTY") ~= nil)
+	:cond(env("SSH_CLIENT") ~= nil or env("SSH_TTY") ~= nil)
 	:opts({
 		tmux_passthrough = true,
 		silent = true,

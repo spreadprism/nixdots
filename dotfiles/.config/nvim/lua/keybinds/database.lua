@@ -1,19 +1,12 @@
-local opened = false
-local function isInsideDbee()
-	-- TODO: do actual detection logic
-	local ans = opened
-	opened = not opened
-	return ans
-end
+-- keybind("n", "<leader><leader>d", function()
+-- 	local dbee = require("dbee")
+-- 	dbee.toggle()
+-- end, "toggle dbee"):register()
 
-keybind_group("<leader>b", "Database"):register({
-	keybind("n", "b", function()
-		if isInsideDbee() then
-			vim.cmd("Dbee close")
-			vim.cmd("bd")
-		else
-			vim.cmd("tabnew")
-			vim.cmd("Dbee open")
-		end
-	end, "Open DB tab"),
-})
+keybind_group("<leader><leader>d", "database", {
+	keybind("n", "e", "<cmd>DBUIToggle<cr>", "toggle ui"),
+	keybind("n", "a", function()
+		-- TODO: Add form inputs
+		vim.cmd("DBUIAddConnection")
+	end, "Add connection"),
+}):register()

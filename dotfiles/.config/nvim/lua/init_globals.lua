@@ -1,6 +1,8 @@
 print = vim.print
 cwd = vim.fn.getcwd
 joinpath = vim.fs.joinpath
+env = require("internal.dotenv").get
+setenv = require("internal.dotenv").set
 ---@param cmd string
 ---@return string
 exec = function(cmd)

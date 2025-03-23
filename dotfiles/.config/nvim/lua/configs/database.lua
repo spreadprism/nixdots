@@ -1,31 +1,53 @@
--- local dadbod = plugin("tpope/vim-dadbod")
--- plugin("kristijanhusak/vim-dadbod-ui"):dependencies(dadbod):cmd({
--- 	"DBUI",
--- 	"DBUIToggle",
--- 	"DBUIAddConnection",
--- 	"DBUIFindBuffer",
--- })
--- -- TODO: add the let g:db_ui_disable_info_notifications = 1
-plugin("kndndrj/nvim-dbee")
-	:dependencies("MunifTanjim/nui.nvim")
-	:build(function()
-		require("dbee").install("go")
-	end)
-	:cmd({
-		"Dbee",
-	})
-	:opts({
-		drawer = {
-			mappings = {
-				{ key = "r", mode = "n", action = "action_2" },
-				{ key = "R", mode = "n", action = "refresh" },
-				{ key = "<tab>", mode = "n", action = "toggle" },
-			},
-		},
-		editor = {
-			mappings = {
-				{ key = "<CR>", mode = "v", action = "run_selection" },
-				{ key = "<C-e>", mode = "n", action = "run_file" },
-			},
-		},
-	})
+local dadbod = plugin("tpope/vim-dadbod")
+plugin("kristijanhusak/vim-dadbod-ui"):dependencies(dadbod):event("VeryLazy")
+
+-- TODO: add the let g:db_ui_disable_info_notifications = 1
+-- local closeTab = function()
+-- 	vim.cmd("Dbee close")
+-- 	vim.cmd("tabclose")
+-- end
+-- plugin("kndndrj/nvim-dbee")
+-- 	:dependencies("MunifTanjim/nui.nvim")
+-- 	:build(function()
+-- 		require("dbee").install("go")
+-- 	end)
+-- 	:cmd({
+-- 		"Dbee",
+-- 	})
+-- 	:init(function()
+-- 		local tools = require("dbee.layouts.tools")
+-- 		local noop = function()
+-- 			return nil
+-- 		end
+-- 		tools.save = noop
+-- 		tools.restore = noop
+-- 	end)
+-- 	:opts({
+-- 		drawer = {
+-- 			mappings = {
+-- 				{
+-- 					key = "q",
+-- 					mode = "i",
+-- 					action = function()
+-- 						vim.cmd("Dbee close")
+-- 					end,
+-- 				},
+-- 				{ key = "r", mode = "n", action = "action_2" },
+-- 				{ key = "R", mode = "n", action = "refresh" },
+-- 				{ key = "<tab>", mode = "n", action = "toggle" },
+-- 			},
+-- 		},
+-- 		result = {
+-- 			mappings = {},
+-- 		},
+-- 		editor = {
+-- 			mappings = {
+-- 				{ key = "<C-q>", mode = "n", action = closeTab },
+-- 				{ key = "<CR>", mode = "v", action = "run_selection" },
+-- 				{ key = "<C-e>", mode = "n", action = "run_file" },
+-- 			},
+-- 		},
+-- 		call_log = {
+-- 			mappings = {},
+-- 		},
+-- 	})

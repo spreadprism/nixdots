@@ -1,12 +1,7 @@
 local M = {}
 
 local function expand_home(path)
-	local home = os.getenv("HOME")
-	if not home then
-		return path
-	end
-
-	return path:match("^~") and (home .. path:sub(2)) or path
+	return path:match("^~") and (require("internal.dotenv").home() .. path:sub(2)) or path
 end
 
 ---@param dir string

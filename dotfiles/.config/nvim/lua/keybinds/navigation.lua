@@ -1,4 +1,4 @@
-if os.getenv("TMUX") ~= nil then
+if env("TMUX") ~= nil then
 	keybind("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>", "Navigate window left"):register()
 	keybind("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>", "Navigate window down"):register()
 	keybind("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>", "Navigate window up"):register()
