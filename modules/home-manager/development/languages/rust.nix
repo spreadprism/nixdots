@@ -13,6 +13,7 @@
       ]
       ++ lib.optionals config.development.enable [
         rustfmt
+        rust-analyzer
       ];
     development.lsp.codelldb.enable = config.development.enable;
     shell.paths = [

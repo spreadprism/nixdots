@@ -2,7 +2,7 @@
   inherit (lib) mkOption types;
 in {
   imports = [
-    ./hyprland.nix
+    ./hyprland/hyprland.nix
   ];
   options.desktop = mkOption {
     type = types.enum [false "hyprland"];
