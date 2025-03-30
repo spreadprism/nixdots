@@ -17,11 +17,6 @@
     home.packages = with pkgs;
       [
         config.go.pkg
-      ]
-      ++ lib.optionals config.development.enable [
-        gopls
-        golangci-lint
-        delve
       ];
 
     shell = {

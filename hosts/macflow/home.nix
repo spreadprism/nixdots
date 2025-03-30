@@ -12,6 +12,7 @@
     enable = true;
     gcp.enable = true;
   };
+  nvim.remote = true;
   go = {
     enable = true;
     pkg = pkgs.go_1_24;
