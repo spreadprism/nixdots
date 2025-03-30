@@ -16,6 +16,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    neovim = {
+      url = "github:spreadprism/nvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # utils
     flake-utils.url = "github:numtide/flake-utils";
     sops-nix = {

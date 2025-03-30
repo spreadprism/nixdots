@@ -6,14 +6,14 @@ lsp("gopls"):settings({
 dap("delve"):initialize(false)
 formatter("go", "gofmt"):install(false)
 linter("go", "golangcilint", "golangci-lint")
-launch_configs("go", {
-	{
-		name = "Launch current file",
-		type = "go",
-		request = "launch",
-		program = "${file}",
-	},
-})
+-- launch_configs("go", {
+-- 	{
+-- 		name = "Launch current file",
+-- 		type = "go",
+-- 		request = "launch",
+-- 		program = "${file}",
+-- 	},
+-- })
 
 plugin("leoluz/nvim-dap-go")
 	:ft("go")

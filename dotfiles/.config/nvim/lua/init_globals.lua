@@ -51,6 +51,7 @@ Symbols = {
 	deleted = "󰮘 ",
 	readonly = "󰷊 ",
 }
+
 -- global colors
 Colors = {
 	bg = "#202328",

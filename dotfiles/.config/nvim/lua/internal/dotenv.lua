@@ -19,6 +19,10 @@ M.get = function(key)
 	return val
 end
 
+M.get_all = function()
+	return env
+end
+
 ---@param key string
 ---@param val string
 M.set = function(key, val)
