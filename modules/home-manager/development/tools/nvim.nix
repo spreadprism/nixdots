@@ -10,8 +10,8 @@
 in {
   imports = [ inputs.neovim.homeModule];
   config = lib.mkIf devEnabled {
+    home.shellAliases.v = "nvim";
     nvim.enable = true;
-    # home.shellAliases.v = "nvim";
     # home.packages = with pkgs; [
     #   neovim
     #   figlet
