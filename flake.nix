@@ -22,10 +22,10 @@
     };
     # utils
     flake-utils.url = "github:numtide/flake-utils";
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # sops-nix = {
+    #   url = "github:Mic92/sops-nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
   outputs = {
     self,
