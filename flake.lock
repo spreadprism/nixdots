@@ -209,15 +209,16 @@
           "nixpkgs"
         ],
         "plugins-copilot": "plugins-copilot",
+        "plugins-exrc": "plugins-exrc",
         "plugins-harpoon": "plugins-harpoon",
         "plugins-oil-vcs-status": "plugins-oil-vcs-status"
       },
       "locked": {
-        "lastModified": 1743386642,
-        "narHash": "sha256-LW08FKFPaivIvx+EDTnIwi8XSwydDtwR1cuqcODbvg0=",
+        "lastModified": 1743453899,
+        "narHash": "sha256-xSgGqH466e+nivACZ5dmL2HRZzKd90KY8pnOFXZQGOI=",
         "owner": "spreadprism",
         "repo": "nvim",
-        "rev": "cfe1d547d55bc37686978de94f0043e24f792fc7",
+        "rev": "ec8c09fb9887b6c9ce168459d2fb53242f6bdb2f",
         "type": "github"
       },
       "original": {
@@ -416,6 +417,22 @@
       "original": {
         "owner": "zbirenbaum",
         "repo": "copilot.lua",
+        "type": "github"
+      }
+    },
+    "plugins-exrc": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1718698681,
+        "narHash": "sha256-iF2fEIo7Pm3KtSwy7rhc//YXuqcD32BeP2h5ZYN8vKc=",
+        "owner": "jedrzejboczar",
+        "repo": "exrc.nvim",
+        "rev": "4346164895f432f361e453d837b612e6c7cbe3e6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jedrzejboczar",
+        "repo": "exrc.nvim",
         "type": "github"
       }
     },
