@@ -16,7 +16,6 @@ in {
   config = lib.mkIf devEnabled {
     nvim = {
       enable = true;
-      packageNames = [ "nvim" ];
     };
   };
 }
