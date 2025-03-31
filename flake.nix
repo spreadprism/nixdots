@@ -20,6 +20,7 @@
       url = "github:spreadprism/nvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     # utils
     flake-utils.url = "github:numtide/flake-utils";
     # sops-nix = {
