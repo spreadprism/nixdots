@@ -14,6 +14,14 @@ in {
   config = lib.mkIf devEnabled {
     nvim = {
       enable = true;
+      packageDefinitions.replace = {
+        nvim = {pkgs, ...}: {
+          categories = {
+            go = config.go.enable;
+            remote = config.nvim.remote;
+          };
+        };
+      };
     };
   };
 }
