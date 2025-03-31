@@ -3,7 +3,7 @@
   extraArgs,
   ...
 }: let
-  inherit (inputs) nix-darwin nix-homebrew home-manager sops-nix;
+  inherit (inputs) nix-darwin nix-homebrew home-manager;
 in {
   mkDarwin = hostname: let
     hostCfg =
@@ -32,7 +32,6 @@ in {
       modules = [
         ../defaults/darwin.nix
         ../../hosts/${hostname}/darwin.nix
-        sops-nix.darwinModules.sops
         nix-homebrew.darwinModules.nix-homebrew
         {
           nix-homebrew = {
@@ -47,7 +46,6 @@ in {
             extraSpecialArgs = specialArgs;
             users.${username} = {
               imports = [
-                sops-nix.homeManagerModule
                 ../defaults/home.nix
                 ../../hosts/${hostname}/home.nix
                 ../../modules/home-manager
