@@ -213,11 +213,11 @@
         "plugins-oil-vcs-status": "plugins-oil-vcs-status"
       },
       "locked": {
-        "lastModified": 1743384856,
-        "narHash": "sha256-KGbmdBDnCmLrMibtjsRvUlDNxcL6VF8HmpYjvVmFFMM=",
+        "lastModified": 1743385731,
+        "narHash": "sha256-IcjxW5Y02hxEDs22Gq6LlXDnXS+IORm/Bna86Q2WVl4=",
         "owner": "spreadprism",
         "repo": "nvim",
-        "rev": "b18c9db6d29b685c8c649c4a7f95cca36b6ab1af",
+        "rev": "981db5a778b30d9e9981f1b6dd8f903b8f5cbad0",
         "type": "github"
       },
       "original": {
