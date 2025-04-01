@@ -1,4 +1,8 @@
-{inputs, lib, ...}: let
+{
+  inputs,
+  lib,
+  ...
+}: let
   read = lib.filesystem.listFilesRecursive;
 in {
   imports = (read ./languages) ++ (read ./lsp) ++ (read ./tools);

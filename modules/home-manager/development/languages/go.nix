@@ -14,10 +14,9 @@
   };
 
   config = lib.mkIf config.go.enable {
-    home.packages = with pkgs;
-      [
-        config.go.pkg
-      ];
+    home.packages = with pkgs; [
+      config.go.pkg
+    ];
 
     shell = {
       paths = [
