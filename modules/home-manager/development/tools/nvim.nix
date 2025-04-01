@@ -21,6 +21,7 @@ in {
         nvim = {pkgs, ...}: {
           categories = {
             go = config.go.enable;
+            proto = true;
             remote = config.nvim.remote;
           };
         };

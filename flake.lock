@@ -209,16 +209,17 @@
           "nixpkgs"
         ],
         "plugins-copilot": "plugins-copilot",
+        "plugins-esqueleto": "plugins-esqueleto",
         "plugins-exrc": "plugins-exrc",
         "plugins-harpoon": "plugins-harpoon",
         "plugins-oil-vcs-status": "plugins-oil-vcs-status"
       },
       "locked": {
-        "lastModified": 1743456202,
-        "narHash": "sha256-ES1UPAq7HtII1L2ue26bJkDGHvDmBdp8MnAj0dhSy9s=",
+        "lastModified": 1743541029,
+        "narHash": "sha256-rn7Xa8QrBjjK5oHtoOjF5Rf6OMa37UmMxc2lYjnMuwU=",
         "owner": "spreadprism",
         "repo": "nvim",
-        "rev": "9fe45400dccb18ce0866e24170f7d1882c33a90f",
+        "rev": "4edef35182dc03fe0fd3f9cd2ba2a887b0e5e5dd",
         "type": "github"
       },
       "original": {
@@ -417,6 +418,22 @@
       "original": {
         "owner": "zbirenbaum",
         "repo": "copilot.lua",
+        "type": "github"
+      }
+    },
+    "plugins-esqueleto": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1738612031,
+        "narHash": "sha256-MHiEEbFe79dAlMMHmH4C8X8xD8OK9bWrvmlQTGiVnEI=",
+        "owner": "cvigilv",
+        "repo": "esqueleto.nvim",
+        "rev": "490a02145412fb2cbb8d00b59e806070ed3cbdea",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cvigilv",
+        "repo": "esqueleto.nvim",
         "type": "github"
       }
     },
