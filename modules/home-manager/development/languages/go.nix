@@ -27,5 +27,8 @@
         "export GOBIN=$GOPATH/bin"
       ];
     };
+    xdg.home.".golangci.yml".source = ''
+      version: "2"
+    '';
   };
 }
