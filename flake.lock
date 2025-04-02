@@ -209,17 +209,18 @@
           "nixpkgs"
         ],
         "plugins-copilot": "plugins-copilot",
+        "plugins-copilot-lualine": "plugins-copilot-lualine",
         "plugins-esqueleto": "plugins-esqueleto",
         "plugins-exrc": "plugins-exrc",
         "plugins-harpoon": "plugins-harpoon",
         "plugins-oil-vcs-status": "plugins-oil-vcs-status"
       },
       "locked": {
-        "lastModified": 1743543474,
-        "narHash": "sha256-DifyVwE8bPGv+z7acIGbXdWMNOBP7X5xGT3rCf++rF4=",
+        "lastModified": 1743553700,
+        "narHash": "sha256-Z+wbLNtPDEzHkjZz16jAqji8q8TuVfgcsp5+BhokNq0=",
         "owner": "spreadprism",
         "repo": "nvim",
-        "rev": "18f02a9dba042e3693a82d744cf9d18f5b88ac04",
+        "rev": "27898744bf81f2fdc3e278934bc16a4e5c327e8c",
         "type": "github"
       },
       "original": {
@@ -418,6 +419,22 @@
       "original": {
         "owner": "zbirenbaum",
         "repo": "copilot.lua",
+        "type": "github"
+      }
+    },
+    "plugins-copilot-lualine": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1743343936,
+        "narHash": "sha256-3QlaRQkZ7ZtnDnfigezZRvb6/KXMYMPZ0I8NE12Ot0o=",
+        "owner": "AndreM222",
+        "repo": "copilot-lualine",
+        "rev": "a36398674fa88ba6a90cc4a57a27e411c1c27735",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AndreM222",
+        "repo": "copilot-lualine",
         "type": "github"
       }
     },
