@@ -213,14 +213,16 @@
         "plugins-esqueleto": "plugins-esqueleto",
         "plugins-exrc": "plugins-exrc",
         "plugins-harpoon": "plugins-harpoon",
+        "plugins-kulala": "plugins-kulala",
+        "plugins-lualine-nvim": "plugins-lualine-nvim",
         "plugins-oil-vcs-status": "plugins-oil-vcs-status"
       },
       "locked": {
-        "lastModified": 1743553700,
-        "narHash": "sha256-Z+wbLNtPDEzHkjZz16jAqji8q8TuVfgcsp5+BhokNq0=",
+        "lastModified": 1743686135,
+        "narHash": "sha256-WP0RmPSiBbRt9OdgtG4XT6g/iN4E8S/FqVbIUIwtDw0=",
         "owner": "spreadprism",
         "repo": "nvim",
-        "rev": "27898744bf81f2fdc3e278934bc16a4e5c327e8c",
+        "rev": "a1c344652b90be9262c0eb92d062c1605129104d",
         "type": "github"
       },
       "original": {
@@ -484,6 +486,38 @@
         "owner": "ThePrimeagen",
         "ref": "harpoon2",
         "repo": "harpoon",
+        "type": "github"
+      }
+    },
+    "plugins-kulala": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1743613485,
+        "narHash": "sha256-LhTsg/4a2Ljzpft1o5qwfxrV79WGQ9FOPST24l40ysA=",
+        "owner": "spreadprism",
+        "repo": "kulala.nvim",
+        "rev": "7f97a1c5b1b35bf967a664ab3493e03df5c9225c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "spreadprism",
+        "repo": "kulala.nvim",
+        "type": "github"
+      }
+    },
+    "plugins-lualine-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1743064178,
+        "narHash": "sha256-DAYRf8JIty6W78JXBSyfnyCryUUYX+QrsHSAlcOk7Fc=",
+        "owner": "nvim-lualine",
+        "repo": "lualine.nvim",
+        "rev": "1517caa8fff05e4b4999857319d3b0609a7f57fa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-lualine",
+        "repo": "lualine.nvim",
         "type": "github"
       }
     },
