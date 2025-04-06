@@ -214,6 +214,7 @@
         "plugins-esqueleto": "plugins-esqueleto",
         "plugins-ex-colors": "plugins-ex-colors",
         "plugins-exrc": "plugins-exrc",
+        "plugins-git-conflict": "plugins-git-conflict",
         "plugins-harpoon": "plugins-harpoon",
         "plugins-kulala": "plugins-kulala",
         "plugins-lualine-nvim": "plugins-lualine-nvim",
@@ -428,19 +429,19 @@
         "type": "github"
       }
     },
-    "plugins-copilot-lualine": {
+    "plugins-easycolor": {
       "flake": false,
       "locked": {
-        "lastModified": 1743343936,
-        "narHash": "sha256-3QlaRQkZ7ZtnDnfigezZRvb6/KXMYMPZ0I8NE12Ot0o=",
-        "owner": "AndreM222",
-        "repo": "copilot-lualine",
-        "rev": "a36398674fa88ba6a90cc4a57a27e411c1c27735",
+        "lastModified": 1742064021,
+        "narHash": "sha256-uCgAb4KUbk3HyC/9a2OszBN0Mse8fcS6oC+6uJ56kjs=",
+        "owner": "vi013t",
+        "repo": "easycolor.nvim",
+        "rev": "907b54a77a0f996c66bc2d5888eee891a4019a99",
         "type": "github"
       },
       "original": {
-        "owner": "AndreM222",
-        "repo": "copilot-lualine",
+        "owner": "vi013t",
+        "repo": "easycolor.nvim",
         "type": "github"
       }
     },
@@ -508,6 +509,22 @@
         "type": "github"
       }
     },
+    "plugins-git-conflict": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1735340003,
+        "narHash": "sha256-CmSgmpg5K3ySXYrDjg8yTAojeLWJdSHP8uNVFyrkNhc=",
+        "owner": "akinsho",
+        "repo": "git-conflict.nvim",
+        "rev": "a1badcd070d176172940eb55d9d59029dad1c5a6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "akinsho",
+        "repo": "git-conflict.nvim",
+        "type": "github"
+      }
+    },
     "plugins-harpoon": {
       "flake": false,
       "locked": {
@@ -528,15 +545,16 @@
     "plugins-kulala": {
       "flake": false,
       "locked": {
-        "lastModified": 1743613485,
-        "narHash": "sha256-LhTsg/4a2Ljzpft1o5qwfxrV79WGQ9FOPST24l40ysA=",
+        "lastModified": 1743969783,
+        "narHash": "sha256-+fLufwtZCtelBSAB8db/mEMAA9LqcsfxhF53aKayLbU=",
         "owner": "spreadprism",
         "repo": "kulala.nvim",
-        "rev": "7f97a1c5b1b35bf967a664ab3493e03df5c9225c",
+        "rev": "2a71b1f393929ed7c23e587b0f7dd5a5abc7acab",
         "type": "github"
       },
       "original": {
         "owner": "spreadprism",
+        "ref": "grpc_headers",
         "repo": "kulala.nvim",
         "type": "github"
       }
