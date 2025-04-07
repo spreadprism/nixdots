@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+PROJECT=$1
+
+if [ -z "$PROJECT" ]; then
+  PROJECT=$(gcloud projects list | tail -n +2 | fzf --with-nth 2 | awk '{ print $1 }')
+fi
+
+if [ -n "$PROJECT" ]; then
+  gcloud auth application-default set-quota-project "$PROJECT"
+  gcloud config set project "$PROJECT"
+fi

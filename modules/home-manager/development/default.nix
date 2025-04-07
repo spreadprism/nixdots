@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  read = lib.filesystem.listFilesRecursive;
+  readNix = path: builtins.filter (x: lib.hasSuffix ".nix" x) (lib.filesystem.listFilesRecursive path);
 in {
-  imports = (read ./languages) ++ (read ./lsp) ++ (read ./tools);
+  imports = (readNix ./languages) ++ (readNix ./lsp) ++ (readNix ./tools);
   config.home.packages = with pkgs; [
     grpcurl
   ];

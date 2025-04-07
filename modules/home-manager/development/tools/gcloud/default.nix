@@ -17,6 +17,8 @@ in {
         cloud-run-proxy
         gke-gcloud-auth-plugin
       ]))
+      fzf
+      (writeShellScriptBin "gcx" (builtins.readFile ./gcx))
     ];
     shell.aliases = {
       gc = "gcloud";
