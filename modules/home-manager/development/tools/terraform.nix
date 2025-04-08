@@ -8,9 +8,6 @@
     home.packages = with pkgs; [
       terraform
     ];
-    shell.aliases = {
-      tf = "terraform";
-    };
 
     programs.zsh.zplug = lib.mkIf config.programs.zsh.zplug.enable {
       plugins = [
