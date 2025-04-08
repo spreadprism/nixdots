@@ -11,5 +11,14 @@
     shell.aliases = {
       tf = "terraform";
     };
+
+    programs.zsh.zplug = lib.mkIf config.programs.zsh.zplug.enable {
+      plugins = [
+        {
+          name = "plugins/terraform";
+          tags = ["from::oh-my-zsh"];
+        }
+      ];
+    };
   };
 }
