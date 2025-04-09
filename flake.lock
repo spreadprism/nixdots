@@ -226,11 +226,11 @@
         "plugins-tmux-navigation": "plugins-tmux-navigation"
       },
       "locked": {
-        "lastModified": 1744058872,
-        "narHash": "sha256-gvCe7yYm2bwSvXhKrtSkSZ9SFpjiNvnasYaQ4lNUdsE=",
+        "lastModified": 1744214578,
+        "narHash": "sha256-4pPaztlI07n2gvjMB8551CTVc1RBssaCDi0ey65LHis=",
         "owner": "spreadprism",
         "repo": "nvim",
-        "rev": "bab9729b7908687dcfd80791d2787ec6369ce147",
+        "rev": "ed1dc23543733eab7fc30d6b70e2684e2201932c",
         "type": "github"
       },
       "original": {
@@ -564,16 +564,15 @@
     "plugins-kulala": {
       "flake": false,
       "locked": {
-        "lastModified": 1743969783,
-        "narHash": "sha256-+fLufwtZCtelBSAB8db/mEMAA9LqcsfxhF53aKayLbU=",
-        "owner": "spreadprism",
+        "lastModified": 1744126183,
+        "narHash": "sha256-T2JYSLYR/m5WNVzOC0+g1VveG6l43KkjAY5yQ7YeXb4=",
+        "owner": "mistweaverco",
         "repo": "kulala.nvim",
-        "rev": "2a71b1f393929ed7c23e587b0f7dd5a5abc7acab",
+        "rev": "4d8d5249f3a32622085b9c10573860f91593fac5",
         "type": "github"
       },
       "original": {
-        "owner": "spreadprism",
-        "ref": "grpc_headers",
+        "owner": "mistweaverco",
         "repo": "kulala.nvim",
         "type": "github"
       }
