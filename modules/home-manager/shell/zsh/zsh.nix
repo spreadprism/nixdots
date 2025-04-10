@@ -5,8 +5,8 @@
 }: let
   inherit (lib) mkIf mapAttrsToList;
   env_path = builtins.map (path: "export PATH=$PATH:${path}") config.shell.paths;
-  aliases = mapAttrsToList (key: value: "alias ${key}=\"${value}\"") config.shell.aliases;
-  env = mapAttrsToList (key: value: "${key}=\"${value}\"") config.shell.envs;
+  aliases = mapAttrsToList (key: value: "alias ${key}='${value}'") config.shell.aliases;
+  env = mapAttrsToList (key: value: "${key}='${value}'") config.shell.envs;
 in {
   config = {
     programs = {
