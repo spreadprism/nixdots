@@ -12,8 +12,9 @@ in {
     nvim.remote = lib.mkEnableOption "include remote plugins";
   };
   config = lib.mkIf devEnabled {
-    shell.aliases = {
-      v = "nvim";
+    shell = {
+      aliases.v = "nvim";
+      envs.EDITOR = "nvim";
     };
     nvim = {
       enable = true;

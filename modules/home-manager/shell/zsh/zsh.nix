@@ -4,9 +4,9 @@
   ...
 }: let
   inherit (lib) mkIf mapAttrsToList;
-  # replace list of string into a single array
-  env = builtins.map (path: "export PATH=$PATH:${path}") config.shell.paths;
+  env_path = builtins.map (path: "export PATH=$PATH:${path}") config.shell.paths;
   aliases = mapAttrsToList (key: value: "alias ${key}=\"${value}\"") config.shell.aliases;
+  env = mapAttrsToList (key: value: "${key}=\"${value}\"") config.shell.envs;
 in {
   config = {
     programs = {
@@ -52,7 +52,7 @@ in {
           (builtins.readFile ./previous_next_dir.zsh)
           (builtins.readFile ./keybinds.zsh)
         ];
-        envExtra = lib.concatStringsSep "\n" (builtins.concatLists [env aliases config.shell.extra]);
+        envExtra = lib.concatStringsSep "\n" (builtins.concatLists [env env_path aliases config.shell.extra]);
       };
     };
   };
