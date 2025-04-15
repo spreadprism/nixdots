@@ -8,6 +8,7 @@
     name = username;
     home = "/Users/${username}";
   };
+  nix.enable = false;
 
   environment.systemPackages = with pkgs; [
   ];

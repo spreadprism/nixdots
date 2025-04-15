@@ -22,10 +22,6 @@ in {
         outputs.overlays.stable-packages
       ];
     };
-    nix = {
-      package = lib.mkDefault pkgs.nix;
-      settings.experimental-features = ["nix-command" "flakes"];
-    };
     home = {
       inherit stateVersion;
       inherit username;
