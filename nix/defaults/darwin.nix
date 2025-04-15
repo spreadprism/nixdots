@@ -1,9 +1,15 @@
 {
   pkgs,
   username,
+  outputs,
   ...
 }: {
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      outputs.overlays.stable-packages
+    ];
+  };
   users.users.${username} = {
     name = username;
     home = "/Users/${username}";
