@@ -20,9 +20,7 @@
       url = "github:spreadprism/nvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # utils
-    flake-utils.url = "github:numtide/flake-utils";
+    nh.url = "github:nix-community/nh";
     # sops-nix = {
     #   url = "github:Mic92/sops-nix";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -35,7 +33,8 @@
   } @ inputs: let
     inherit (self) outputs;
     stateVersion = "24.05";
-    forAllSystems = nixpkgs.lib.genAttrs inputs.flake-utils.lib.defaultSystems;
+    supportedSystems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
+    forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
   in {
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
