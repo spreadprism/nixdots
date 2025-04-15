@@ -2,6 +2,7 @@
   outputs,
   lib,
   pkgs,
+  inputs,
   stateVersion,
   username,
   ...
@@ -20,6 +21,7 @@ in {
       config.allowUnfree = true;
       overlays = [
         outputs.overlays.stable-packages
+        inputs.nh.overlays.default
       ];
     };
     home = {

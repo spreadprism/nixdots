@@ -23,7 +23,7 @@ in {
       ../defaults/home.nix
       ../../hosts/${hostname}/home.nix
     ];
-    pkgs = nixpkgs.legacyPackages.${system}.extend inputs.nh.overlays.default;
+    pkgs = nixpkgs.legacyPackages.${system};
     inherit (pkgs.stdenv) isDarwin;
     homeDirectory =
       if isDarwin

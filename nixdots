@@ -43,7 +43,10 @@ function switch
         nix run home-manager switch -- --flake .
       fi
       ;;
-    darwin-*)
+    darwin-*-true)
+      nh darwin switch .
+      ;;
+    darwin-*-false)
       if [ $(command -v nix-darwin) ]; then
         darwin-rebuild switch --flake .
       else
