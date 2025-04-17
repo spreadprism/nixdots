@@ -6,6 +6,7 @@
       goreleaser
     ];
   };
+  shell.aliases.gr = "goreleaser";
 
   terminal = "kitty";
   development = {
