@@ -201,19 +201,21 @@
         "plugins-git-conflict": "plugins-git-conflict",
         "plugins-harpoon": "plugins-harpoon",
         "plugins-kulala": "plugins-kulala",
+        "plugins-lspconfig": "plugins-lspconfig",
         "plugins-lualine-nvim": "plugins-lualine-nvim",
         "plugins-nvim-dbee": "plugins-nvim-dbee",
+        "plugins-nvim-lint": "plugins-nvim-lint",
         "plugins-oil-vcs-status": "plugins-oil-vcs-status",
         "plugins-profile": "plugins-profile",
         "plugins-render-markdown": "plugins-render-markdown",
         "plugins-tmux-navigation": "plugins-tmux-navigation"
       },
       "locked": {
-        "lastModified": 1744827521,
-        "narHash": "sha256-S5Tbcm521g+U/xMcTEY19oX+d5n/p4OF/qcl11yth9s=",
+        "lastModified": 1744996747,
+        "narHash": "sha256-U5ykTeLkNbqmJIGg3W4LORhyw2wbXa/TEiIadrO7CWM=",
         "owner": "spreadprism",
         "repo": "nvim",
-        "rev": "a8ee78e7c8e3e53f8c7ebb5eb157ed6c5bd27d4b",
+        "rev": "8264f28eea1f16957a276aa3ec3378686221c91a",
         "type": "github"
       },
       "original": {
@@ -610,6 +612,22 @@
         "type": "github"
       }
     },
+    "plugins-lspconfig": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1744991637,
+        "narHash": "sha256-wfQlSNA6M0V/b3v35JaBl6E/mXf72cjJyQgJn7WKZPk=",
+        "owner": "neovim",
+        "repo": "nvim-lspconfig",
+        "rev": "b70b900fba6e3255a5a8113c76f213102564cb0d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "neovim",
+        "repo": "nvim-lspconfig",
+        "type": "github"
+      }
+    },
     "plugins-lualine-nvim": {
       "flake": false,
       "locked": {
@@ -639,6 +657,22 @@
       "original": {
         "owner": "kndndrj",
         "repo": "nvim-dbee",
+        "type": "github"
+      }
+    },
+    "plugins-nvim-lint": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1744751781,
+        "narHash": "sha256-0TbtNq9FBpvI0PwxQiw2Nx54u8DXoBEsWzKFh7UqX9E=",
+        "owner": "mfussenegger",
+        "repo": "nvim-lint",
+        "rev": "3615c26c4922ae5f7366f0c1943a0e7cece04325",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mfussenegger",
+        "repo": "nvim-lint",
         "type": "github"
       }
     },
