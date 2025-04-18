@@ -9,6 +9,8 @@
   homebrew = {
     brews = [
       "docker"
+      "devstack"
+      "efctl"
     ];
     casks = [
       "slack"
@@ -20,5 +22,11 @@
     ];
     masApps = {
     };
+    taps = [
+      {
+        name = "everflow-io/homebrew-everflow";
+        clone_target = "git@github.com:everflow-io/homebrew-everflow.git";
+      }
+    ];
   };
 }
