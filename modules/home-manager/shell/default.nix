@@ -5,16 +5,14 @@
   ...
 }: let
   inherit (lib) mkOption types;
+  readNix = path: builtins.filter (x: lib.hasSuffix ".nix" x) (lib.filesystem.listFilesRecursive path);
 in {
-  imports = [
-    ./zsh/zsh.nix
-    ./bash.nix
-    ./tools/direnv.nix
-    ./tools/dircolor.nix
-    ./tools/tmux.nix
-    ./tools/starship.nix
-    ./tools/zoxide.nix
-  ];
+  imports =
+    [
+      ./zsh/zsh.nix
+      ./bash.nix
+    ]
+    ++ readNix ./tools;
 
   options.shell = {
     supported = mkOption {
@@ -36,6 +34,10 @@ in {
     extra = mkOption {
       type = with types; listOf str;
       default = [];
+    };
+    mux = mkOption {
+      type = types.enum ["tmux" "zellij"];
+      default = "tmux";
     };
   };
 
