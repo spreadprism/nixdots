@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  flakeRoot,
   ...
 }: let
   enabled = config.shell.mux == "tmux";
@@ -10,8 +11,8 @@ in {
     home.packages = with pkgs; [
       tmux
     ];
-    xdg.configFile."tmux/tmux.conf".source = ./tmux.conf;
-    xdg.configFile."tmux/scripts/auto_tpm_install".source = ./scripts/auto_tpm_install;
+    # BUG: this needs to be symlinked, otherwise there is a huge delay between nvim and tmux
+    xdg.configFile.tmux.source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/modules/home-manager/shell/tools/tmux/tmux";
     shell.extra = [
       (builtins.readFile ./utils.sh)
     ];
