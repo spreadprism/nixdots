@@ -26,6 +26,7 @@ in {
             ruby = config.ruby.enable;
             proto = true;
             remote = config.nvim.remote;
+            devtools = true;
           };
         };
       };
