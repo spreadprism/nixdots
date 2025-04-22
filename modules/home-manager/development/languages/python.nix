@@ -8,18 +8,11 @@
   options.python.enable = lib.mkEnableOption "Add python support";
 
   config = lib.mkIf config.python.enable {
-    home.packages = with pkgs;
-      [
-        micromamba
-        pipx
-        poetry
-      ]
-      ++ lib.optionals config.development.enable [
-        python312Packages.debugpy
-        ruff
-        ruff-lsp
-        basedpyright
-      ];
+    home.packages = with pkgs; [
+      pipx
+      micromamba
+      uv
+    ];
 
     home.file.".mambarc".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.mambarc";
     shell = {
@@ -29,18 +22,12 @@
       paths = [
         "$HOME/.local/bin"
       ];
+      envs = {
+        MAMBA_ROOT_PREFIX = "$HOME/.micromamba";
+      };
+      extra = [
+        ''eval "$(micromamba shell hook --shell zsh)"''
+      ];
     };
-
-    # home.file.".nix/shell/python.sh".text =
-    #   # INFO: micromamba
-    #   ''
-    #     export MAMBA_ROOT_PREFIX=~/.micromamba
-    #     alias mamba=micromamba
-    #     eval "$(micromamba shell hook --shell zsh)"
-    #   ''
-    #   + # INFO: pipx
-    #   ''
-    #     export PATH="$PATH:$HOME/.local/bin"
-    #   '';
   };
 }
