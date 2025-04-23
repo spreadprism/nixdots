@@ -9,6 +9,7 @@
   homebrew = {
     brews = [
       "docker"
+      "ansible"
       "devstack"
       "efctl"
     ];
