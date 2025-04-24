@@ -15,6 +15,7 @@
   nvim.remote = true;
   ruby.enable = true;
   python.enable = true;
+  robot.enable = true;
   go = {
     enable = true;
     pkg = pkgs.go_1_24;
