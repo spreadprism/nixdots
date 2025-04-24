@@ -211,19 +211,11 @@
         "plugins-tmux-navigation": "plugins-tmux-navigation"
       },
       "locked": {
-<<<<<<< HEAD
-        "lastModified": 1745443102,
-        "narHash": "sha256-mepXN6BxVEyQFeU2igX21lz7xXqdBIfF1bm2IEekrpY=",
+        "lastModified": 1745507647,
+        "narHash": "sha256-OkfWZuID06Wl955RukprcmG75aC6Q2utboxGAagwIuw=",
         "owner": "spreadprism",
         "repo": "nvim",
-        "rev": "516bb2a0238d83cfdb539fede42a96c4669562f4",
-=======
-        "lastModified": 1745506468,
-        "narHash": "sha256-waxF4/E9jiJTfBuWBrt7ljkwPUUduKYiYgPgR8wus7M=",
-        "owner": "spreadprism",
-        "repo": "nvim",
-        "rev": "d0d6b4282c94a461093f217c8742d2fdff424d8f",
->>>>>>> 77bdd39 (updated flake)
+        "rev": "da6c00119ae2cbc71c0c3bdaff822f80472a35a2",
         "type": "github"
       },
       "original": {
