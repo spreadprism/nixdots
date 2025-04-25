@@ -208,14 +208,15 @@
         "plugins-oil-vcs-status": "plugins-oil-vcs-status",
         "plugins-profile": "plugins-profile",
         "plugins-render-markdown": "plugins-render-markdown",
-        "plugins-tmux-navigation": "plugins-tmux-navigation"
+        "plugins-tmux-navigation": "plugins-tmux-navigation",
+        "plugins-venv-selector": "plugins-venv-selector"
       },
       "locked": {
-        "lastModified": 1745530152,
-        "narHash": "sha256-wOsqUZjt/nORyTVVN2uOWKRFYi9/o0k1aZRi1gubpZU=",
+        "lastModified": 1745610270,
+        "narHash": "sha256-PinFSR8O3CHuKbgv6NWBLJ1Xa32ceDfyCcYAkRNMscw=",
         "owner": "spreadprism",
         "repo": "nvim",
-        "rev": "b568ae43e0455f1ff4d31305aced974c69f72c1b",
+        "rev": "f4d335900e0d6d7b26291a6928875791bf1bad3e",
         "type": "github"
       },
       "original": {
@@ -737,6 +738,23 @@
       "original": {
         "owner": "christoomey",
         "repo": "vim-tmux-navigator",
+        "type": "github"
+      }
+    },
+    "plugins-venv-selector": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1742652355,
+        "narHash": "sha256-ogd4T+mIbb86qFUbDczzDra8yWm/bwKmYCRGYCJz6fM=",
+        "owner": "linux-cultist",
+        "repo": "venv-selector.nvim",
+        "rev": "c677caa1030808a9f90092e522de7cc20c1390dd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "linux-cultist",
+        "ref": "regexp",
+        "repo": "venv-selector.nvim",
         "type": "github"
       }
     },
