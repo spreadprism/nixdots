@@ -18,7 +18,6 @@
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     neovim = {
       url = "github:spreadprism/nvim";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     nh.url = "github:nix-community/nh";
     # sops-nix = {
