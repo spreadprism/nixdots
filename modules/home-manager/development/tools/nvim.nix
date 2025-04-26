@@ -22,11 +22,15 @@ in {
       packageDefinitions.replace = {
         nvim = {pkgs, ...}: {
           categories = {
-            go = config.go.enable;
-            python = config.python.enable;
-            robot = config.robot.enable;
-            ruby = config.ruby.enable;
-            proto = true;
+            language = true;
+            # language = {
+            #   go = config.go.enable;
+            #   python = config.python.enable;
+            #   robot = config.robot.enable;
+            #   ruby = config.ruby.enable;
+            #   proto = true;
+            # };
+            tmux = config.shell.mux == "tmux";
             remote = config.nvim.remote;
             devtools = true;
           };
