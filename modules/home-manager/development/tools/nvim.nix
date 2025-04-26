@@ -20,16 +20,16 @@ in {
     nvim = {
       enable = true;
       packageDefinitions.replace = {
-        nvim = {pkgs, ...}: {
+        nvim = {...}: {
           categories = {
-            language = true;
-            # language = {
-            #   go = config.go.enable;
-            #   python = config.python.enable;
-            #   robot = config.robot.enable;
-            #   ruby = config.ruby.enable;
-            #   proto = true;
-            # };
+            language = {
+              go = config.go.enable;
+              python = config.python.enable;
+              robot = config.robot.enable;
+              ruby = config.ruby.enable;
+              proto = true;
+              docker = true;
+            };
             tmux = config.shell.mux == "tmux";
             remote = config.nvim.remote;
             devtools = true;
