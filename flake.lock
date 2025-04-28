@@ -199,6 +199,7 @@
         "plugins-git-conflict": "plugins-git-conflict",
         "plugins-harpoon": "plugins-harpoon",
         "plugins-kulala": "plugins-kulala",
+        "plugins-lazydev": "plugins-lazydev",
         "plugins-lspconfig": "plugins-lspconfig",
         "plugins-lualine-nvim": "plugins-lualine-nvim",
         "plugins-nvim-dbee": "plugins-nvim-dbee",
@@ -211,11 +212,11 @@
         "plugins-venv-selector": "plugins-venv-selector"
       },
       "locked": {
-        "lastModified": 1745722354,
-        "narHash": "sha256-bTULu5nZWtw5NQqeMj0D4hAsc9RkiXkkXBkRuJJhMds=",
+        "lastModified": 1745860433,
+        "narHash": "sha256-l/BhqAelVPWiGdCArSsEkMhs/K++SypbvQgw6u4Ri40=",
         "owner": "spreadprism",
         "repo": "nvim",
-        "rev": "c55cb5865f450f063d9c2010f8ef6d3ac7093112",
+        "rev": "b128f604f3e3e5f3512129452f9c2577adf975df",
         "type": "github"
       },
       "original": {
@@ -625,6 +626,22 @@
       "original": {
         "owner": "mistweaverco",
         "repo": "kulala.nvim",
+        "type": "github"
+      }
+    },
+    "plugins-lazydev": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1740044730,
+        "narHash": "sha256-LoxziiV9jlHuU4vRVFfKtVLI45ouJcuyXC6DIyQKlew=",
+        "owner": "folke",
+        "repo": "lazydev.nvim",
+        "rev": "2367a6c0a01eb9edb0464731cc0fb61ed9ab9d2c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "lazydev.nvim",
         "type": "github"
       }
     },

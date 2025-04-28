@@ -21,6 +21,7 @@ in {
       config.allowUnfree = true;
       overlays = [
         outputs.overlays.stable-packages
+        outputs.overlays.codelldb
         inputs.nh.overlays.default
       ];
     };

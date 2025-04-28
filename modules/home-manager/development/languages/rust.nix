@@ -12,10 +12,10 @@
         rustc
       ]
       ++ lib.optionals config.development.enable [
+        codelldb
         rustfmt
         rust-analyzer
       ];
-    development.lsp.codelldb.enable = config.development.enable;
     shell.paths = [
       "$HOME/.cargo/bin"
     ];

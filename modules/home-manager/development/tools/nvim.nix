@@ -27,6 +27,7 @@ in {
               python = config.python.enable;
               robot = config.robot.enable;
               ruby = config.ruby.enable;
+              rust = config.rust.enable;
               proto = true;
               docker = true;
             };
