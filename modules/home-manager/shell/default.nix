@@ -51,6 +51,7 @@ in {
       paths = [
         flakeRoot
         "$HOME/.nix-profile/bin"
+        "$HOME/.bin"
       ];
     };
     home.packages = with pkgs; [

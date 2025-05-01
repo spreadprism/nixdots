@@ -1,18 +1,15 @@
 {
   inputs,
-  pkgs,
   lib,
   config,
   ...
-}: let
-  devEnabled = config.development.enable;
-in {
+}: {
   imports = [inputs.neovim.homeModule];
   options = {
     nvim.remote = lib.mkEnableOption "include remote plugins";
     robot.enable = lib.mkEnableOption "add robot support to neovim";
   };
-  config = lib.mkIf devEnabled {
+  config = lib.mkIf config.development.enable {
     shell = {
       aliases.v = "nvim";
       envs.EDITOR = "nvim";

@@ -4,16 +4,15 @@
   lib,
   flakeRoot,
   ...
-}: let
-  devEnabled = config.development.enable;
-in {
+}: {
   home.packages = with pkgs;
     [
       git
       gh
     ]
-    ++ lib.optionals devEnabled [
+    ++ lib.optionals config.development.enable [
       gitleaks
+      act
     ];
 
   xdg.configFile."git".source = config.lib.file.mkOutOfStoreSymlink "${flakeRoot}/dotfiles/.config/git";

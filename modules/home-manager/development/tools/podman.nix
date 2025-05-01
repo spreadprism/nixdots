@@ -11,8 +11,8 @@ in {
       podman
       podman-compose
     ];
+    home.file.".bin/docker".source = "${pkgs.podman}/bin/podman";
     shell.aliases = {
-      docker = "podman";
       pm = "podman";
       pmc = "podman compose";
     };

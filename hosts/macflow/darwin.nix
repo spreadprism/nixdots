@@ -8,7 +8,6 @@
   # TODO: Moves things to general darwin.nix
   homebrew = {
     brews = [
-      "docker"
       "ansible"
     ];
     casks = [
@@ -18,6 +17,7 @@
       "1password"
       "1password-cli"
       "yt-music"
+      "podman-desktop"
     ];
     masApps = {
     };
