@@ -12,6 +12,7 @@ in {
       podman-compose
     ];
     shell.aliases = {
+      docker = "podman";
       pm = "podman";
       pmc = "podman compose";
     };

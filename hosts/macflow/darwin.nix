@@ -10,8 +10,6 @@
     brews = [
       "docker"
       "ansible"
-      "devstack"
-      "efctl"
     ];
     casks = [
       "slack"
