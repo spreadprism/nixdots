@@ -47,7 +47,7 @@ in {
             }
           ];
         };
-        initExtra = lib.concatStringsSep "\n" [
+        initContent = lib.concatStringsSep "\n" [
           (builtins.readFile ./zstyles.zsh)
           (builtins.readFile ./previous_next_dir.zsh)
           (builtins.readFile ./keybinds.zsh)
