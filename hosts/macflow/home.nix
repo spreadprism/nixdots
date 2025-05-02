@@ -20,6 +20,11 @@
     pkg = pkgs.go_1_24;
   };
 
+  tools.act.flags = [
+    "-P ef-hosted-runner=gcr.io/production-1309/actions-runner"
+    "--pull=false"
+    ''-s DEV_SA=$(cat ~/.config/gcloud/application_default_credentials.json | tr -d '\r\n')''
+  ];
   shell = {
     supported = ["zsh"];
     paths = [
