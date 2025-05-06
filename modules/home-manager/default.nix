@@ -5,4 +5,5 @@
     ./terminal
     ./development
   ];
+  xdg.enable = true;
 }

@@ -13,5 +13,8 @@
       gitleaks
     ];
 
-  xdg.configFile."git/config".source = ./config;
+  xdg.configFile = {
+    "git/config".source = ./config;
+    "git/.gitignore".source = ./.gitignore;
+  };
 }

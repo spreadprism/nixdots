@@ -204,6 +204,7 @@
         "plugins-lualine-nvim": "plugins-lualine-nvim",
         "plugins-nvim-dbee": "plugins-nvim-dbee",
         "plugins-nvim-lint": "plugins-nvim-lint",
+        "plugins-oil": "plugins-oil",
         "plugins-oil-vcs-status": "plugins-oil-vcs-status",
         "plugins-overseer": "plugins-overseer",
         "plugins-profile": "plugins-profile",
@@ -213,11 +214,11 @@
         "plugins-venv-selector": "plugins-venv-selector"
       },
       "locked": {
-        "lastModified": 1746476732,
-        "narHash": "sha256-gyiDzIdjvzBxGASEM/zoPOGIgzrcQLvzs6P8orBlNhk=",
+        "lastModified": 1746543135,
+        "narHash": "sha256-9CWP6Wc5a+6HOXPsxe/YYgEm8L08gaQORWM6xQ100Oc=",
         "owner": "spreadprism",
         "repo": "nvim",
-        "rev": "46c90887626bc0c330d70ceff9945683f845c2b1",
+        "rev": "4083c679c8039ac539c8c1007aecf5f1a0aedb8c",
         "type": "github"
       },
       "original": {
@@ -707,6 +708,22 @@
       "original": {
         "owner": "mfussenegger",
         "repo": "nvim-lint",
+        "type": "github"
+      }
+    },
+    "plugins-oil": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1745170557,
+        "narHash": "sha256-G9I/5zidjV4Q3QLzrPkiXqSpLVuvOIu695OTI6DTC/M=",
+        "owner": "stevearc",
+        "repo": "oil.nvim",
+        "rev": "685cdb4ffa74473d75a1b97451f8654ceeab0f4a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "stevearc",
+        "repo": "oil.nvim",
         "type": "github"
       }
     },

@@ -1,6 +1,8 @@
 [core]
   editor = nvim
   autocrlf = input
+  excludesFile = ~/.config/git/.gitignore
+
 
 [pull]
    rebase = true
