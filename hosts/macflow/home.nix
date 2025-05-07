@@ -15,6 +15,7 @@
   ruby.enable = true;
   python.enable = true;
   robot.enable = true;
+  scala.enable = true;
   go = {
     enable = true;
     pkg = pkgs.go_1_24;

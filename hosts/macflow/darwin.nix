@@ -9,6 +9,12 @@
   homebrew = {
     brews = [
       "ansible"
+      {
+        name = "mysql@8.0";
+        link = true;
+        restart_service = true;
+        conflicts_with = ["mysql"];
+      }
     ];
     casks = [
       "slack"
