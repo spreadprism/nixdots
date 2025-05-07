@@ -214,11 +214,11 @@
         "plugins-venv-selector": "plugins-venv-selector"
       },
       "locked": {
-        "lastModified": 1746543135,
-        "narHash": "sha256-9CWP6Wc5a+6HOXPsxe/YYgEm8L08gaQORWM6xQ100Oc=",
+        "lastModified": 1746580076,
+        "narHash": "sha256-Oky96yG/x7gC6JG94ISxs7VofXV4tYWrLAs1O9HmAVE=",
         "owner": "spreadprism",
         "repo": "nvim",
-        "rev": "4083c679c8039ac539c8c1007aecf5f1a0aedb8c",
+        "rev": "406cfa01526ece69cd551bf788c0554e93e846a3",
         "type": "github"
       },
       "original": {
