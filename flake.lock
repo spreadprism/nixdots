@@ -200,6 +200,7 @@
         "plugins-harpoon": "plugins-harpoon",
         "plugins-kulala": "plugins-kulala",
         "plugins-lazydev": "plugins-lazydev",
+        "plugins-live-command": "plugins-live-command",
         "plugins-lspconfig": "plugins-lspconfig",
         "plugins-lualine-nvim": "plugins-lualine-nvim",
         "plugins-nvim-dbee": "plugins-nvim-dbee",
@@ -215,11 +216,11 @@
         "plugins-venv-selector": "plugins-venv-selector"
       },
       "locked": {
-        "lastModified": 1747177294,
-        "narHash": "sha256-0RLtYxtn0Ix7d0RNZu+vMUjpT1DPoLK5FOpLIrrB/v8=",
+        "lastModified": 1747179397,
+        "narHash": "sha256-1YdsvPbt2jk6K8k7lDA2/ddm8fDvw5Ug+EhTOsf21/0=",
         "owner": "spreadprism",
         "repo": "nvim",
-        "rev": "9f20a47ed67ce55363f89d88c47cbfba472de603",
+        "rev": "272063b5cdfce9e4cc9e7a2ddef201ba3e842ecd",
         "type": "github"
       },
       "original": {
@@ -646,6 +647,22 @@
       "original": {
         "owner": "folke",
         "repo": "lazydev.nvim",
+        "type": "github"
+      }
+    },
+    "plugins-live-command": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1746051559,
+        "narHash": "sha256-DnUTaF3GSTFhQ/dsP/YUkBXTA+MRoirfyyOwMpz820c=",
+        "owner": "smjonas",
+        "repo": "live-command.nvim",
+        "rev": "05b9f886628f3e9e6122e734c1fac4f13dcb64b4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "smjonas",
+        "repo": "live-command.nvim",
         "type": "github"
       }
     },
