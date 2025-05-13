@@ -211,14 +211,15 @@
         "plugins-render-markdown": "plugins-render-markdown",
         "plugins-tmux-navigation": "plugins-tmux-navigation",
         "plugins-tokyonight": "plugins-tokyonight",
+        "plugins-treesitter-context": "plugins-treesitter-context",
         "plugins-venv-selector": "plugins-venv-selector"
       },
       "locked": {
-        "lastModified": 1747173489,
-        "narHash": "sha256-JpXpLBjXcUrZkmVv4VABNlDUuLtKUP/NjXDlIE/Aue8=",
+        "lastModified": 1747176912,
+        "narHash": "sha256-gvynen0xm4SdQYzw3gs5a6DrtvfWRem1HGg7GQFXiLE=",
         "owner": "spreadprism",
         "repo": "nvim",
-        "rev": "ad47f4cf8f0aae9e96318b85b8630c044c322afe",
+        "rev": "a21f46e2347c846e3e65906bbd443032b46647dc",
         "type": "github"
       },
       "original": {
@@ -820,6 +821,22 @@
       "original": {
         "owner": "folke",
         "repo": "tokyonight.nvim",
+        "type": "github"
+      }
+    },
+    "plugins-treesitter-context": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1746800706,
+        "narHash": "sha256-gRvGGvIf9tYw/HnfKLhwg8C6qlmJ8/AkEY4z9+Kt/Yw=",
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter-context",
+        "rev": "5c48b8ba1b0b7b25feb6e34e7eb293ea893aedc4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-treesitter",
+        "repo": "nvim-treesitter-context",
         "type": "github"
       }
     },

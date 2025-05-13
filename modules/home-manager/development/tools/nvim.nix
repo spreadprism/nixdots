@@ -25,6 +25,7 @@
               robot = config.robot.enable;
               ruby = config.ruby.enable;
               rust = config.rust.enable;
+              terraform = true;
               proto = true;
               docker = true;
             };
