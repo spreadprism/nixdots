@@ -31,7 +31,6 @@
             };
             tmux = config.shell.mux == "tmux";
             remote = config.nvim.remote;
-            devtools = true;
           };
         };
       };
