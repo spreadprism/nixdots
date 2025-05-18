@@ -9,6 +9,8 @@
   homebrew = {
     brews = [
       "ansible"
+      "devstack"
+      "efctl"
       {
         name = "mysql@8.0";
         link = true;
