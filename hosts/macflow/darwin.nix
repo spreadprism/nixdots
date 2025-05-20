@@ -22,8 +22,6 @@
       "slack"
       "zoom"
       "obsidian"
-      "1password"
-      "1password-cli"
       "yt-music"
       "podman-desktop"
     ];
