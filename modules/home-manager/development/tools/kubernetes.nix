@@ -11,13 +11,18 @@
       kubernetes-helm
       minikube
     ];
-    shell.aliases = {
-      kc = "kubectx";
-      kcu = "kc -u";
-      kn = "kubens";
-      knu = "k config set-context --current --namespace=";
-      k = "kubectl";
-      ku = "knu && kcu";
+    shell = {
+      extra = [
+        "export KUBECONFIG=$HOME/.kube/config"
+      ];
+      aliases = {
+        kc = "kubectx";
+        kcu = "kc -u";
+        kn = "kubens";
+        knu = "k config set-context --current --namespace=";
+        k = "kubectl";
+        ku = "knu && kcu";
+      };
     };
   };
 }
