@@ -20,10 +20,10 @@
       url = "github:spreadprism/nvim";
     };
     nh.url = "github:nix-community/nh?rev=418c6620f80f064b38011d0f44c1240c67169cc5";
-    # sops-nix = {
-    #   url = "github:Mic92/sops-nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    sops = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {
     self,

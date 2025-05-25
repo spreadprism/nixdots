@@ -22,6 +22,7 @@ in {
     modules = [
       ../defaults/home.nix
       ../../hosts/${hostname}/home.nix
+      inputs.sops.homeManagerModule
     ];
     pkgs = nixpkgs.legacyPackages.${system};
     inherit (pkgs.stdenv) isDarwin;
@@ -32,7 +33,7 @@ in {
     flakeRoot = "${homeDirectory}/nixdots";
     extraSpecialArgs =
       {
-        inherit username system hostname flakeRoot;
+        inherit username system hostname flakeRoot homeDirectory;
       }
       // extraArgs;
   in {
