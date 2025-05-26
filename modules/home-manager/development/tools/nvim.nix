@@ -28,6 +28,7 @@
               terraform = true;
               proto = true;
               docker = true;
+              helm = true;
             };
             tmux = config.shell.mux == "tmux";
             remote = config.nvim.remote;
