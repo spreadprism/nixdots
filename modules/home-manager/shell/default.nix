@@ -58,6 +58,7 @@ in {
       ripgrep
       fzf
       jq
+      yq
       fd
       jqp
       bat
