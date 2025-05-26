@@ -12,8 +12,8 @@
     defaultSopsFile = ../../secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
   };
-  sops.secrets.secret_message = {};
-  shell.extra = [
-    ''export SECRET_MESSAGE=$(cat ${config.sops.secrets.secret_message.path})''
-  ];
+  # sops.secrets.secret_message = {};
+  # shell.extra = [
+  #   ''export SECRET_MESSAGE=$(cat ${config.sops.secrets.secret_message.path})''
+  # ];
 }
