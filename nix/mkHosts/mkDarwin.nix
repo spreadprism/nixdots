@@ -21,7 +21,7 @@ in {
     flakeRoot = "${homeDirectory}/nixdots";
     specialArgs =
       {
-        inherit username system hostname flakeRoot;
+        inherit username system hostname flakeRoot homeDirectory;
       }
       // extraArgs;
   in {
@@ -49,6 +49,7 @@ in {
                 ../defaults/home.nix
                 ../../hosts/${hostname}/home.nix
                 ../../modules/home-manager
+                inputs.sops.homeManagerModule
               ];
             };
           };
