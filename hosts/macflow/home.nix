@@ -41,7 +41,6 @@
       ''export EF_WORKSPACE_PATH=~/Projects''
       ''export NODE_OPTIONS="--max_old_space_size=16384 --no-experimental-fetch"''
       ''export HOMEBREW_GITHUB_API_TOKEN=$(gh auth token)''
-      ''source <(devstack completion zsh)''
     ];
   };
 }
