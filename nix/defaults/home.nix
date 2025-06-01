@@ -25,6 +25,7 @@ in {
         inputs.nh.overlays.default
       ];
     };
+    shell.aliases.sctl = lib.mkIf isLinux "systemctl";
     home = {
       inherit stateVersion;
       inherit username;

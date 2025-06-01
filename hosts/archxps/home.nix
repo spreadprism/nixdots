@@ -13,4 +13,5 @@
   python.enable = true;
   go.enable = true;
   rust.enable = true;
+  java.enable = true;
 }
