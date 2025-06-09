@@ -9,6 +9,7 @@
       kubectl
       kubectx
       minikube
+      kind
       helmfile
       (wrapHelm kubernetes-helm {
         plugins = with pkgs.kubernetes-helmPlugins; [
@@ -21,6 +22,7 @@
     shell = {
       extra = [
         "export KUBECONFIG=$HOME/.kube/config"
+        "source <(kind completion zsh)"
       ];
       aliases = {
         k = "kubectl";

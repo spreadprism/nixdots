@@ -47,12 +47,17 @@ in {
             }
           ];
         };
-        initContent = lib.concatStringsSep "\n" [
-          (builtins.readFile ./zstyles.zsh)
-          (builtins.readFile ./previous_next_dir.zsh)
-          (builtins.readFile ./keybinds.zsh)
-        ];
-        envExtra = lib.concatStringsSep "\n" (builtins.concatLists [env env_path aliases config.shell.extra]);
+        initContent = lib.concatStringsSep "\n" (builtins.concatLists [
+          [
+            (builtins.readFile ./zstyles.zsh)
+            (builtins.readFile ./previous_next_dir.zsh)
+            (builtins.readFile ./keybinds.zsh)
+          ]
+          env
+          env_path
+          aliases
+          config.shell.extra
+        ]);
       };
     };
   };
