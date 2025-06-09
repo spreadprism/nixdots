@@ -25,7 +25,10 @@ in {
         inputs.nh.overlays.default
       ];
     };
-    shell.aliases.sctl = lib.mkIf isLinux "systemctl";
+    shell.aliases = {
+      sctl = lib.mkIf isLinux "systemctl";
+      sv = lib.mkIf isLinux "sudoedit";
+    };
     home = {
       inherit stateVersion;
       inherit username;
