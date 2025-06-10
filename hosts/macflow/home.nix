@@ -14,6 +14,7 @@
   ruby.enable = true;
   python.enable = true;
   robot.enable = true;
+  dotnet.enable = true;
   scala.enable = true;
   go = {
     enable = true;

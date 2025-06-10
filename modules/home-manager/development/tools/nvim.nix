@@ -8,6 +8,7 @@
   options = {
     nvim.remote = lib.mkEnableOption "include remote plugins";
     robot.enable = lib.mkEnableOption "add robot support to neovim";
+    dotnet.enable = lib.mkEnableOption "add dotnet support to neovim";
   };
   config = lib.mkIf config.development.enable {
     shell = {
@@ -25,6 +26,7 @@
               robot = config.robot.enable;
               ruby = config.ruby.enable;
               rust = config.rust.enable;
+              dotnet = config.dotnet.enable;
               terraform = true;
               proto = true;
               docker = true;
