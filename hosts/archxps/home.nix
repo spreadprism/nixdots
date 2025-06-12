@@ -8,6 +8,7 @@
   shell.supported = ["zsh"];
   desktop = "hyprland";
   terminal = "ghostty";
+  shell.aliases.sudo = "sudo-rs";
 
   development.enable = true;
   python.enable = true;
