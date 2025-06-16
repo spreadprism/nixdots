@@ -11,6 +11,7 @@
       minikube
       kind
       helmfile
+      argocd
       kustomize
       (wrapHelm kubernetes-helm {
         plugins = with pkgs.kubernetes-helmPlugins; [
@@ -24,6 +25,7 @@
       extra = [
         "export KUBECONFIG=$HOME/.kube/config"
         "source <(kind completion zsh)"
+        "source <(argocd completion zsh)"
       ];
       aliases = {
         k = "kubectl";
