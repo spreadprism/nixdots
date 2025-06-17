@@ -51,11 +51,7 @@
     },
     "flake-parts": {
       "inputs": {
-        "nixpkgs-lib": [
-          "neovim",
-          "neovim-nightly-overlay",
-          "nixpkgs"
-        ]
+        "nixpkgs-lib": ["neovim", "neovim-nightly-overlay", "nixpkgs"]
       },
       "locked": {
         "lastModified": 1749398372,
@@ -97,11 +93,7 @@
       "inputs": {
         "flake-compat": "flake-compat_2",
         "gitignore": "gitignore",
-        "nixpkgs": [
-          "neovim",
-          "neovim-nightly-overlay",
-          "nixpkgs"
-        ]
+        "nixpkgs": ["neovim", "neovim-nightly-overlay", "nixpkgs"]
       },
       "locked": {
         "lastModified": 1749636823,
@@ -119,12 +111,7 @@
     },
     "gitignore": {
       "inputs": {
-        "nixpkgs": [
-          "neovim",
-          "neovim-nightly-overlay",
-          "git-hooks",
-          "nixpkgs"
-        ]
+        "nixpkgs": ["neovim", "neovim-nightly-overlay", "git-hooks", "nixpkgs"]
       },
       "locked": {
         "lastModified": 1709087332,
@@ -143,11 +130,7 @@
     "hercules-ci-effects": {
       "inputs": {
         "flake-parts": "flake-parts_2",
-        "nixpkgs": [
-          "neovim",
-          "neovim-nightly-overlay",
-          "nixpkgs"
-        ]
+        "nixpkgs": ["neovim", "neovim-nightly-overlay", "nixpkgs"]
       },
       "locked": {
         "lastModified": 1748000383,
@@ -165,9 +148,7 @@
     },
     "home-manager": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": ["nixpkgs"]
       },
       "locked": {
         "lastModified": 1749400020,
@@ -241,10 +222,7 @@
         "git-hooks": "git-hooks",
         "hercules-ci-effects": "hercules-ci-effects",
         "neovim-src": "neovim-src",
-        "nixpkgs": [
-          "neovim",
-          "nixpkgs"
-        ],
+        "nixpkgs": ["neovim", "nixpkgs"],
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
@@ -298,9 +276,7 @@
     },
     "nix-darwin": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": ["nixpkgs"]
       },
       "locked": {
         "lastModified": 1749194393,
@@ -925,9 +901,7 @@
     },
     "sops": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": ["nixpkgs"]
       },
       "locked": {
         "lastModified": 1747603214,
@@ -945,11 +919,7 @@
     },
     "treefmt-nix": {
       "inputs": {
-        "nixpkgs": [
-          "neovim",
-          "neovim-nightly-overlay",
-          "nixpkgs"
-        ]
+        "nixpkgs": ["neovim", "neovim-nightly-overlay", "nixpkgs"]
       },
       "locked": {
         "lastModified": 1749194973,
