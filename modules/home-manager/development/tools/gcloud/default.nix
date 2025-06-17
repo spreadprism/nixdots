@@ -16,6 +16,7 @@ in {
         cloud-sql-proxy
         cloud-run-proxy
         gke-gcloud-auth-plugin
+        package-go-module
       ]))
       fzf
       (writeShellScriptBin "gcx" (builtins.readFile ./gcx))
