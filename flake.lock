@@ -51,7 +51,11 @@
     },
     "flake-parts": {
       "inputs": {
-        "nixpkgs-lib": ["neovim", "neovim-nightly-overlay", "nixpkgs"]
+        "nixpkgs-lib": [
+          "neovim",
+          "neovim-nightly-overlay",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1749398372,
@@ -93,7 +97,11 @@
       "inputs": {
         "flake-compat": "flake-compat_2",
         "gitignore": "gitignore",
-        "nixpkgs": ["neovim", "neovim-nightly-overlay", "nixpkgs"]
+        "nixpkgs": [
+          "neovim",
+          "neovim-nightly-overlay",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1749636823,
@@ -111,7 +119,12 @@
     },
     "gitignore": {
       "inputs": {
-        "nixpkgs": ["neovim", "neovim-nightly-overlay", "git-hooks", "nixpkgs"]
+        "nixpkgs": [
+          "neovim",
+          "neovim-nightly-overlay",
+          "git-hooks",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1709087332,
@@ -130,7 +143,11 @@
     "hercules-ci-effects": {
       "inputs": {
         "flake-parts": "flake-parts_2",
-        "nixpkgs": ["neovim", "neovim-nightly-overlay", "nixpkgs"]
+        "nixpkgs": [
+          "neovim",
+          "neovim-nightly-overlay",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1748000383,
@@ -148,7 +165,9 @@
     },
     "home-manager": {
       "inputs": {
-        "nixpkgs": ["nixpkgs"]
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1749400020,
@@ -202,11 +221,11 @@
         "plugins-venv-selector": "plugins-venv-selector"
       },
       "locked": {
-        "lastModified": 1750189269,
-        "narHash": "sha256-roBdMTOeFv8XWMSCqMmZSphUZ5qyS4+mEQCkD3esRpk=",
+        "lastModified": 1750189748,
+        "narHash": "sha256-FG26vGQRYQHAB13UneAi2CL1E4Lw+MhZ8PcGcWy29rY=",
         "owner": "spreadprism",
         "repo": "nvim",
-        "rev": "3b3a9d314505fcbf08e8b0716da611afc5fcad60",
+        "rev": "7bcfb83f8998fc9c1c812b40b97510267c458010",
         "type": "github"
       },
       "original": {
@@ -222,7 +241,10 @@
         "git-hooks": "git-hooks",
         "hercules-ci-effects": "hercules-ci-effects",
         "neovim-src": "neovim-src",
-        "nixpkgs": ["neovim", "nixpkgs"],
+        "nixpkgs": [
+          "neovim",
+          "nixpkgs"
+        ],
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
@@ -276,7 +298,9 @@
     },
     "nix-darwin": {
       "inputs": {
-        "nixpkgs": ["nixpkgs"]
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1749194393,
@@ -901,7 +925,9 @@
     },
     "sops": {
       "inputs": {
-        "nixpkgs": ["nixpkgs"]
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1747603214,
@@ -919,7 +945,11 @@
     },
     "treefmt-nix": {
       "inputs": {
-        "nixpkgs": ["neovim", "neovim-nightly-overlay", "nixpkgs"]
+        "nixpkgs": [
+          "neovim",
+          "neovim-nightly-overlay",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1749194973,
