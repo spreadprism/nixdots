@@ -1,0 +1,8 @@
+run *args:
+    @go run main.go {{args}}
+
+build ENV='dev':
+    @mkdir -p ./dist/{{ENV}}
+    @go build -o ./dist/{{ENV}}/nixdots {{ if ENV == "release" {'-ldflags "-s -w"'} else {""} }}
+
+__build_dev: (build "dev")
