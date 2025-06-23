@@ -198,6 +198,7 @@
         "plugins-ex-colors": "plugins-ex-colors",
         "plugins-exrc": "plugins-exrc",
         "plugins-git-conflict": "plugins-git-conflict",
+        "plugins-gotmpl": "plugins-gotmpl",
         "plugins-guess-indent": "plugins-guess-indent",
         "plugins-harpoon": "plugins-harpoon",
         "plugins-kulala": "plugins-kulala",
@@ -221,11 +222,11 @@
         "plugins-venv-selector": "plugins-venv-selector"
       },
       "locked": {
-        "lastModified": 1750526576,
-        "narHash": "sha256-LG4hna7SypOWYQnBviRoh/PpLHN7/B22ZtPECQ2OIC0=",
+        "lastModified": 1750695872,
+        "narHash": "sha256-ny+DVtOI5STb+tWIGDSpyM4YzmdT9SHhR3HQYkb7x/o=",
         "owner": "spreadprism",
         "repo": "nvim",
-        "rev": "688843415365686cb8360e8036a7a99f6bd9b4c0",
+        "rev": "e688af060934ba74d8a39104a60e61886a5ecd60",
         "type": "github"
       },
       "original": {
@@ -570,6 +571,22 @@
       "original": {
         "owner": "akinsho",
         "repo": "git-conflict.nvim",
+        "type": "github"
+      }
+    },
+    "plugins-gotmpl": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1733419758,
+        "narHash": "sha256-EyPti2XYpCKItyMSCBMXPxHFjZ+6e3AM4mu+KpyDC0A=",
+        "owner": "ngynkvn",
+        "repo": "gotmpl.nvim",
+        "rev": "7c50c61a1f726d5733df7d8cc6f0dd9324661206",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ngynkvn",
+        "repo": "gotmpl.nvim",
         "type": "github"
       }
     },
