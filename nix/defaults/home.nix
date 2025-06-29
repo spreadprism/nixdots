@@ -22,6 +22,7 @@ in {
       overlays = [
         outputs.overlays.stable-packages
         outputs.overlays.codelldb
+        outputs.overlays.additions
         inputs.nh.overlays.default
       ];
     };
@@ -37,6 +38,7 @@ in {
         [
           nh
           sops
+          nixdots
         ]
         ++ lib.optionals isLinux [
         ]

@@ -2,6 +2,7 @@ package nh
 
 import (
 	"context"
+	"log/slog"
 	"os"
 	"os/exec"
 
@@ -34,5 +35,9 @@ func Switch(ctx context.Context) error {
 	if err != nil {
 		return errors.WithStack(err)
 	}
-	return execute(ctx, cfg.FlakeRoot, cfg.SwitchType, "switch")
+	if cfg.SwitchType == UnknownSwitch {
+		return errors.New("unknown switch type, please set the switch type using --switch-type flag or setting it in the config")
+	}
+	slog.Debug("Switch", slog.String("flake-root", cfg.FlakeRoot), slog.String("switch-type", cfg.SwitchType))
+	return execute(ctx, cfg.FlakeRoot, cfg.SwitchType, "switch", ".")
 }
