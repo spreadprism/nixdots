@@ -15,12 +15,18 @@ type config struct {
 }
 
 func cfg() (*config, error) {
-	cfg := &config{
-		FlakeRoot: os.Getenv("PWD"),
-	}
+	cfg := &config{}
 
 	if err := internal.LoadCfg(cfg); err != nil {
 		return nil, errors.Wrap(err, "failed to load configuration")
+	}
+
+	if cfg.FlakeRoot == "" {
+		cwd, err := os.Getwd()
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to get current working directory")
+		}
+		cfg.FlakeRoot = cwd
 	}
 
 	if cfg.SwitchType == "" {

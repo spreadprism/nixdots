@@ -2,7 +2,9 @@ package internal
 
 import (
 	"fmt"
+	"log/slog"
 	"os"
+	"path"
 
 	"github.com/pkg/errors"
 	"github.com/spf13/viper"
@@ -22,15 +24,25 @@ func GlobalCfg() *GlobalConfig {
 
 func init() {
 	// INFO: CONFIG
-	viper.SetConfigFile("nixdots")
+	viper.SetConfigName("nixdots")
 	viper.SetConfigType("yaml")
-	viper.AddConfigPath("$HOME")
-	viper.AddConfigPath("$XDG_CONFIG_HOME/nixdots")
-	viper.AddConfigPath("$HOME/.config/nixdots")
+
+	home := os.Getenv("HOME")
 	viper.AddConfigPath(os.Getenv("PWD"))
+	viper.AddConfigPath(home)
+	viper.AddConfigPath(path.Join(home, ".config", "nixdots"))
+	viper.AddConfigPath(path.Join(os.Getenv("XDG_CONFIG_HOME"), "nixdots"))
 
 	viper.SetEnvPrefix("nixdots")
 	viper.AutomaticEnv()
+	if err := viper.ReadInConfig(); err != nil {
+		if _, ok := err.(viper.ConfigFileNotFoundError); !ok {
+			fmt.Fprintln(os.Stderr, errors.Wrap(err, "failed to read configuration file"))
+			os.Exit(1)
+		}
+	} else {
+		slog.Debug("Using config file", slog.String("file", viper.ConfigFileUsed()))
+	}
 }
 
 func LoadCfg[T any](base *T) error {
