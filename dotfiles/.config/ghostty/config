@@ -2,6 +2,8 @@ font-family = ""
 font-family = "JetBrainsMono NF SemiBold"
 font-size = 14
 confirm-close-surface = false
+# BUG: critical performance issue: https://github.com/ghostty-org/ghostty/discussions/7720
+async-backend = epoll
 
 clipboard-read = "allow"
 clipboard-write = "allow"
