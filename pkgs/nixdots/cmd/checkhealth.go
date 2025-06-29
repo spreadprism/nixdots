@@ -12,11 +12,11 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
-var checkHealthCmd = &cobra.Command{
-	Use:   "checkhealth",
-	Short: "Makes sure that nixdots is installed correctly and all dependencies are met.",
+var healthCmd = &cobra.Command{
+	Use:   "health",
+	Short: "verify dependencies",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		checks, err := checkhealth()
+		checks, err := health()
 		if err != nil {
 			return errors.Wrap(err, "failed to check health")
 		}
@@ -41,7 +41,7 @@ type Check struct {
 	err  error
 }
 
-func checkhealth() ([]Check, error) {
+func health() ([]Check, error) {
 	var eg errgroup.Group
 	var mu sync.Mutex
 

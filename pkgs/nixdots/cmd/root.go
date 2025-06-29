@@ -33,6 +33,13 @@ var rootCmd = &cobra.Command{
 }
 
 func Execute() {
+	if len(os.Args) > 1 && os.Args[1] == "--help" || os.Args[1] == "-h" {
+		if err := rootCmd.Help(); err != nil {
+			fmt.Fprintf(os.Stderr, "Error displaying help: %v\n", err)
+			os.Exit(1)
+		}
+		return
+	}
 	cmd, _, err := rootCmd.Find(os.Args[1:])
 	// default cmd if no cmd is given
 	if err == nil && cmd.Use == rootCmd.Use {
@@ -53,7 +60,7 @@ func Execute() {
 func init() {
 	// root cmd config
 	rootCmd.SetVersionTemplate("{{.Name}} {{.Version}}\n")
-	rootCmd.AddCommand(checkHealthCmd, switchCmd)
+	rootCmd.AddCommand(healthCmd, switchCmd, configCmd)
 
 	// flags
 	flags := rootCmd.PersistentFlags()
@@ -66,7 +73,7 @@ func init() {
 }
 
 func preRun(cmd *cobra.Command, args []string) {
-	checks, err := checkhealth()
+	checks, err := health()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error checking health: %v\n", err)
 		os.Exit(1)

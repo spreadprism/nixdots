@@ -11,10 +11,10 @@ import (
 
 var configCmd = &cobra.Command{
 	Use:    "config",
-	Short:  "Manage configuration settings",
+	Short:  "get config value",
 	PreRun: preRun,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		_, err := fmt.Print(viper.Get(strings.Join(args, ".")))
+		_, err := fmt.Println(viper.Get(strings.Join(args, ".")))
 		return errors.WithStack(err)
 	},
 }
