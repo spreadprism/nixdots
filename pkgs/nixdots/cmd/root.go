@@ -2,9 +2,12 @@ package cmd
 
 import (
 	"fmt"
+	"log/slog"
 	"os"
 
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
+	"github.com/spreadprism/nixdots/internal/config"
 )
 
 var (
@@ -37,6 +40,10 @@ func Execute() {
 		rootCmd.SetArgs(args)
 	}
 
+	if internal.GlobalCfg().Debug {
+		slog.SetLogLoggerLevel(slog.LevelDebug)
+	}
+
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
@@ -44,9 +51,18 @@ func Execute() {
 }
 
 func init() {
+	// root cmd config
 	rootCmd.SetVersionTemplate("{{.Name}} {{.Version}}\n")
-
 	rootCmd.AddCommand(checkHealthCmd, switchCmd)
+
+	// flags
+	flags := rootCmd.PersistentFlags()
+
+	flags.Bool("debug", false, "set loglevel to debug")
+	if err := viper.BindPFlag("debug", flags.Lookup("debug")); err != nil {
+		fmt.Fprintf(os.Stderr, "Error binding flag: %v\n", err)
+		os.Exit(1)
+	}
 }
 
 func preRun(cmd *cobra.Command, args []string) {

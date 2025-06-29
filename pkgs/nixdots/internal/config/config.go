@@ -1,36 +1,45 @@
 package internal
 
 import (
+	"fmt"
 	"os"
 
+	"github.com/pkg/errors"
 	"github.com/spf13/viper"
 )
 
-type Config struct {
-	FlakeRoot  string `mapstructure:"flake-root"`
-	SwitchType string `mapstructure:"switch-type"`
+type GlobalConfig struct {
+	Debug bool `mapstructure:"debug"`
 }
 
-var c *Config = nil
+func GlobalCfg() *GlobalConfig {
+	cfg := &GlobalConfig{
+		Debug: false,
+	}
+	MustLoadCfg(cfg)
+	return cfg
+}
 
 func init() {
-	// CONFIG
+	// INFO: CONFIG
 	viper.SetConfigFile("nixdots")
 	viper.SetConfigType("yaml")
 	viper.AddConfigPath("$HOME")
 	viper.AddConfigPath("$XDG_CONFIG_HOME/nixdots")
 	viper.AddConfigPath("$HOME/.config/nixdots")
+	viper.AddConfigPath(os.Getenv("PWD"))
 
-	// DEFAULTS
-	// get cwd
-	viper.SetDefault("flake-root", os.Getenv("PWD")) // current location
+	viper.SetEnvPrefix("nixdots")
+	viper.AutomaticEnv()
 }
 
-func Get() (*Config, error) {
-	var err error = nil
-	if c == nil {
-		err = viper.Unmarshal(&c)
-	}
+func LoadCfg[T any](base *T) error {
+	return viper.Unmarshal(base)
+}
 
-	return c, err
+func MustLoadCfg[T any](base *T) {
+	if err := LoadCfg(base); err != nil {
+		fmt.Fprintln(os.Stderr, errors.Wrap(err, "failed to load configuration"))
+		os.Exit(1)
+	}
 }

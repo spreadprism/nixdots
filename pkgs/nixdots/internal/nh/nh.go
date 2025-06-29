@@ -4,25 +4,9 @@ import (
 	"context"
 	"os"
 	"os/exec"
+
+	"github.com/pkg/errors"
 )
-
-type Nh interface {
-	Switch(ctx context.Context) error
-}
-
-type Platform = string
-
-type nh struct {
-	flakeRoot string
-	platform  Platform
-}
-
-func New(flakeRoot string, platform Platform) Nh {
-	return &nh{
-		flakeRoot: flakeRoot,
-		platform:  platform,
-	}
-}
 
 func execute(ctx context.Context, dir string, args ...string) error {
 	cmd := exec.CommandContext(ctx, "nh", args...)
@@ -36,6 +20,19 @@ func execute(ctx context.Context, dir string, args ...string) error {
 	return cmd.Run()
 }
 
-func (n *nh) Switch(ctx context.Context) error {
-	return execute(ctx, n.flakeRoot, n.platform, "switch")
+type SwitchType = string
+
+const (
+	UnknownSwitch SwitchType = "unknown"
+	HomeSwitch    SwitchType = "home"
+	OsSwitch      SwitchType = "os"
+	DarwinSwitch  SwitchType = "darwin"
+)
+
+func Switch(ctx context.Context) error {
+	cfg, err := cfg()
+	if err != nil {
+		return errors.WithStack(err)
+	}
+	return execute(ctx, cfg.FlakeRoot, cfg.SwitchType, "switch")
 }
