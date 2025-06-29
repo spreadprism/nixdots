@@ -2,7 +2,6 @@ package internal
 
 import (
 	"fmt"
-	"log/slog"
 	"os"
 	"path"
 
@@ -36,12 +35,8 @@ func init() {
 	viper.SetEnvPrefix("nixdots")
 	viper.AutomaticEnv()
 	if err := viper.ReadInConfig(); err != nil {
-		if _, ok := err.(viper.ConfigFileNotFoundError); !ok {
-			fmt.Fprintln(os.Stderr, errors.Wrap(err, "failed to read configuration file"))
-			os.Exit(1)
-		}
-	} else {
-		slog.Debug("Using config file", slog.String("file", viper.ConfigFileUsed()))
+		fmt.Fprintln(os.Stderr, errors.Wrap(err, "failed to read configuration file"))
+		os.Exit(1)
 	}
 }
 
