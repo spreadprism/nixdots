@@ -33,12 +33,14 @@ var rootCmd = &cobra.Command{
 }
 
 func Execute() {
-	if len(os.Args) > 1 && os.Args[1] == "--help" || os.Args[1] == "-h" {
-		if err := rootCmd.Help(); err != nil {
-			fmt.Fprintf(os.Stderr, "Error displaying help: %v\n", err)
-			os.Exit(1)
+	if len(os.Args) > 1 {
+		if os.Args[1] == "--help" || os.Args[1] == "-h" {
+			if err := rootCmd.Help(); err != nil {
+				fmt.Fprintf(os.Stderr, "Error displaying help: %v\n", err)
+				os.Exit(1)
+			}
+			return
 		}
-		return
 	}
 	cmd, _, err := rootCmd.Find(os.Args[1:])
 	// default cmd if no cmd is given
