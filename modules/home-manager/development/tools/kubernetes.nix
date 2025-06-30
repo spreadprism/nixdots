@@ -8,10 +8,9 @@
     home.packages = with pkgs; [
       kubectl
       kubectx
-      minikube
-      kind
       helmfile
       argocd
+      k3d
       kustomize
       (wrapHelm kubernetes-helm {
         plugins = with pkgs.kubernetes-helmPlugins; [
@@ -24,7 +23,6 @@
     shell = {
       extra = [
         "export KUBECONFIG=$HOME/.kube/config"
-        "source <(kind completion zsh)"
         "source <(argocd completion zsh)"
       ];
       aliases = {

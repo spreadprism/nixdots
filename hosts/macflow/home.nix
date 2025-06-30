@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home = {
     packages = with pkgs; [
       goreleaser
@@ -26,6 +30,10 @@
     "--pull=false"
     ''-s DEV_SA=$(cat ~/.config/gcloud/application_default_credentials.json | tr -d '\r\n')''
   ];
+
+  sops.secrets.gemini_api_key = {
+    sopsFile = ../../secrets/everflow.yaml;
+  };
   shell = {
     supported = ["zsh"];
     aliases.gr = "goreleaser";
@@ -44,6 +52,7 @@
       ''export HOMEBREW_GITHUB_API_TOKEN=$(gh auth token)''
       "source <(devstack completion zsh)"
       "source <(efctl completion zsh)"
+      ''export GEMINI_API_KEY=$(cat ${config.sops.secrets.gemini_api_key.path})''
     ];
   };
 }
