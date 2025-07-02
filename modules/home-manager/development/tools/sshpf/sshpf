@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# input => localport:remoteport remote
+ports=$1
+
+
+localport=$(echo "$ports" | cut -d: -f1)
+remoteport=$(echo "$ports" | cut -d: -f2)
+remote=$2
+
+ssh -L $localport:127.0.0.1:$remoteport $remote

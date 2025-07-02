@@ -10,7 +10,7 @@
       kubectx
       helmfile
       argocd
-      k3d
+      minikube
       kustomize
       (wrapHelm kubernetes-helm {
         plugins = with pkgs.kubernetes-helmPlugins; [
@@ -34,6 +34,7 @@
         kn = "kubens";
         knu = "k config set-context --current --namespace=";
         ku = "knu && kcu";
+        kpf = "k port-forward";
       };
     };
   };
