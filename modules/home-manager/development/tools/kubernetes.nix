@@ -17,6 +17,7 @@
           helm-secrets
           helm-diff
           helm-git
+          helm-secrets
         ];
       })
     ];
