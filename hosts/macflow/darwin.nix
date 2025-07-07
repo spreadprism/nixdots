@@ -2,15 +2,18 @@
   ids.gids.nixbld = 350;
   environment.systemPackages = with pkgs; [
     nodejs_22
-    protobuf
   ];
 
-  # TODO: Moves things to general darwin.nix
   homebrew = {
+    onActivation = {
+      autoUpdate = true;
+      upgrade = true;
+    };
     brews = [
       "ansible"
       "devstack"
       "efctl"
+      "protobuf"
       {
         name = "mysql@8.0";
         link = true;
