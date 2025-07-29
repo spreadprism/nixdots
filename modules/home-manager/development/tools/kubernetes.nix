@@ -24,6 +24,7 @@
     shell = {
       extra = [
         "export KUBECONFIG=$HOME/.kube/config"
+        ''export KUBECTL_EXTERNAL_DIFF="colordiff -N -u"''
         "source <(argocd completion zsh)"
       ];
       aliases = {

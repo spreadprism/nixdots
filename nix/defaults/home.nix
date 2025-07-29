@@ -39,6 +39,7 @@ in {
           nh
           sops
           nixdots
+          colordiff
         ]
         ++ lib.optionals isLinux [
         ]
