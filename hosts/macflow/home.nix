@@ -42,7 +42,7 @@
       "/Users/eduguay/.dotnet/tools"
     ];
     extra = [
-      ''export DOCKER_HOST=unix://$(podman machine inspect | jq '.[0] | .ConnectionInfo | .PodmanSocket | .Path' -r)''
+      # ''export DOCKER_HOST=unix://$(podman machine inspect | jq '.[0] | .ConnectionInfo | .PodmanSocket | .Path' -r)''
       ''export LANG="en_CA.UTF-8"''
       ''export EFLOW_CONFIG=~/.eflow.config.json''
       ''export EFLOW_DOMAINS=~/.eflow.domains.json''
