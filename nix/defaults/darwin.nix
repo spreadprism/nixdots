@@ -15,7 +15,9 @@
     home = "/Users/${username}";
   };
   system.primaryUser = username;
-  nix.enable = false;
+  nix = {
+    enable = false;
+  };
 
   environment.systemPackages = with pkgs; [
   ];
