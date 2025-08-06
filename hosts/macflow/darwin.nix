@@ -3,6 +3,7 @@
   environment.systemPackages = with pkgs; [
     nodejs_22
   ];
+  nix.settings.trusted-users = ["eduguay"];
 
   homebrew = {
     onActivation = {
