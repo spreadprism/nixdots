@@ -23,6 +23,7 @@
             language = {
               go = config.go.enable;
               python = config.python.enable;
+              java = config.java.enable;
               robot = config.robot.enable;
               ruby = config.ruby.enable;
               rust = config.rust.enable;

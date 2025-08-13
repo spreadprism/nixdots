@@ -224,11 +224,11 @@
         "plugins-yaml": "plugins-yaml"
       },
       "locked": {
-        "lastModified": 1754495585,
-        "narHash": "sha256-id1/9AHg+hGXXDGsnAKAEmCa6vCJl5Grv9v+TUxO/uA=",
+        "lastModified": 1755115896,
+        "narHash": "sha256-eZXECVXndXNvKD+gqHufyja4c8Lij5RXQbUM4h3kiy8=",
         "owner": "spreadprism",
         "repo": "nvim",
-        "rev": "f7164f9131b9f84abb4531c6fd639eb03fb2d47b",
+        "rev": "76e274f66773fbac000c9f35f3af3a9aa01e2694",
         "type": "github"
       },
       "original": {
